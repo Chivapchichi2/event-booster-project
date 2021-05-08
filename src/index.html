@@ -8,24 +8,35 @@
   </head>
   <body>
     <a href="#">
-      <svg>
-        <use></use>
+      <svg class="icon-logo" width="110" height="90">
+        <use href="./images/sprite.svg#icon-logo-mobile"></use>
       </svg>
     </a>
     <div class="hero container">
-      <h1 class="hero">FIND BEST EVENTS AROUND THE WORLD</h1>
+      <h1 class="hero-title">FIND BEST EVENTS <br />AROUND THE WORLD</h1>
     </div>
-    <form>
-      <label>
-        <input type="text" placeholder="Start searching" />
-        <svg>
-          <use></use>
+    <form class="form">
+      <div class="form-container">
+        <input class="form-input" type="text" placeholder="Start searching" />
+
+        <svg class="icon-loop" width="12" height="12">
+          <use href="./images/sprite.svg#icon-loop-icon"></use>
         </svg>
-      </label>
-      <select>
-        <option></option>
-        <option></option>
-      </select>
+      </div>
+
+      <div class="form-container">
+        <select class="form-input select" placeholder="Start searching">
+          <option>Choose country</option>
+          <option>Ukraine</option>
+          <option>Germany</option>
+          <option>Poland</option>
+          <option>France</option>
+        </select>
+
+        <svg class="icon-down" width="15" height="10">
+          <use href="./images/sprite.svg#icon-down-btn"></use>
+        </svg>
+      </div>
     </form>
     <main>
       <div class="container">
@@ -122,6 +133,6 @@
           </a>
         </p>
       </div>
-    </footer>
+    </footer> 
   </body>
 </html>
