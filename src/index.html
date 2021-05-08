@@ -24,7 +24,7 @@
             <use href="./images/sprite.svg#icon-loop-icon"></use>
           </svg>
         </div>
-
+        
         <div class="form-container">
           <select class="form-input select" placeholder="Start searching">
             <option>Choose country</option>
@@ -40,16 +40,11 @@
         </div>
       </form>
     </header>
-    <!-- <main>
-      <ul class="card-list">
-        <li class="card-item">
-          <img src="#" alt="" />
-          <h2 class="card-name"></h2>
-          <h3 class="card-date"></h3>
-          <h4 class="card-place"></h4>
-        </li>
-      </ul>
-    </main> -->
+    <main>
+      <div class="container">
+        <ul class="card-list"></ul>
+      </div>
+    </main>
     <footer class="footer container">
       <div class="footer-container">
         <span class="footer-text">
@@ -60,5 +55,13 @@
         </span>
       </div>
     </footer>
+    <div class="backdrop is-hidden">
+      <div class="modal">
+        <button class="modal-close">
+          <span class="close-modal-btn">&#10006;</span>
+        </button>
+        <div class="ticket-info-container"></div>
+      </div>
+    </div>
   </body>
 </html>
