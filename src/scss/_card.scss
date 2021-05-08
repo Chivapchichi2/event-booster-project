@@ -1,0 +1,128 @@
+/*ul*/
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  padding-top: 51px;
+  padding-bottom: 60px;
+  margin-right: -14px;
+  margin-bottom: -39px;
+
+  @media screen and (min-width: 768px) {
+    margin-right: -27px;
+    margin-bottom: -58px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: -70px;
+    margin-bottom: -63px;
+  }
+}
+/*li*/
+.card-item {
+  position: relative;
+  text-align: center;
+  border-radius: 50px 0px;
+  object-fit: contain;
+  transition: transform var(--animation-duration) var(--timing-function);
+
+  //   outline: 1px solid red;
+  width: 128px;
+
+  margin-right: 14px;
+  margin-bottom: 39px;
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    margin-right: 27px;
+    margin-bottom: 58px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-right: 70px;
+    margin-bottom: 63px;
+  }
+}
+.card-item::before {
+  position: absolute;
+  display: block;
+  content: '';
+  border-radius: 50px 0px;
+
+  border: 1px solid rgba(220, 86, 197, 0.3);
+  width: 109px;
+  height: 101px;
+  top: -9px;
+  right: -10px;
+  @media screen and (min-width: 768px) {
+    width: 153px;
+    height: 143px;
+    top: -13px;
+    right: -14px;
+  }
+}
+
+.card-img-div {
+  display: inline-block;
+  background-color: grey;
+  background-image: url(../images/mobile/bg-mobile.jpg);
+
+  width: 128px;
+  height: 161px;
+  border-radius: 50px 0px;
+  object-fit: contain;
+  transition: transform var(--animation-duration) var(--timing-function);
+
+  width: 128px;
+  height: 161px;
+
+  overflow: hidden;
+  @media screen and (min-width: 768px) {
+    width: 180px;
+    height: 227px;
+  }
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+.card-img {
+  background-color: #fff;
+}
+.card-name {
+  font-family: Montserrat;
+  font-style: 400;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #dc56c5;
+  padding: 0px 8px;
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 0px 3px;
+  }
+}
+.card-date {
+  font-family: Montserrat;
+  font-style: 400;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+.card-place {
+  font-family: Montserrat;
+  font-style: 400;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
