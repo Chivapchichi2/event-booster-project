@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./index.js"],"names":[],"mappings":"6IAAA,sC","file":"main.22719cd6c0129a7feca8.js","sourcesContent":["import 'normalize.css';\nimport './scss/main.scss';\nimport './js/api';"],"sourceRoot":""}
