@@ -1,0 +1,19 @@
+{{#each this}}
+
+<li class="card-item">
+  <div class="card-img-div">
+    <img loading="lazy" src={{images.7.url}} alt="#" width="320" height="auto">
+  </div>
+  <div>
+    <h2 class="card-name">{{name}}</h2>
+    <p class="card-date">{{dates.start.localDate}}</p>
+    <p class="card-place">
+      <svg width="6px" height="9px">
+        <use width="6px" height="9px" href="./images/sprite.svg#icon-map">
+        </use>
+      </svg>{{_embedded.venues.0.name}}
+    </p>
+
+  </div>
+</li>
+{{/each}}
