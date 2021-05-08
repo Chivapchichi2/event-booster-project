@@ -13,6 +13,7 @@
     url(../images/mobile/bg-mobile@2x.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 
   @media screen and (min-width: 768px) {
     max-width: 100%;
@@ -24,8 +25,6 @@
         rgba(11, 11, 11, 0.5)
       ),
       url(../images/tablet/bg-tablet@2x.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   @media screen and (min-width: 1280px) {
@@ -36,8 +35,6 @@
         rgba(11, 11, 11, 0.5)
       ),
       url(../images/desctop/bg-desctop@2x.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 }
 

@@ -62,7 +62,6 @@
 .card-img-div {
   display: inline-block;
   background-color: grey;
-  background-image: url(../images/mobile/bg-mobile.jpg);
 
   width: 128px;
   height: 161px;
@@ -87,7 +86,10 @@ h4 {
   padding: 0;
 }
 .card-img {
-  background-color: #fff;
+  height: 227px;
+  width: auto;
+  transform: translateX(-25%);
+  max-width: max-content;
 }
 .card-name {
   font-family: Montserrat;
