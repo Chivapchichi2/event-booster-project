@@ -7,63 +7,61 @@
     <title>Event Booster</title>
   </head>
   <body>
-    <a href="#">
-      <svg class="icon-logo" width="110" height="90">
-        <use href="./images/sprite.svg#icon-logo-mobile"></use>
-      </svg>
-    </a>
-    <div class="hero container">
-      <h1 class="hero-title">FIND BEST EVENTS <br />AROUND THE WORLD</h1>
-    </div>
-    <form class="form">
-      <div class="form-container">
-        <input class="form-input" type="text" placeholder="Start searching" />
-
-        <svg class="icon-loop" width="12" height="12">
-          <use href="./images/sprite.svg#icon-loop-icon"></use>
+    <header class="overlay">
+      <a href="#">
+        <svg class="icon-logo" width="110" height="90">
+          <use href="./images/sprite.svg#icon-logo-mobile"></use>
         </svg>
+      </a>
+      <div class="hero container">
+        <h1 class="hero-title">FIND BEST EVENTS <br />AROUND THE WORLD</h1>
       </div>
+      <form class="form">
+        <div class="form-container">
+          <input class="form-input" type="text" placeholder="Start searching" />
 
-      <div class="form-container">
-        <select class="form-input select" placeholder="Start searching">
-          <option>Choose country</option>
-          <option>Ukraine</option>
-          <option>Germany</option>
-          <option>Poland</option>
-          <option>France</option>
-        </select>
+          <svg class="icon-loop" width="12" height="12">
+            <use href="./images/sprite.svg#icon-loop-icon"></use>
+          </svg>
+        </div>
+        
+        <div class="form-container">
+          <select class="form-input select" placeholder="Start searching">
+            <option>Choose country</option>
+            <option>Ukraine</option>
+            <option>Germany</option>
+            <option>Poland</option>
+            <option>France</option>
+          </select>
 
-        <svg class="icon-down" width="15" height="10">
-          <use href="./images/sprite.svg#icon-down-btn"></use>
-        </svg>
-      </div>
-    </form>
+          <svg class="icon-down" width="15" height="10">
+            <use href="./images/sprite.svg#icon-down-btn"></use>
+          </svg>
+        </div>
+      </form>
+    </header>
     <main>
       <div class="container">
         <ul class="card-list"></ul>
       </div>
-      <div class="backdrop is-hidden">
-        <div class="modal">
-          <button class="modal-close">
-            <span class="close-modal-btn">&#10006;</span>
-          </button>
-          <div class="ticket-info-container"></div>
-        </div>
-      </div>
     </main>
-    <footer class="footer">
-      <div class="container">
-        <p>
-          © 2021 | All Rights Reserved | Developed width
-          <svg width="14" height="14">
-            <use href="#">Сердечко</use>
-          </svg>
-          by
-          <a href="http://goit.ua" target="_blank" rel="noopener noreferrer"
-            ><u>GoIT Students</u>
-          </a>
-        </p>
+    <footer class="footer container">
+      <div class="footer-container">
+        <span class="footer-text">
+          © 2021 | All Rights Reserved |
+          <a class="footer-link" href="https://goit.ua"
+            >Developed with &#10084;&#65039; by GoIT Students</a
+          >
+        </span>
       </div>
     </footer>
+    <div class="backdrop is-hidden">
+      <div class="modal">
+        <button class="modal-close">
+          <span class="close-modal-btn">&#10006;</span>
+        </button>
+        <div class="ticket-info-container"></div>
+      </div>
+    </div>
   </body>
 </html>
