@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{"Dv/5":function(n,e,o){},QfWi:function(n,e,o){"use strict";o.r(e);o("1UZS"),o("Dv/5"),o("JBxO"),o("FdtR");fetch("https://app.ticketmaster.com/discovery/v2/events.json?keyword=lp&apikey=c1xQ4GUaMnAePoI6UzGXPAXCsKa26y8D").then((function(n){return n.json()})).then(console.log)}},[["QfWi",1,2]]]);
+//# sourceMappingURL=main.43054d95f5e64e1f335b.js.map
