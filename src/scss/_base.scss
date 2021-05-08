@@ -41,8 +41,23 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background: $black;
+  // background: $black;
   color: $white;
+  background-image: url(../images/mobile/bg-body-mobile.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media screen and (min-width: 768px) {
+    background-image: url(../images/tablet/bg-body-tablet.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  @media screen and (min-width: 1280px) {
+    background-image: url(../images/desctop/bg-body-desctop.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
 
 img {

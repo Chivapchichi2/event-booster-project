@@ -1,0 +1,21 @@
+.footer-container {
+  // outline: 1px solid red;
+  padding-top: 27px;
+  padding-bottom: 27px;
+  text-align: center;
+}
+
+.footer-text {
+  width: 252px;
+  font-size: 14px;
+  line-height: 1.2px;
+  color: $light-grey;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.footer-link {
+  color: $light-grey;
+}

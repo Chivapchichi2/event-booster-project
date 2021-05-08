@@ -33,6 +33,7 @@
   border-radius: 20px;
   color: $light-grey;
   background-color: $input-bg;
+  backdrop-filter: blur(20px);
   &::placeholder {
     color: $light-grey;
   }
