@@ -4,6 +4,7 @@ import './js/utils/serviceApi';
 import './js/utils/refs';
 import './js/modal';
 import './js/render/renderCountriesFilter';
+import './js/queryList';
 import './js/countriesList';
 import './js/genresList';
 import './js/render/renderCardList';
