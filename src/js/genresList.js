@@ -3,7 +3,8 @@ import apiService from './utils/serviceApi'
 import cardListHbs from '../templates/card-list.hbs'
 import validation from './utils/validation'
 
-const onCountiesSearchClick = e => {
+
+refs.genresList.addEventListener('change', e => {
   apiService.getEventsByFilter(refs.genresList.value, refs.countriesList.value)
     .then(data => {
       if (!data) {
@@ -13,5 +14,4 @@ const onCountiesSearchClick = e => {
       validation.imageUrl(data)
       refs.gallery.innerHTML = cardListHbs(data)
     })
-}
-refs.countriesList.addEventListener('change', onCountiesSearchClick)
+})
