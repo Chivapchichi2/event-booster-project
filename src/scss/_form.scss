@@ -12,6 +12,7 @@
     margin-top: 50px;
   }
 }
+
 .form-container {
   position: relative;
   margin-left: auto;
@@ -42,6 +43,7 @@
     }
   }
 }
+
 .form-input {
   width: 270px;
   height: 40px;
@@ -68,6 +70,7 @@
     box-shadow: 1px 1px 10px 5px #dc56c5;
   }
 }
+
 .select {
   margin-top: 25px;
   & option {
@@ -78,6 +81,7 @@
     margin: 0;
   }
 }
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
