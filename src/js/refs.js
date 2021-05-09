@@ -5,4 +5,5 @@ export default {
     ticketModal: document.querySelector('.backdrop'),
     cardList: document.querySelector('.card-list'),
     countriesList: document.querySelector('.js-countries-form-input'),
-}
+    logo: document.querySelector('.logo'),
+};

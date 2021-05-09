@@ -7,4 +7,5 @@ import './js/modal';
 import './js/renderCountriesFilter';
 import './js/countriesList';
 import './js/renderCardList';
-
+import './js/onLogoClick';
+import './js/toTop';
