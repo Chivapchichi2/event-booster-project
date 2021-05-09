@@ -12,6 +12,7 @@
     margin-top: 50px;
   }
 }
+
 .form-container {
   position: relative;
   margin-left: auto;
@@ -42,6 +43,7 @@
     }
   }
 }
+
 .form-input {
   width: 270px;
   height: 40px;
@@ -52,16 +54,34 @@
   color: $light-grey;
   background-color: $input-bg;
   backdrop-filter: blur(20px);
+  outline: none;
+
+  transition-duration: 250ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   &::placeholder {
     color: $light-grey;
   }
+
+  &:hover,
+  &:focus {
+    -webkit-box-shadow: 1px 1px 10px 5px #dc56c5;
+    box-shadow: 1px 1px 10px 5px #dc56c5;
+  }
 }
+
 .select {
   margin-top: 25px;
+  & option {
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+  }
   @media screen and (min-width: 768px) {
     margin: 0;
   }
 }
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
