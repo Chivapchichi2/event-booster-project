@@ -5,3 +5,5 @@ import './js/renderApi';
 import './js/refs';
 import './js/modal';
 import './js/renderCardList';
+import './js/onLogoClick';
+import './js/toTop';
