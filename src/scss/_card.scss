@@ -3,7 +3,6 @@
   display: flex;
   flex-wrap: wrap;
   text-align: center;
-  // padding-top: 51px;
   padding-bottom: 60px;
   margin-right: -14px;
   margin-bottom: -39px;
@@ -17,6 +16,20 @@
     margin-bottom: -63px;
   }
 }
+
+.message {
+  font-size: 18px;
+  color: $accent;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 41px;
+    font-size: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-left: 56px;
+    font-size: 50px;
+  }
+}
 /*li*/
 .card-item {
   position: relative;
@@ -25,7 +38,6 @@
   object-fit: contain;
   transition: transform var(--animation-duration) var(--timing-function);
 
-  //   outline: 1px solid red;
   width: 128px;
 
   margin-right: 14px;

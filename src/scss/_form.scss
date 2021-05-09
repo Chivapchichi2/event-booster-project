@@ -35,13 +35,6 @@
     }
   }
 
-  // @media screen and (min-width: 840px) {
-  //   &:last-child {
-  //     margin-top: 20px;
-  //     margin-left: 30px;
-  //   }
-  // }
-
   @media screen and (min-width: 1280px) {
     &:last-child {
       margin-top: 0;
@@ -79,25 +72,14 @@ select {
 .icon-loop {
   position: absolute;
   top: 15px;
-  left: 228px;
+  left: 240px;
   pointer-events: none;
 }
 
 .icon-down {
   position: absolute;
   top: 40px;
-  left: 228px;
-  pointer-events: none;
-
-  @media screen and (min-width: 768px) {
-    top: 15px;
-  }
-}
-
-.icon-down-category {
-  position: absolute;
-  top: 40px;
-  left: 228px;
+  left: 240px;
   pointer-events: none;
 
   @media screen and (min-width: 768px) {
