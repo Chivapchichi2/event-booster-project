@@ -4,6 +4,7 @@
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 27px;
   }
 
@@ -11,6 +12,7 @@
     margin-top: 50px;
   }
 }
+
 .form-container {
   position: relative;
   margin-left: auto;
@@ -19,11 +21,29 @@
 
   @media screen and (min-width: 768px) {
     margin: 0;
+
     &:first-child {
       margin-right: 30px;
     }
+
+    @media screen and (max-width: 1279px) {
+      &:last-child {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    &:last-child {
+      margin-top: 0;
+      margin-left: 30px;
+    }
   }
 }
+
 .form-input {
   width: 270px;
   height: 40px;
@@ -34,16 +54,34 @@
   color: $light-grey;
   background-color: $input-bg;
   backdrop-filter: blur(20px);
+  outline: none;
+
+  transition-duration: 250ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   &::placeholder {
     color: $light-grey;
   }
+
+  &:hover,
+  &:focus {
+    -webkit-box-shadow: 1px 1px 10px 5px #dc56c5;
+    box-shadow: 1px 1px 10px 5px #dc56c5;
+  }
 }
+
 .select {
   margin-top: 25px;
+  & option {
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+  }
   @media screen and (min-width: 768px) {
     margin: 0;
   }
 }
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -54,15 +92,21 @@ select {
 .icon-loop {
   position: absolute;
   top: 15px;
-  left: 228px;
+  left: 240px;
+  pointer-events: none;
 }
 
 .icon-down {
   position: absolute;
   top: 40px;
-  left: 228px;
+  left: 240px;
+  pointer-events: none;
 
   @media screen and (min-width: 768px) {
     top: 15px;
   }
+}
+
+.select-container {
+  position: relative;
 }
