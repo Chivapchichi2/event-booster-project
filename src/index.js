@@ -5,6 +5,7 @@ import './js/utils/refs';
 import './js/modal';
 import './js/render/renderCountriesFilter';
 import './js/countriesList';
+import './js/genresList';
 import './js/render/renderCardList';
 import './js/onLogoClick';
 import './js/toTop';
