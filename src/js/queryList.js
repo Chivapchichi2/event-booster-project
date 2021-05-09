@@ -13,7 +13,7 @@ const onSearchInput = (e) => {
       }
     validation.imageUrl(data)
     refs.gallery.innerHTML = cardListHbs(data)
-    
+    e.target.value = ''
   })
 }
 
