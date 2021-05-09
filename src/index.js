@@ -1,11 +1,10 @@
 import 'normalize.css';
 import './scss/main.scss';
-import './js/serviceApi';
-import './js/renderApi';
-import './js/refs';
+import './js/utils/serviceApi';
+import './js/utils/refs';
 import './js/modal';
-import './js/renderCountriesFilter';
+import './js/render/renderCountriesFilter';
 import './js/countriesList';
-import './js/renderCardList';
+import './js/render/renderCardList';
 import './js/onLogoClick';
 import './js/toTop';

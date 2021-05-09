@@ -1,5 +1,5 @@
-import refs from './refs';
-import apiService from './serviceApi';
+import refs from './utils/refs';
+import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
 
 
