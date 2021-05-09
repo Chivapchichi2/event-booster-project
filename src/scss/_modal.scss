@@ -28,7 +28,7 @@
   height: 95vh;
   min-width: 272px;
   width: 90%;
-  overflow: auto;
+  overflow-y: scroll;
   background-color: $modal-bg;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -65,4 +65,162 @@
   border: 0;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.ticket-info-container {
+  text-align: center;
+  padding: 195px 15px 100px;
+
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    padding: 235px 30px 62px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: flex;
+    text-align: left;
+    align-items: flex-start;
+    padding: 141px 17px 55px 50px;
+  }
+}
+
+.event-badge {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  width: 102px;
+  height: 102px;
+  align-items: center;
+  object-fit: cover;
+
+  @media screen and (min-width: 1200px) {
+    top: 62px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    top: 28px;
+  }
+}
+
+.ticket-badge {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.ticket-poster-wrapper {
+  @media screen and (min-width: 1200px) {
+    width: 360px;
+    height: 641px;
+    object-fit: cover;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 233px;
+    height: 416px;
+    object-fit: cover;
+  }
+}
+
+.ticket-poster {
+  display: none;
+  @media screen and (min-width: 1200px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ticket-info {
+  @media screen and (min-width: 1200px) {
+    margin-left: 60px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin-left: 30px;
+  }
+}
+
+.ticket-info-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $accent;
+  margin-top: 10px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  @media screen and (min-width: 1200px) {
+    margin-top: 20px;
+    margin-bottom: 2px;
+  }
+}
+
+.ticket-info-txt {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1.25;
+  margin: 3px 0 0;
+  color: #0e0e0e;
+  @media screen and (min-width: 1200px) {
+    max-width: 450px;
+    font-size: 18px;
+    line-height: 1.22;
+    margin: 5px 0 0;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    max-width: 265px;
+  }
+}
+
+.tckt-buy-button {
+  font-style: normal;
+  color: $white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  background: $modal-btn;
+  padding: 10px 19px;
+  margin: 10px 0 17px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background: $accent;
+    color: $modal-btn;
+  }
+  @media screen and (min-width: 1200px) {
+    margin: 20px 0 26px;
+  }
+}
+
+.more-information {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: #4c00fe;
+  border: 1px solid $accent;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 10px 3px;
+  margin-top: 8px;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background: $accent;
+  }
+  @media screen and (min-width: 1200px) {
+    margin-top: 17px;
+  }
 }
