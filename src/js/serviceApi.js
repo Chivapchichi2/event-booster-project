@@ -20,15 +20,15 @@ export default {
   },
   getEventsByCountryName(countryName) {
     let countryCode = '';
-    Object.entries(countriesData).forEach(i => {
-      if (i[1] === countryName) {
-        countryCode = i[0];
+    countriesData.forEach(i => {
+      if (i.name === countryName) {
+        countryCode = i.code;
         return;
       }
     })
     const url = `${BASE_URL}events.json?page=${this.page}&size=${this.perPage}&countryCode=${countryCode}&apikey=${KEY}`;
     return fetch(url).then(r => r.json()).then(r => {
-      const data = r._embedded.events
+      const data = r?._embedded?.events
       return data
     });
   },
