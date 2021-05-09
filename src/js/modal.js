@@ -3,7 +3,7 @@ import apiService from './serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
 
 
-refs.cardList.addEventListener('click', onTicketClick)
+refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
 refs.ticketModal.addEventListener('click', onBdpClick)
 window.addEventListener('keydown', onEscCloseModal)
