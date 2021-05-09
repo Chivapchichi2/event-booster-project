@@ -5,4 +5,10 @@ export default {
     });
     return data;
   },
+  transformCountriesNameIntoCode(name, data) {
+  if (data.name === name) {
+    countryCode = data.code;
+    return
+  }
+  }
 };

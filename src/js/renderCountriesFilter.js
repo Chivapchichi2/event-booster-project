@@ -4,7 +4,6 @@ import countriesDataList from '../js/countriesDataList';
 
 const countriesData = Object.values(countriesDataList)
 const countriesListFilter = (countriesData) => {
-  console.log(countriesData);
   refs.countriesList.insertAdjacentHTML('beforeend', countriesListFilterHbs(countriesData))
 }
 
