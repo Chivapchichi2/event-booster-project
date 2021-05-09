@@ -8,7 +8,7 @@ refs.btnModalClose.addEventListener('click', closeModal)
 refs.ticketModal.addEventListener('click', onBdpClick)
 window.addEventListener('keydown', onEscCloseModal)
 
-let ticketId = null;
+let ticketId = "vv170Z4VGkwgxwp1";
 let isCard = null;
 
 
@@ -20,10 +20,10 @@ function onTicketClick(e) {
         return
     }
     // ticketId = isCard.getAttribute('data-id')
-    // apiService.getEventById(ticketId).then((r) => {
-    //     refs.ticketInfoContainer.innerHTML = ticketInfo(r);
-    //     return r;
-    // }).catch(console.log);
+    apiService.getEventById(ticketId).then((r) => {
+        refs.ticketInfoContainer.innerHTML = ticketInfo(r);
+        return r;
+    }).catch(console.log);
     refs.ticketModal.classList.remove('is-hidden');
     document.body.style.overflow = 'hidden';
 }

@@ -1,0 +1,36 @@
+<div class="event-badge">
+    <img loading="lazy" src="{{images.8.url}}" alt="" class="ticket-badge">
+</div>
+<div class="ticket-poster-wrapper">
+    <img loading="lazy" src="{{images.3.url}}" alt="" class="ticket-poster">
+</div>
+<div class="ticket-info">
+    <h2 class="ticket-info-title">info</h2>
+    <p class="ticket-info-txt">{{info}}</p>
+    <h2 class="ticket-info-title">when</h2>
+    <p class="ticket-info-txt">
+        {{dates.start.localDate}}</p>
+    <p class="ticket-info-txt">{{dates.start.localTime}}({{dates.timezone}})</p>
+
+    <h2 class="ticket-info-title">where</h2>
+    <p class="ticket-info-txt">
+        {{#each _embedded.venues}}
+        {{city.name}},{{country.name}}</p>
+    <p class="ticket-info-txt">{{name}}</p>
+    {{/each}}
+
+    <h2 class="ticket-info-title">who</h2>
+    <p class="ticket-info-txt">{{name}}</p>
+    <h2 class="ticket-info-title">prices</h2>
+    <p class="ticket-info-txt">
+        {{#each priceRanges}}
+        Standart {{min}} - {{max}} {{currency}}
+        {{/each}}
+    </p>
+    <button class="tckt-buy-button">buy tickets</button>
+    <p class="ticket-info-txt">
+        VIP
+    </p>
+    <button class="tckt-buy-button">buy tickets</button>
+    <div><button class="more-information">more from this author</button></div>
+</div>
