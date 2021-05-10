@@ -26,8 +26,7 @@ function onTicketClick(e) {
         validation.eventPriceRanges(r)
         refs.ticketInfoContainer.innerHTML = ticketInfo(r);  
         if (!r.priceRanges.includes({type: "vip"})) {
-            let btn = document.querySelector('.tckt-buy-button.vip')          
-            btn.style.pointerEvents = 'none'
+            document.querySelector('.tckt-buy-button.vip').style.pointerEvents = 'none'            
         }                 
         return r;
     }).catch(console.log);
