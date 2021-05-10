@@ -1,9 +1,6 @@
-import countriesData from '../data/countriesDataList'
-import genresData from '../data/classificationNameList'
 const KEY = "c1xQ4GUaMnAePoI6UzGXPAXCsKa26y8D";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2/";
  
-
 export default {
   page: 1,
   perPage: 20,
@@ -26,21 +23,7 @@ export default {
       return data
     });
   },
-  getEventsByFilter(genre, countryName) {
-    let genreId = '';
-    let countryCode = '';
-    countriesData.forEach(i => {
-      if (i.name === countryName) {
-        countryCode = i.code;
-        
-      }
-    })
-    genresData.forEach(i => {
-      if (i.name === genre) {
-        genreId = i.id
-      }
-    })
-    
+  getEventsByFilter(genreId, countryCode) {
     const url = `${BASE_URL}events.json?classificationId=${genreId}&countryCode=${countryCode}&apikey=${KEY}`;
     return fetch(url).then(r => r.json()).then(r => {
       const data = r._embedded?.events
