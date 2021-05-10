@@ -6,6 +6,7 @@ import validation from './utils/validation';
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
 refs.ticketModal.addEventListener('click', onBdpClick)
+
 window.addEventListener('keydown', onEscCloseModal)
 
 let ticketId = null;
@@ -24,22 +25,25 @@ function onTicketClick(e) {
         validation.modalPosterUrl(r)
         validation.eventInfo(r)        
         validation.eventPriceRanges(r)
-        refs.ticketInfoContainer.innerHTML = ticketInfo(r);  
+        refs.ticketInfoContainer.innerHTML = ticketInfo(r);          
         if (!r.priceRanges.includes({type: "vip"})) {
             document.querySelector('.tckt-buy-button.vip').style.pointerEvents = 'none'            
-        }
-        refs.modalMoreInfoBtn.addEventListener('click', onMoreBtnClick)
+        }        
         return r;
-    }).catch(console.log);
+    }).catch(console.log);    
     refs.ticketModal.classList.remove('is-hidden');
-    document.body.style.overflow = 'hidden';    
+    document.body.style.overflow = 'hidden';
+    refs.modalMoreInfoBtn.onclick = onMoreBtnClick(e);
 }
 
-function onMoreBtnClick() {
-    refs.modalMoreInfo.classList.toggle('is-hidden')
+function onMoreBtnClick(e) {
+    if (e.target.classList.contains('more-information')) {
+         refs.modalMoreInfo.classList.toggle('is-hidden')
+    }     
 }
 
 function closeModal() {
+     refs.ticketInfoContainer.innerHTML = ''
         const isClosed = refs.ticketModal.classList.contains('is-hidden')
         if (isClosed) {
             return
