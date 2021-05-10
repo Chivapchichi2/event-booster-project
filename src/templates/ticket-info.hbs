@@ -1,38 +1,55 @@
-<div class="event-badge">
-    <img loading="lazy" src="{{images.1.url}}" alt="" class="ticket-badge">
-</div>
-<div class="ticket-poster-wrapper">
-    <img loading="lazy" src="{{images.0.url}}" alt="" class="ticket-poster">
-</div>
-<div class="ticket-info">
-    <h2 class="ticket-info-title">info</h2>
-    <p class="ticket-info-txt">{{info}}</p>
-    <h2 class="ticket-info-title">when</h2>
-    <p class="ticket-info-txt">
-        {{dates.start.localDate}}</p>
-    <p class="ticket-info-txt">{{dates.start.localTime}}({{dates.timezone}})</p>
+<div class="ticket-info-container">
+    <div class="event-badge">
+        <img loading="lazy" src="{{images.1.url}}" alt="" class="ticket-badge">
+    </div>
+    <div class="ticket-poster-wrapper">
+        <img loading="lazy" src="{{images.0.url}}" alt="" class="ticket-poster">
+    </div>
+    <div class="ticket-info">
+        <h2 class="ticket-info-title">info</h2>
+        <p class="ticket-info-txt">{{info}}</p>
+        <h2 class="ticket-info-title">when</h2>
+        <p class="ticket-info-txt">
+            {{dates.start.localDate}}</p>
+        <p class="ticket-info-txt">{{dates.start.localTime}}({{dates.timezone}})</p>
 
-    <h2 class="ticket-info-title">where</h2>
-    <p class="ticket-info-txt">
-        {{#each _embedded.venues}}
-        {{city.name}},{{country.name}}</p>
-    <p class="ticket-info-txt">{{name}}</p>
-    {{/each}}
+        <h2 class="ticket-info-title">where</h2>
+        <p class="ticket-info-txt">
+            {{#each _embedded.venues}}
+            {{city.name}},{{country.name}}</p>
+        <p class="ticket-info-txt">{{name}}</p>
+        {{/each}}
 
-    <h2 class="ticket-info-title">who</h2>
-    <p class="ticket-info-txt">{{name}}</p>
-    <h2 class="ticket-info-title">prices</h2>
-    <p class="ticket-info-txt">
-        <svg class="contacts-icon" width="24" height="16">
-            <use href="../images/sprite.svg#icon-ticket1"></use>
-        </svg> Standart {{sMassage}}
-        {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}}
-    </p>
-    <a class="tckt-buy-button std" href="{{url}}" target="_blank">buy tickets</a>
-    <p class="ticket-info-txt">
-        <svg class="contacts-icon" width="24" height="16">
-            <use href="../images/sprite.svg#icon-ticket1"></use>
-        </svg> VIP {{vMassage}}
-    </p>
-    <a class="tckt-buy-button vip" href="{{url}}" target="_blank">buy tickets</a>
+        <h2 class="ticket-info-title">who</h2>
+        <p class="ticket-info-txt">{{name}}</p>
+        <h2 class="ticket-info-title">prices</h2>
+        <p class="ticket-info-txt">
+            <svg class="contacts-icon" width="24" height="16">
+                <use href="../images/sprite.svg#icon-ticket1"></use>
+            </svg> Standart {{sMassage}}
+            {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}}
+        </p>
+        <a class="tckt-buy-button std" href="{{url}}" target="_blank">buy tickets</a>
+        <p class="ticket-info-txt">
+            <svg class="contacts-icon" width="24" height="16">
+                <use href="../images/sprite.svg#icon-ticket1"></use>
+            </svg> VIP {{vMassage}}
+        </p>
+        <a class="tckt-buy-button vip" href="{{url}}" target="_blank">buy tickets</a>
+    </div>
+</div>
+<div class="more-info-container">
+    <button class="more-information">more from this author</button>
+    <ul class="more-info-list is-hidden">
+        <li class="more-info-itms"><a href="{{_embedded.attractions.0.externalLinks.wiki.0.url}}" class="more-info-link"
+                target="_blank">W</a>
+        </li>
+        <li class="more-info-itms"><a href="{{_embedded.attractions.0.externalLinks.homepage.0.url}}"
+                class="more-info-link" target="_blank">H</a></li>
+        <li class="more-info-itms"><a href="{{_embedded.attractions.0.externalLinks.facebook.0.url}}"
+                class="more-info-link" target="_blank">F</a></li>
+        <li class="more-info-itms"><a href="{{_embedded.attractions.0.externalLinks.twitter.0.url}}"
+                class="more-info-link" target="_blank">T</a></li>
+    </ul>
+
 </div>

@@ -27,11 +27,16 @@ function onTicketClick(e) {
         refs.ticketInfoContainer.innerHTML = ticketInfo(r);  
         if (!r.priceRanges.includes({type: "vip"})) {
             document.querySelector('.tckt-buy-button.vip').style.pointerEvents = 'none'            
-        }                 
+        }
+        refs.modalMoreInfoBtn.addEventListener('click', onMoreBtnClick)
         return r;
     }).catch(console.log);
     refs.ticketModal.classList.remove('is-hidden');
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';    
+}
+
+function onMoreBtnClick() {
+    refs.modalMoreInfo.classList.toggle('is-hidden')
 }
 
 function closeModal() {
