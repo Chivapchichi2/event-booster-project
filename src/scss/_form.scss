@@ -66,8 +66,8 @@
 
   &:hover,
   &:focus {
-    -webkit-box-shadow: 1px 1px 10px 5px #dc56c5;
-    box-shadow: 1px 1px 10px 5px #dc56c5;
+    background-color: rgba(76, 0, 254, 0.8);
+    box-shadow: 1px 1px 10px 2px rgb(76, 0, 254);
   }
 }
 
