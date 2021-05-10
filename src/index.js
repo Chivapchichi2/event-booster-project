@@ -7,3 +7,4 @@ import './js/render/renderCardList';
 import './js/onLogoClick';
 import './js/toTop';
 import './js/form';
+import './js/pagination';
