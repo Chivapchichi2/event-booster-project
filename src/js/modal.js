@@ -8,7 +8,7 @@ refs.btnModalClose.addEventListener('click', closeModal)
 refs.ticketModal.addEventListener('click', onBdpClick)
 window.addEventListener('keydown', onEscCloseModal)
 
-let ticketId = "vv170Z4VGkwgxwp1";
+let ticketId = null;
 let isCard = null;
 
 
@@ -19,9 +19,12 @@ function onTicketClick(e) {
     if (!isCard) {
         return
     }
-    // ticketId = isCard.getAttribute('data-id')
-    apiService.getEventById(ticketId).then((r) => {
-        refs.ticketInfoContainer.innerHTML = ticketInfo(r);
+    ticketId = isCard.getAttribute('data-id')
+    apiService.getEventById(ticketId).then((r) => {        
+        r.images[3].url = r.images.find(item => item.width === 1024 && item.height === 683).url
+        r.info ? r.info = r.info : r.info = 'To more information please call to administrate'
+        r.priceRanges ? r.massage = '' : r.massage ='prices will be announced later'
+        refs.ticketInfoContainer.innerHTML = ticketInfo(r);        
         return r;
     }).catch(console.log);
     refs.ticketModal.classList.remove('is-hidden');
