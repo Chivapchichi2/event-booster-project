@@ -9,3 +9,4 @@ import './js/genresList';
 import './js/render/renderCardList';
 import './js/onLogoClick';
 import './js/toTop';
+import './js/pagination';
