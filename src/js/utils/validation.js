@@ -4,7 +4,7 @@ export default {
       item.images = item.images.find(item => item.ratio === '4_3');
     });
     return data;
-  },
+  },  
   transformCountriesNameIntoCode(name, data) {
     let code = "";
     data.forEach(i => {
@@ -25,4 +25,10 @@ export default {
     });
     return id;
   },
+  modalPosterUrl(data) {
+    data.map(item => {
+      item.images = item.images.find(item => item.width === 1024 && item.height === 683);
+    });
+    return data;
+  }
 };

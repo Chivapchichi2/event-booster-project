@@ -23,13 +23,13 @@
     <p class="ticket-info-txt">{{name}}</p>
     <h2 class="ticket-info-title">prices</h2>
     <p class="ticket-info-txt">
-        {{#each priceRanges}}
-        Standart {{min}} - {{max}} {{currency}}
-        {{/each}}
+        Standart {{massage}}
+        {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}}
     </p>
     <button class="tckt-buy-button">buy tickets</button>
     <p class="ticket-info-txt">
-        VIP
+        VIP {{massage}}
+        {{vipMin}}{{vipMax}}{{priceRanges.0.currency}}
     </p>
     <button class="tckt-buy-button">buy tickets</button>
     <div><button class="more-information">more from this author</button></div>
