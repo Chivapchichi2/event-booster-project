@@ -177,9 +177,15 @@
     <div class="backdrop is-hidden">
       <div class="modal">
         <button class="modal-close">
-          <span class="close-modal-btn">&#10006;</span>
+          <svg class="close-modal-btn">
+            <use href="./images/sprite.svg#icon-close-icon"></use>
+          </svg>          
         </button>
-        <div class="ticket-info-container"></div>
+        <div class="ticket-info-wrapper">
+          <div class="ticket-info-container"></div>
+          <div><button class="more-information">more from this author</button></div>
+        </div>
+        
       </div>
     </div>
   </body>

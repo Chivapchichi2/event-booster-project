@@ -1,7 +1,7 @@
 import refs from './utils/refs';
 import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
-
+import validation from './utils/validation';
 
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
@@ -21,10 +21,14 @@ function onTicketClick(e) {
     }
     ticketId = isCard.getAttribute('data-id')
     apiService.getEventById(ticketId).then((r) => {        
-        r.images[3].url = r.images.find(item => item.width === 1024 && item.height === 683).url
-        r.info ? r.info = r.info : r.info = 'To more information please call to administrate'
-        r.priceRanges ? r.massage = '' : r.massage ='prices will be announced later'
-        refs.ticketInfoContainer.innerHTML = ticketInfo(r);        
+        validation.modalPosterUrl(r)
+        validation.eventInfo(r)        
+        validation.eventPriceRanges(r)
+        refs.ticketInfoContainer.innerHTML = ticketInfo(r);  
+        if (!r.priceRanges.includes({type: "vip"})) {
+            let btn = document.querySelector('.tckt-buy-button.vip')          
+            btn.style.pointerEvents = 'none'
+        }                 
         return r;
     }).catch(console.log);
     refs.ticketModal.classList.remove('is-hidden');
