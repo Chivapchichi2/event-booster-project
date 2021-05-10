@@ -19,7 +19,7 @@ export default {
     const url = `${BASE_URL}events.json?keyword=${searchQuery}&apikey=${KEY}`;
     return fetch(url).then(r => r.json()).then(r => {
       
-      const data = r._embedded.events
+      const data = r._embedded?.events
       return data
     });
   },
