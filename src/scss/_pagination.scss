@@ -5,6 +5,8 @@
   -ms-user-select: none;
   user-select: none;
   color: $white;
+  @media scren and (min-width: 320px) {
+  }
 }
 
 .tui-ico-ellipsis,
@@ -35,21 +37,25 @@
   line-height: 1;
   text-decoration: none;
   vertical-align: middle;
-  border: 1px solid #ddd;
+  border: 1px solid inherit;
   border-width: 1px 0;
+  border-radius: 10px 0px;
+  &:hover {
+    box-shadow: 1px 1px 10px 5px #dc56c5;
+  }
 }
 
 .tui-pagination .tui-page-btn:hover {
   color: $white;
-  background-color: $light-grey;
+  // background-color: $light-grey;
   transform: scale(1.05);
 }
 
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
   color: #fff;
-  background: $accent;
-  border-color: $accent;
+  border: 1px solid $accent;
+  border-radius: 10px 0px;
   cursor: default;
 }
 
@@ -64,12 +70,12 @@
 
 .tui-pagination .tui-first-child,
 .tui-pagination .tui-prev-is-ellip {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid inherit;
 }
 
 .tui-pagination .tui-last-child,
 .tui-pagination .tui-next-is-ellip {
-  border-right: 1px solid #ddd;
+  border-right: 1px solid inherit;
 }
 
 .tui-pagination .tui-first-child.tui-is-selected {
@@ -93,7 +99,7 @@
   line-height: 26px;
   white-space: nowrap;
   font-weight: normal;
-  border: 1px solid #ddd;
+  border: 1px solid inherit;
 }
 
 .tui-pagination .tui-prev-is-ellip {
