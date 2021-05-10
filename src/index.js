@@ -1,5 +1,6 @@
 import 'normalize.css';
 import './scss/main.scss';
+import './js/utils/preloader';
 import './js/utils/serviceApi';
 import './js/utils/refs';
 import './js/modal';
