@@ -6,4 +6,5 @@ export default {
     countriesList: document.querySelector('.js-countries-form-input'),
     genresList: document.querySelector('.js-genres-form-input'),
     logo: document.querySelector('.logo'),
+    form: document.getElementById('search'),
 }
