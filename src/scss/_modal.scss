@@ -114,12 +114,16 @@
   @media screen and (min-width: 1200px) {
     width: 360px;
     height: 641px;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     width: 233px;
     height: 416px;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
   }
 }
 
@@ -127,13 +131,15 @@
   display: none;
   @media screen and (min-width: 1200px) {
     display: block;
-    width: 100%;
+    max-width: max-content;
     height: 100%;
+    transform: translateX(-32%);
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: block;
-    width: 100%;
+    max-width: max-content;
     height: 100%;
+    transform: translateX(-25%);
   }
 }
 

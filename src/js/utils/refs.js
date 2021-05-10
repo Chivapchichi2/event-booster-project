@@ -7,4 +7,5 @@ export default {
   genresList: document.querySelector('.js-genres-form-input'),
   logo: document.querySelector('.logo'),
   pagination: document.querySelector('.tui-pagination'),
+  form: document.getElementById('search'),
 };

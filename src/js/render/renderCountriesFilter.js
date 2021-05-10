@@ -6,7 +6,5 @@ const countriesData = Object.values(countriesDataList)
 const countriesListFilter = (countriesData) => {
   refs.countriesList.insertAdjacentHTML('beforeend', countriesListFilterHbs(countriesData))
 }
-const renderCountriesListFilter = () => countriesListFilter(countriesData);
 
-renderCountriesListFilter();
-export default renderCountriesListFilter;
+ countriesListFilter(countriesData);
