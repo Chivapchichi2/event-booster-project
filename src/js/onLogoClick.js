@@ -12,7 +12,7 @@ function onLogoClick() {
     const markup = cardListHbs(data);
     refs.gallery.innerHTML = markup;
 
-    refs.countriesList.value = "Chose country";
+    refs.countriesList.value = "Choose country";
     refs.genresList.value = "Event category";
   });
 }
