@@ -8,5 +8,6 @@ export default {
     logo: document.querySelector('.logo'),
     form: document.getElementById('search'),
     modalMoreInfo: document.querySelector('.more-info-list'),
-    modalMoreInfoBtn: document.querySelector('.more-information'),    
+    modalMoreInfoBtn: document.querySelector('.more-information'),
+    pagination: document.querySelector('.tui-pagination'),
 }
