@@ -48,5 +48,10 @@ export default {
     data.priceRanges[0] = data.priceRanges.find(item => item.type === 'standard incluses fees' || item.type === 'standard')
     data.priceRanges[1] = data.priceRanges.find(item => item.type === 'vip')    
     return data
-  }
+  },
+  // moreInfo(data) {
+  //   if (!data._embedded.attractions[0].externalLinks) {
+  //     data._embedded.attractions[0].message = `<a> try to find more in Google</a>`
+  //   }refs.modalMoreInfo.innerHTML = moreInfo(r)
+  // }
 };

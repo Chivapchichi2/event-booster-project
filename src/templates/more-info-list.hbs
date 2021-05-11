@@ -1,0 +1,10 @@
+{{#each _embedded.attractions}}
+<li class="more-info-itms">
+    <ul class="author-links-list"> {{name}}
+        <li><a href="{{externalLinks.wiki.0.url}}" class="more-info-link" target="_blank">W</a></li>
+        <li><a href="{{externalLinks.homepage.0.url}}" class="more-info-link" target="_blank">H</a></li>
+        <li><a href="{{externalLinks.facebook.0.url}}" class="more-info-link" target="_blank">F</a></li>
+        <li><a href="{{externalLinks.twitter.0.url}}" class="more-info-link" target="_blank">T</a></li>
+    </ul>
+</li>
+{{/each}}
