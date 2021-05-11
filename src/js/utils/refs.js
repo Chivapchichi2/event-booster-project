@@ -8,4 +8,8 @@ export default {
   logo: document.querySelector('.logo'),
   form: document.getElementById('search'),
   pagination: document.querySelector('.tui-pagination'),
+  countryMenu: document.querySelector('#country'),
+  categoryMenu: document.querySelector('#category'),
+  countryBtn: document.querySelector('.country-btn'),
+  categoryBtn: document.querySelector('.category-btn'),
 };
