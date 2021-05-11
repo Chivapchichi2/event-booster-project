@@ -1,0 +1,34 @@
+{{#each _embedded.attractions}}
+<li class="more-info-itms">{{name}}
+    <ul class="author-links-list">
+        <li class="more-info-itm">
+            <a href="{{externalLinks.wiki.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-wikipedia"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="more-info-itm">
+            <a href="{{externalLinks.homepage.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-home"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="more-info-itm">
+            <a href="{{externalLinks.facebook.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-facebook"></use>
+                </svg>
+            </a>
+        </li>
+        <li class="more-info-itm">
+            <a href="{{externalLinks.twitter.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-twitter"></use>
+                </svg>
+            </a>
+        </li>
+    </ul>
+</li>
+{{/each}}

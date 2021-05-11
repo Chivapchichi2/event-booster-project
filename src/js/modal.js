@@ -1,11 +1,13 @@
 import refs from './utils/refs';
 import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
-
+import moreInfo from '../templates/more-info-list.hbs'
+import validation from './utils/validation';
 
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
 refs.ticketModal.addEventListener('click', onBdpClick)
+refs.modalMoreInfoBtn.addEventListener('click', onMoreBtnClick)
 window.addEventListener('keydown', onEscCloseModal)
 
 let ticketId = null;
@@ -15,23 +17,50 @@ let isCard = null;
 
 function onTicketClick(e) {
     refs.ticketInfoContainer.innerHTML = ''
-    isCard = e.target.closest('.card-item');
+    isCard = e.target.closest('.card-img-div');
     if (!isCard) {
         return
     }
     ticketId = isCard.getAttribute('data-id')
     apiService.getEventById(ticketId).then((r) => {        
-        r.images[3].url = r.images.find(item => item.width === 1024 && item.height === 683).url
-        r.info ? r.info = r.info : r.info = 'To more information please call to administrate'
-        r.priceRanges ? r.massage = '' : r.massage ='prices will be announced later'
-        refs.ticketInfoContainer.innerHTML = ticketInfo(r);        
+        validation.modalPosterUrl(r)
+        validation.eventInfo(r)        
+        validation.eventPriceRanges(r)
+        refs.ticketInfoContainer.innerHTML = ticketInfo(r);
+        if (!r._embedded.attractions) {
+            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
+            class = "more-err-link"
+            target="_blank">
+            try to find more about
+            ${r.name}
+            in Google</a>`
+        }else if (!r._embedded.attractions[0].externalLinks) {
+            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
+            class = "more-err-link"
+            target="_blank">
+            try to find more about
+            ${r._embedded.attractions[0].name}
+            in Google</a>`
+        }  else {
+            refs.modalMoreInfo.innerHTML = moreInfo(r)
+        }
+        
+        if (!r.priceRanges.includes({type: "vip"})) {
+            document.querySelector('.tckt-buy-button.vip').style.pointerEvents = 'none'            
+        }        
         return r;
-    }).catch(console.log);
+    }).catch(console.log);    
     refs.ticketModal.classList.remove('is-hidden');
     document.body.style.overflow = 'hidden';
+    }
+
+function onMoreBtnClick(e) {    
+         refs.modalMoreInfo.classList.toggle('is-hidden')         
 }
 
 function closeModal() {
+    refs.ticketInfoContainer.innerHTML = ''
+     refs.modalMoreInfo.innerHTML = ''
         const isClosed = refs.ticketModal.classList.contains('is-hidden')
         if (isClosed) {
             return
