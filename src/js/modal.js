@@ -17,7 +17,7 @@ let isCard = null;
 
 function onTicketClick(e) {
     refs.ticketInfoContainer.innerHTML = ''
-    isCard = e.target.closest('.card-item');
+    isCard = e.target.closest('.card-img-div');
     if (!isCard) {
         return
     }
