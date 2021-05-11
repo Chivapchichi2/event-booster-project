@@ -29,12 +29,14 @@ function onTicketClick(e) {
         refs.ticketInfoContainer.innerHTML = ticketInfo(r);
         if (!r._embedded.attractions) {
             refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}/"
+            class = "more-err-link"
             target="_blank">
             try to find more about
             ${r.name}
             in Google</a>`
         }else if (!r._embedded.attractions[0].externalLinks) {
             refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}/"
+            class = "more-err-link"
             target="_blank">
             try to find more about
             ${r._embedded.attractions[0].name}
