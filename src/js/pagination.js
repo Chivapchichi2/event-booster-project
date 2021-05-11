@@ -2,7 +2,6 @@ import apiService from './utils/serviceApi';
 import cardListHbs from '../templates/card-list.hbs';
 import refs from './utils/refs';
 import validation from './utils/validation';
-import renderCountriesListFilter from './render/renderCountriesFilter';
 
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
