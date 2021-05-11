@@ -123,7 +123,7 @@
             class="form-input select js-countries-form-input"
             placeholder="Start searching"
           >
-            <option>Chose country</option>
+            <option>Choose country</option>
           </select>
 
           <svg class="icon-down" width="15" height="10">
@@ -183,10 +183,18 @@
     <div class="backdrop is-hidden">
       <div class="modal animate__animated animate__fadeIn">
         <button class="modal-close">
-          <span class="close-modal-btn">&#10006;</span>
+          <svg class="close-modal-btn">
+            <use href="./images/sprite.svg#icon-close-icon"></use>
+          </svg>          
         </button>
-        <div class="ticket-info-container"></div>
-      </div>
+        <div class="ticket-info-wrapper">
+          <div class="ticket-info-container"></div>
+          <div class="more-info-container">
+            <button class="more-information">more from this author</button>
+            <ul class="more-info-list is-hidden"></ul>
+          </div>
+        </div>
+        </div>       
     </div>
   </body>
 </html>

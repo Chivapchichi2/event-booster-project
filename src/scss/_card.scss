@@ -1,3 +1,6 @@
+* {
+  margin: 0;
+}
 /*ul*/
 .card-list {
   display: flex;
@@ -94,13 +97,7 @@
     height: 227px;
   }
 }
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  padding: 0;
-}
+
 .card-img {
   height: 161px;
   width: auto;
@@ -146,4 +143,8 @@ h4 {
     font-size: 14px;
     line-height: 17px;
   }
+}
+
+svg {
+  margin-right: 3px;
 }

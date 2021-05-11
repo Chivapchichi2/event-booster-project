@@ -2,13 +2,12 @@ import apiService from './utils/serviceApi';
 import cardListHbs from '../templates/card-list.hbs';
 import refs from './utils/refs';
 import validation from './utils/validation';
-import renderCountriesListFilter from './render/renderCountriesFilter';
 
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
 
 const pagination = new Pagination(document.getElementById('pagination'), {
-  totalItems: 500,
+  totalItems: 490,
   visiblePages: 3,
   centerAlign: true,
 });
@@ -22,6 +21,7 @@ const ref = {
   next: document.querySelector('.tui-next'),
   last: document.querySelector('.tui-last'),
 };
+
 function onScrollToTop() {
   window.scrollTo({
     top: 0,
@@ -30,29 +30,57 @@ function onScrollToTop() {
   });
 }
 
-ref.next.addEventListener('click', onNextBtnClick);
-ref.prev.addEventListener('click', onPrevBtnClick);
-// refs.pagination.addEventListener('click', onPagination);
+refs.pagination.addEventListener('click', onPagination);
+
+//! '1,2,3' button
+function onPagination(e) {
+  e.preventDefault();
+  const onBtnClick = e.target;
+  // '<<'
+  if (onBtnClick.textContent === 'first') {
+    apiService.resetPage();
+    onRenderPage(apiService.page);
+    return;
+
+    // '<'
+  } else if (onBtnClick.textContent === 'prev') {
+    apiService.decrementPage();
+    onPrevOrNextBtnClick();
+    return;
+
+    // '>'
+  } else if (onBtnClick.textContent === 'next') {
+    apiService.incrementPage();
+    onPrevOrNextBtnClick();
+    return;
+
+    // '>>'
+  } else if (onBtnClick.textContent === 'last') {
+    apiService.page = 49;
+    onPrevOrNextBtnClick();
+    return;
+  }
+  apiService.page = +e.target.textContent;
+  onRenderPage(apiService.page);
+}
+
 //! Button '>'
-function onNextBtnClick() {
+function onPrevOrNextBtnClick() {
   if (apiService.galleryStatus === 'ByUpcoming') {
-    onUpcomingNextBtnClick();
+    onUpcomingBtnClick();
   }
   if (apiService.galleryStatus === 'ById') {
-    onIdNextBtnClick();
+    onIdBtnClick();
   }
   if (apiService.galleryStatus === 'BySearch') {
-    onSearchNextBtnClick();
+    onSearchBtnClick();
   }
   if (apiService.galleryStatus === 'ByFilter') {
-    onFilterNextBtnClick();
+    onFilterBtnClick();
   }
-  //   showCurrentPage();
 }
 
-function onUpcomingNextBtnClick() {
-  console.log(apiService.page);
-  apiService.incrementPage();
+function onUpcomingBtnClick() {
   apiService.getWorldUpcomingEvents().then(data => {
     validation.imageUrl(data);
     const markup = cardListHbs(data);
@@ -62,8 +90,7 @@ function onUpcomingNextBtnClick() {
 
   onScrollToTop();
 }
-function onIdNextBtnClick() {
-  apiService.incrementPage();
+function onIdBtnClick() {
   apiService.getEventById(id).then(data => {
     validation.imageUrl(data);
     const markup = cardListHbs(data);
@@ -73,9 +100,8 @@ function onIdNextBtnClick() {
 
   onScrollToTop();
 }
-function onSearchNextBtnClick() {
-  apiService.incrementPage();
-  getEventsBySearchQuery(searchQuery).then(data => {
+function onSearchBtnClick() {
+  apiService.getEventsBySearchQuery(searchQuery).then(data => {
     validation.imageUrl(data);
     const markup = cardListHbs(data);
 
@@ -84,9 +110,10 @@ function onSearchNextBtnClick() {
 
   onScrollToTop();
 }
-function onFilterNextBtnClick() {
-  apiService.incrementPage();
-  getEventsByFilter(genre, countryName).then(data => {
+function onFilterBtnClick() {
+  refs.genresList.textContent = genre;
+
+  apiService.getEventsByFilter((genre = ''), (countryName = '')).then(data => {
     validation.imageUrl(data);
     const markup = cardListHbs(data);
 
@@ -95,114 +122,23 @@ function onFilterNextBtnClick() {
 
   onScrollToTop();
 }
-function onPrevBtnClick() {
-  if (apiService.galleryStatus === 'ByUpcoming') {
-    onUpcomingPrevBtnClick();
-  }
-  if (apiService.galleryStatus === 'ById') {
-    onIdPrevBtnClick();
-  }
-  if (apiService.galleryStatus === 'BySearch') {
-    onSearchPrevBtnClick();
-  }
-  if (apiService.galleryStatus === 'ByFilter') {
-    onFilterPrevBtnClick();
-  }
-  //   showCurrentPage();
-}
-// function showCurrentPage() {
-//   //   apiService.page = 1;
-//   //   refs.selected.textContent = Number(apiService.page);
-//   console.log('refs.selected.textContent', refs.selected.textContent);
-//   //   ref.next.textContent = ' ' + (apiService.page + 1);
-//   console.log('ref.next.textContent', ref.next.textContent);
-//   //   ref.prev.textContent = ' ' + (apiService.page - 1);
-//   console.log('ref.prev.textContent', ref.prev.textContent);
-// }
-
-function onUpcomingPrevBtnClick() {
-  apiService.decrementPage();
-  apiService.getWorldUpcomingEvents().then(data => {
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
-  });
-
-  onScrollToTop();
-}
-function onIdPrevBtnClick() {
-  apiService.decrementPage();
-  apiService.getEventById(id).then(data => {
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
-  });
-
-  onScrollToTop();
-}
-function onSearchPrevBtnClick() {
-  apiService.decrementPage();
-  getEventsBySearchQuery(searchQuery).then(data => {
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
-  });
-
-  onScrollToTop();
-}
-function onFilterPrevBtnClick() {
-  apiService.decrementPage();
-  getEventsByFilter(genre, countryName).then(data => {
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
-  });
-
-  onScrollToTop();
-}
-
-// //! '1,2,3' button
-// function onPagination(e) {
-//   e.preventDefault();
-//   const onBtnClick = e.target;
-
-//   if (onBtnClick.textContent === 'first') {
-//     apiService.resetPage();
-//     apiService.page = 1;
-//     console.log('apiService.page', apiService.page);
-//     onRenderPage(apiService.page);
-//     return;
-//   } else if (onBtnClick.textContent === 'prev') {
-//     onNextPrevClick();
-//     return;
-//   } else if (onBtnClick.textContent === 'next') {
-//     onNextBtnClick();
-
-//     return;
-//   } else if (onBtnClick.textContent === 'last') {
-//     apiService.page = 49;
-
-//     onNextBtnClick(apiService.page);
-//     return;
-//   }
-//   //   apiService.page = onBtnClick.textContent;
-//   //   onRenderPage(apiService.page);
-
-//   onScrollToTop();
-// }
-
 // //!render function
-// function onRenderPage(newPage) {
-//   apiService.page = newPage;
-//   apiService.getWorldUpcomingEvents().then(data => {
-//     validation.imageUrl(data);
-//     const markup = cardListHbs(data);
+function onRenderPage(newPage) {
+  apiService.page = newPage;
+  console.log('newPage', newPage);
 
-//     refs.gallery.innerHTML = markup;
-//   });
-//   onScrollToTop();
-// }
+  if (apiService.galleryStatus === 'ByUpcoming') {
+    onUpcomingBtnClick();
+  }
+  if (apiService.galleryStatus === 'ById') {
+    onIdBtnClick();
+  }
+  if (apiService.galleryStatus === 'BySearch') {
+    onSearchBtnClick();
+  }
+  if (apiService.galleryStatus === 'ByFilter') {
+    onFilterBtnClick();
+  }
+
+  onScrollToTop();
+}
