@@ -113,7 +113,7 @@
   overflow: auto;
   margin-top: 2px;
 
-  border-radius: 2px;
+  border-radius: 4px;
   z-index: 9999;
   background-color: $dropdown-menu-bg;
 
@@ -133,7 +133,7 @@
 
   &:hover {
     color: $white;
-    background-color: $button-hover-bg;
+    background-color: $link-hover-bg;
     backdrop-filter: blur(20px);
     transform: scale(1.03);
 
