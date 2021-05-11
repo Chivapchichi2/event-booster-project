@@ -1,4 +1,7 @@
 @charset 'utf-8';
+.main .container {
+  text-align: center;
+}
 .tui-pagination * {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -21,6 +24,7 @@
   line-height: normal;
   text-align: center;
   font-size: 0;
+  width: 80vw;
 }
 .tui-pagination .tui-page-btn {
   display: inline-block;
@@ -104,13 +108,14 @@
 .tui-pagination .tui-ico-next,
 .tui-pagination .tui-ico-last,
 .tui-pagination .tui-ico-ellip {
-  //   background: url('../images/sp_btn.png') no-repeat 0 0;
+  background: url('../images/sp_btn.png') no-repeat 0 0;
   display: inline-block;
   vertical-align: middle;
   font-size: 0px;
 }
 .tui-pagination .tui-prev-is-ellip,
 .tui-pagination .tui-next-is-ellip {
+  display: none;
   padding: 0;
   line-height: 1;
 }
