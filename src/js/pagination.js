@@ -69,9 +69,6 @@ function onPrevOrNextBtnClick() {
   if (apiService.galleryStatus === 'ByUpcoming') {
     onUpcomingBtnClick();
   }
-  if (apiService.galleryStatus === 'ById') {
-    onIdBtnClick();
-  }
   if (apiService.galleryStatus === 'BySearch') {
     onSearchBtnClick();
   }
@@ -82,16 +79,6 @@ function onPrevOrNextBtnClick() {
 
 function onUpcomingBtnClick() {
   apiService.getWorldUpcomingEvents().then(data => {
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
-  });
-
-  onScrollToTop();
-}
-function onIdBtnClick() {
-  apiService.getEventById(id).then(data => {
     validation.imageUrl(data);
     const markup = cardListHbs(data);
 
