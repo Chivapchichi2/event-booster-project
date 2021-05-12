@@ -6,7 +6,21 @@ export default {
       item.images = item.images.find(item => item.ratio === '4_3');
     });
     return data;
-  },  
+  },
+  location(data) {
+    data.map(item => {
+      if (!item._embedded.venues[0].name) {
+        item._embedded.venues[0].name = 'No-Info'
+      }
+      
+    })
+  },
+  data(data) {
+    if (!data) {
+        refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
+        return
+      }
+  },
   transformCountriesNameIntoCode(name, data) {
     let code = "";
     data.forEach(i => {
