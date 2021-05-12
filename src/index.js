@@ -8,3 +8,4 @@ import './js/onLogoClick';
 import './js/toTop';
 import './js/form';
 import './js/pagination';
+import './js/utils/dropdown';
