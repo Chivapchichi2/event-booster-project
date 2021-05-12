@@ -41,8 +41,11 @@ function onTicketClick(e) {
             try to find more about
             ${r._embedded.attractions[0].name}
             in Google</a>`
-        }  else {
+            r._embedded.attractions[1]=''
+        } else {
+            
             refs.modalMoreInfo.innerHTML = moreInfo(r)
+           
         }
         
         if (!r.priceRanges.includes({type: "vip"})) {
