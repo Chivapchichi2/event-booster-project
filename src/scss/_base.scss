@@ -41,8 +41,27 @@ html {
 
 body {
   font-family: 'Montserrat', sans-serif;
-  // background: $black;
+  background-color: black;
   color: $white;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.background {
   background-image: url(../images/mobile/bg-body-mobile.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -84,22 +103,10 @@ body {
   }
 }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
 .main {
   margin-top: -50px;
+}
+
+.header {
+  position: relative;
 }
