@@ -2,6 +2,7 @@ import apiService from './utils/serviceApi';
 import cardListHbs from '../templates/card-list.hbs';
 import refs from './utils/refs';
 import validation from './utils/validation';
+import Pagination from 'tui-pagination';
 
 function onScrollToTop() {
   window.scrollTo({
@@ -15,6 +16,7 @@ function onScrollToTop() {
 function onPagination(e) {
   e.preventDefault();
   const onBtnClick = e.target;
+
   // '<<'
   if (onBtnClick.textContent === 'first') {
     console.log(onBtnClick);
@@ -63,24 +65,22 @@ function onUpcomingBtnClick() {
     const markup = cardListHbs(data);
 
     refs.gallery.innerHTML = markup;
-  });
+  }).catch(console.log);
 
   onScrollToTop();
 }
+
 function onSearchBtnClick() {
-  if (apiService.searchQuery !== refs.searchInput.value) {
-    apiService.resetPage()
-  }
-  apiService.searchQuery = refs.searchInput.value
-  apiService.getEventsBySearchQuery(searchQuery).then(data => {
+  apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
     validation.imageUrl(data);
     const markup = cardListHbs(data);
 
     refs.gallery.innerHTML = markup;
-  });
+  }).catch(console.log);
 
   onScrollToTop();
 }
+
 function onFilterBtnClick() {
   refs.genresList.textContent = genre;
 
@@ -93,10 +93,10 @@ function onFilterBtnClick() {
 
   onScrollToTop();
 }
+
 // //!render function
 function onRenderPage(newPage) {
   apiService.page = newPage;
-  console.log('newPage', newPage);
 
   if (apiService.galleryStatus === 'ByUpcoming') {
     onUpcomingBtnClick();
@@ -110,4 +110,17 @@ function onRenderPage(newPage) {
 
   onScrollToTop();
 }
-export { onPagination }
+
+const option = {
+  totalElements: 60,
+  visiblePages: 3,
+  itemsPerPage: 20,
+  centerAlign: true,
+}
+
+function startPagination() {
+  option.totalItems = apiService.totalElements;
+  const pagination = new Pagination(refs.pagination, option);
+  refs.pagination.addEventListener('click', onPagination);
+}
+export { startPagination }

@@ -8,18 +8,12 @@ export default {
     return data;
   },
   location(data) {
-    data.map(item => {
+    data = data.map(item => {
       if (!item._embedded.venues[0].name) {
         item._embedded.venues[0].name = 'No-Info'
       }
-      
-    })
-  },
-  data(data) {
-    if (!data) {
-        refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
-        return
-      }
+    });
+    return data;
   },
   transformCountriesNameIntoCode(name, data) {
     let code = "";

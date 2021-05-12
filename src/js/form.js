@@ -4,16 +4,8 @@ import cardListHbs from '../templates/card-list.hbs';
 import validation from './utils/validation';
 import countriesData from './data/countriesDataList';
 import genresData from './data/classificationNameList';
-import Pagination from 'tui-pagination';
-import { onPagination } from './pagination';
+import { startPagination } from './pagination';
 const debounce = require('lodash.debounce');
-
-const option = {
-  totalElements: 60,
-  visiblePages: 3,
-  itemsPerPage: 20,
-  centerAlign: true,
-}
 
 refs.form.addEventListener('change', e => {
   if (!e.target.classList.contains('select')) {
@@ -28,36 +20,40 @@ refs.form.addEventListener('change', e => {
         validation.noData();
         return
       }
-      validation.imageUrl(data)
-      refs.gallery.innerHTML = cardListHbs(data)
-      option.totalItems = apiService.totalElements;
-      const pagination = new Pagination(refs.pagination, option);
-      console.log(pagination);
-      refs.pagination.addEventListener('click', onPagination);
-    })
-})
 
-
-
-
+      validation.location(data);
+      validation.imageUrl(data);
+      refs.gallery.innerHTML = cardListHbs(data);
+      startPagination();
+    }).catch(console.log);
+});
 
 const onSearchInput = e => {
   if (!e.target.classList.contains('js-search-input')) {
     return
   }
-  apiService.getEventsBySearchQuery(e.target.value).then(data => {
-    validation.data(data)
-    validation.location(data)
-    validation.imageUrl(data)
-    refs.gallery.innerHTML = cardListHbs(data)
-    e.target.value = ''
-  })
+
+  apiService.resetPage();
+  apiService.searchQuery = e.target.value;
+  apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
+    if (!data) {
+      validation.noData();
+      e.target.value = '';
+      apiService.searchQuery = '';
+      return
+    }
+    validation.location(data);
+    validation.imageUrl(data);
+    refs.gallery.innerHTML = cardListHbs(data);
+    startPagination();
+  }).catch(console.log);
 }
 
-refs.form.addEventListener('input', debounce(onSearchInput, 1000))
+refs.form.addEventListener('input', debounce(onSearchInput, 1000));
+refs.searchInput.addEventListener('click', e => e.target.value = '');
 
 const stopFormReload = e => {
   e.preventDefault()
 }
 
-refs.form.addEventListener('submit', stopFormReload)
+refs.form.addEventListener('submit', stopFormReload);
