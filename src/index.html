@@ -96,15 +96,19 @@
       <div class="loader">Loading...</div>
     </div>
 
-    <header class="overlay">
+    <header class="container header">
       <a href="#" class="logo">
         <svg class="icon-logo" width="110" height="90">
           <use href="./images/sprite.svg#icon-logo-mobile"></use>
         </svg>
       </a>
-      <div class="hero container">
-        <h1 class="hero-title animate__animated animate__flash">FIND BEST EVENTS <br />AROUND THE WORLD</h1>
+    </header>
+
+    <section class="overlay container">
+      <div class="hero">
+        <h1 class="hero-title">FIND BEST EVENTS <br />AROUND THE WORLD</h1>
       </div>
+
       <form class="form" id="search">
         <div class="form-container">
           <input
@@ -119,73 +123,80 @@
         </div>
 
         <div class="form-container">
-          <select
-            class="form-input select js-countries-form-input"
-            placeholder="Start searching"
-          >
-            <option>Choose country</option>
-          </select>
-
-          <svg class="icon-down" width="15" height="10">
-            <use href="./images/sprite.svg#icon-down-btn"></use>
-          </svg>
-        </div>
-
-        <div class="form-container">
-          <div class="select-container">
-            <select
-              class="form-input select js-genres-form-input"
-              placeholder="Start searching"
-            >
-              <option>Event category</option>
-              <option>Sports</option>
-              <option>Music</option>
-              <option>Arts & Theatre</option>
-              <option>Film</option>
-              <option>Miscellaneous</option>
-            </select>
-
+          <button class="form-input" name="country">
+            Choose country
             <svg class="icon-down" width="15" height="10">
               <use href="./images/sprite.svg#icon-down-btn"></use>
             </svg>
+          </button>
+
+          <div id="country" class="dropdown-content js-countries-form-input">
+            <!-- ---------- список стран -----------
+            <a class="link-item" href="#">USA</a> -->
+          </div>
+        </div>
+
+        <div class="form-container">
+          <div class="menu-container">
+            <button
+              class="form-input select js-genres-form-input"
+              name="category"
+            >
+              Event category
+              <svg class="icon-loop" width="15" height="10">
+                <use href="./images/sprite.svg#icon-down-btn"></use>
+              </svg>
+            </button>
+            <div id="category" class="dropdown-content category">
+              <a class="link-item" href="#">Music</a>
+              <a class="link-item" href="#">Sport</a>
+              <a class="link-item" href="#">Film</a>
+              <a class="link-item" href="#">Arts & Theatre</a>
+              <a class="link-item" href="#">Miscellaneous</a>
+            </div>
           </div>
         </div>
       </form>
-    </header>
-    <main class="main">
-      <div class="container">
-        <ul class="card-list"></ul>
-        <div id="pagination" class="tui-pagination"></div>
-      </div>
+    </section>
 
-      <a
-        href="#search"
-        class="up-button"
-        id="myBtn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg class="up-button-svg" width="35" height="35">
-          <use href="./images/sprite.svg#icon-circle-up"></use>
-        </svg>
-      </a>
-    </main>
-    <footer class="footer container">
-      <div class="footer-container">
-        <span class="footer-text">
-          © 2021 | All Rights Reserved |
-          <a class="footer-link" href="https://goit.ua"
-            >Developed with &#10084;&#65039; by GoIT Students</a
-          >
-        </span>
-      </div>
-    </footer>
+    <section class="background container">
+      <main class="main">
+        <div>
+          <ul class="card-list"></ul>
+          <div id="pagination" class="tui-pagination"></div>
+        </div>
+
+        <a
+          href="#search"
+          class="up-button"
+          id="myBtn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="up-button-svg" width="35" height="35">
+            <use href="./images/sprite.svg#icon-circle-up"></use>
+          </svg>
+        </a>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-container">
+          <span class="footer-text">
+            © 2021 | All Rights Reserved |
+            <a class="footer-link" href="https://goit.ua"
+              >Developed with &#10084;&#65039; by GoIT Students</a
+            >
+          </span>
+        </div>
+      </footer>
+    </section>
+
     <div class="backdrop is-hidden">
       <div class="modal animate__animated animate__fadeIn">
         <button class="modal-close">
           <svg class="close-modal-btn">
             <use href="./images/sprite.svg#icon-close-icon"></use>
-          </svg>          
+          </svg>
         </button>
         <div class="ticket-info-wrapper">
           <div class="ticket-info-container"></div>
@@ -194,7 +205,7 @@
             <ul class="more-info-list is-hidden"></ul>
           </div>
         </div>
-        </div>       
+      </div>
     </div>
   </body>
 </html>
