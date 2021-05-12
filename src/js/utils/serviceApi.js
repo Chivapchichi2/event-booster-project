@@ -7,6 +7,7 @@ export default {
   countryCode: '',
   page: 1,
   perPage: 20,
+  totalElements: null,
   galleryStatus: 'ByUpcoming',
   getWorldUpcomingEvents() {
     this.galleryStatus = 'ByUpcoming';
@@ -15,6 +16,7 @@ export default {
     return fetch(url)
       .then(r => r.json())
       .then(r => {
+        this.totalElements = r.page.totalElements;
         const data = r._embedded.events;
         return data;
       });
@@ -26,20 +28,22 @@ export default {
   },
   getEventsBySearchQuery(searchQuery) {
     this.galleryStatus = 'BySearch';
-    const url = `${BASE_URL}events.json?keyword=${searchQuery}&sort=id,asc&apikey=${KEY}`;
+    const url = `${BASE_URL}events.json?keyword=${searchQuery}&page=${this.page}&size=${this.perPage}&sort=id,asc&apikey=${KEY}`;
     return fetch(url)
       .then(r => r.json())
       .then(r => {
+        this.totalElements = r.page.totalElements;
         const data = r._embedded?.events;
         return data;
       });
   },
   getEventsByFilter(genreId, countryCode) {
     this.galleryStatus = 'ByFilter';
-    const url = `${BASE_URL}events.json?classificationId=${genreId}&countryCode=${countryCode}&sort=id,asc&apikey=${KEY}`;
+    const url = `${BASE_URL}events.json?classificationId=${genreId}&page=${this.page}&size=${this.perPage}&countryCode=${countryCode}&sort=id,asc&apikey=${KEY}`;
     return fetch(url)
       .then(r => r.json())
-      .then(r => {
+      .then(r => {       
+        this.totalElements = r.page.totalElements;
         const data = r._embedded?.events;
         return data;
       })

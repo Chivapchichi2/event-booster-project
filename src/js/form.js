@@ -4,23 +4,36 @@ import cardListHbs from '../templates/card-list.hbs';
 import validation from './utils/validation';
 import countriesData from './data/countriesDataList';
 import genresData from './data/classificationNameList';
+import Pagination from 'tui-pagination';
+import { onPagination } from './pagination';
 const debounce = require('lodash.debounce');
 
+const option = {
+  totalElements: 60,
+  visiblePages: 3,
+  itemsPerPage: 20,
+  centerAlign: true,
+}
 
 refs.form.addEventListener('change', e => {
   if (!e.target.classList.contains('select')) {
     return
   }
+  apiService.resetPage();
   let countyCode = validation.transformCountriesNameIntoCode(refs.countriesList.value, countriesData);
   let genreId = validation.transformGenreIntoId(refs.genresList.value, genresData);
   apiService.getEventsByFilter(genreId, countyCode)
     .then(data => {
       if (!data) {
-        refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
+        validation.noData();
         return
       }
       validation.imageUrl(data)
       refs.gallery.innerHTML = cardListHbs(data)
+      option.totalItems = apiService.totalElements;
+      const pagination = new Pagination(refs.pagination, option);
+      console.log(pagination);
+      refs.pagination.addEventListener('click', onPagination);
     })
 })
 

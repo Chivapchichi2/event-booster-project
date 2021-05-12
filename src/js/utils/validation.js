@@ -1,3 +1,5 @@
+import refs from "./refs";
+
 export default {
   imageUrl(data) {
     data.map(item => {
@@ -49,6 +51,10 @@ export default {
     data.priceRanges[1] = data.priceRanges.find(item => item.type === 'vip')    
     return data
   },
+  noData() {
+    refs.pagination.innerHTML = '';
+    refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
+  }
   // moreInfo(data) {
   //   if (!data._embedded.attractions[0].externalLinks) {
   //     data._embedded.attractions[0].message = `<a> try to find more in Google</a>`

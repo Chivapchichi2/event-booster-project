@@ -3,17 +3,6 @@ import cardListHbs from '../templates/card-list.hbs';
 import refs from './utils/refs';
 import validation from './utils/validation';
 
-import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
-
-const pagination = new Pagination(document.getElementById('pagination'), {
-  totalItems: 490,
-  visiblePages: 3,
-  centerAlign: true,
-});
-
-
-
 function onScrollToTop() {
   window.scrollTo({
     top: 0,
@@ -22,14 +11,13 @@ function onScrollToTop() {
   });
 }
 
-refs.pagination.addEventListener('click', onPagination);
-
 //! '1,2,3' button
 function onPagination(e) {
   e.preventDefault();
   const onBtnClick = e.target;
   // '<<'
   if (onBtnClick.textContent === 'first') {
+    console.log(onBtnClick);
     apiService.resetPage();
     onRenderPage(apiService.page);
     return;
@@ -113,9 +101,6 @@ function onRenderPage(newPage) {
   if (apiService.galleryStatus === 'ByUpcoming') {
     onUpcomingBtnClick();
   }
-  if (apiService.galleryStatus === 'ById') {
-    onIdBtnClick();
-  }
   if (apiService.galleryStatus === 'BySearch') {
     onSearchBtnClick();
   }
@@ -125,3 +110,4 @@ function onRenderPage(newPage) {
 
   onScrollToTop();
 }
+export { onPagination }
