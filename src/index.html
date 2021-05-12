@@ -95,15 +95,19 @@
       <div class="loader">Loading...</div>
     </div>
 
-    <header class="overlay">
+    <header class="container header">
       <a href="#" class="logo">
         <svg class="icon-logo" width="110" height="90">
           <use href="./images/sprite.svg#icon-logo-mobile"></use>
         </svg>
       </a>
-      <div class="hero container">
+    </header>
+
+    <section class="overlay container">
+      <div class="hero">
         <h1 class="hero-title">FIND BEST EVENTS <br />AROUND THE WORLD</h1>
       </div>
+
       <form class="form" id="search">
         <div class="form-container">
           <input
@@ -152,25 +156,29 @@
           </div>
         </div>
       </form>
-    </header>
-    <main class="main">
-      <div class="container">
-        <ul class="card-list"></ul>
-        <div id="pagination" class="tui-pagination"></div>
-      </div>
+    </section>
 
-      <a
-        href="#search"
-        class="up-button"
-        id="myBtn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg class="up-button-svg" width="35" height="35">
-          <use href="./images/sprite.svg#icon-circle-up"></use>
-        </svg>
-      </a>
-    </main>
+    <section class="background container">
+      <main class="main">
+        <div>
+          <ul class="card-list"></ul>
+          <div id="pagination" class="tui-pagination"></div>
+        </div>
+
+        <a
+          href="#search"
+          class="up-button"
+          id="myBtn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="up-button-svg" width="35" height="35">
+            <use href="./images/sprite.svg#icon-circle-up"></use>
+          </svg>
+        </a>
+      </main>
+    </section>
+
     <footer class="footer container">
       <div class="footer-container">
         <span class="footer-text">
@@ -186,7 +194,7 @@
         <button class="modal-close">
           <svg class="close-modal-btn">
             <use href="./images/sprite.svg#icon-close-icon"></use>
-          </svg>          
+          </svg>
         </button>
         <div class="ticket-info-wrapper">
           <div class="ticket-info-container"></div>
@@ -195,7 +203,7 @@
             <ul class="more-info-list is-hidden"></ul>
           </div>
         </div>
-        </div>       
+      </div>
     </div>
   </body>
 </html>
