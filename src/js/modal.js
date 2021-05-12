@@ -60,6 +60,7 @@ function onMoreBtnClick(e) {
 
 function closeModal() {
     refs.ticketInfoContainer.innerHTML = ''
+    refs.modalMoreInfo.classList.add('is-hidden')
      refs.modalMoreInfo.innerHTML = ''
         const isClosed = refs.ticketModal.classList.contains('is-hidden')
         if (isClosed) {
