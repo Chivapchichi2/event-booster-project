@@ -15,10 +15,8 @@ refs.form.addEventListener('change', e => {
   let genreId = validation.transformGenreIntoId(refs.genresList.value, genresData);
   apiService.getEventsByFilter(genreId, countyCode)
     .then(data => {
-      if (!data) {
-        refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
-        return
-      }
+      validation.data(data)
+      validation.location(data)
       validation.imageUrl(data)
       refs.gallery.innerHTML = cardListHbs(data)
     })
@@ -33,10 +31,8 @@ const onSearchInput = e => {
     return
   }
   apiService.getEventsBySearchQuery(e.target.value).then(data => {
-    if (!data) {
-        refs.gallery.innerHTML = '<li><p class="message">Sorry, no events &#9785</p></li>';
-        return
-      }
+    validation.data(data)
+    validation.location(data)
     validation.imageUrl(data)
     refs.gallery.innerHTML = cardListHbs(data)
     e.target.value = ''
