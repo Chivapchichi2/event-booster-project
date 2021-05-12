@@ -26,38 +26,15 @@ function onTicketClick(e) {
         validation.modalPosterUrl(r)
         validation.eventInfo(r)
         validation.eventPriceRanges(r)
-        if (r._embedded.attractions) { 
-           if (r.name.length > r._embedded.attractions[0].name.length) {
-            r.name =  r._embedded.attractions[0].name
-              }
-        }
+        validation.modalWho(r)
+
         refs.ticketInfoContainer.innerHTML = ticketInfo(r);
-        if (r._embedded.attractions) { r._embedded.attractions = r._embedded.attractions.map(item => {
-                if (item.externalLinks) {
-                    return item
-                }
-            }).filter(item => item !== undefined)            
-            console.log(r._embedded.attractions)
-        }
-        if (!r._embedded.attractions || r._embedded.attractions.length === 0) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
-            class = "more-err-link"
-            target="_blank">
-            try to find more about
-            ${r.name}
-            in Google</a>`
-        } else if ( !r._embedded.attractions[0].externalLinks ) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
-            class = "more-err-link"
-            target="_blank">
-            try to find more about
-            ${r._embedded.attractions[0].name}
-            in Google</a>`            
+
+        validation.authorLinksFilter(r)
+        validation.moreInfoLink(r, refs)
         
-        } else {           
-            
             refs.modalMoreInfo.innerHTML = moreInfo(r)
-        }        
+               
         if (!r.priceRanges || !r.priceRanges.includes({ type: "vip" })) {
             document.querySelector('.tckt-buy-button.vip').style.pointerEvents = 'none'
         }

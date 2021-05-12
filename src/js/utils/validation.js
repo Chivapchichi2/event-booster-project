@@ -49,9 +49,38 @@ export default {
     data.priceRanges[1] = data.priceRanges.find(item => item.type === 'vip')    
     return data
   },
-  // moreInfo(data) {
-  //   if (!data._embedded.attractions[0].externalLinks) {
-  //     data._embedded.attractions[0].message = `<a> try to find more in Google</a>`
-  //   }refs.modalMoreInfo.innerHTML = moreInfo(r)
-  // }
+  modalWho(r) {
+    if (r._embedded.attractions) { 
+           if (r.name.length > r._embedded.attractions[0].name.length) {
+            r.name =  r._embedded.attractions[0].name
+              }
+        }
+  },
+  authorLinksFilter(r) {
+    if (r._embedded.attractions) { r._embedded.attractions = r._embedded.attractions.map(item => {
+                if (item.externalLinks) {
+                    return item
+                }
+            }).filter(item => item !== undefined)            
+            console.log(r._embedded.attractions)
+        }
+  },
+  moreInfoLink(r, refs) {
+    if (!r._embedded.attractions || r._embedded.attractions.length === 0) {
+            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
+            class = "more-err-link"
+            target="_blank">
+            try to find more about
+            ${r.name}
+            in Google</a>`
+        }        
+        if (!r._embedded.attractions[0].externalLinks) {
+            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
+            class = "more-err-link"
+            target="_blank">
+            try to find more about
+            ${r._embedded.attractions[0].name}
+            in Google</a>` 
+        } 
+   }
 };
