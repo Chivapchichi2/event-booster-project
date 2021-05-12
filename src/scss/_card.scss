@@ -36,6 +36,7 @@
 }
 /*li*/
 .card-item {
+  cursor: pointer;
   position: relative;
   text-align: center;
   border-radius: 50px 0px;
@@ -54,6 +55,9 @@
   @media screen and (min-width: 1280px) {
     margin-right: 70px;
     margin-bottom: 63px;
+  }
+  &:hover {
+    transform: scale(1.05);
   }
 }
 .card-item::before {

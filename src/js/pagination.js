@@ -12,15 +12,7 @@ const pagination = new Pagination(document.getElementById('pagination'), {
   centerAlign: true,
 });
 
-const ref = {
-  toStart: document.querySelector('.tui-first'),
-  prev: document.querySelector('.tui-prev'),
-  selected: document.querySelector('.tui-is-selected'),
-  first: document.querySelector('.tui-first-child'),
-  loadMore: document.querySelector('.tui-next-is-ellip'),
-  next: document.querySelector('.tui-next'),
-  last: document.querySelector('.tui-last'),
-};
+
 
 function onScrollToTop() {
   window.scrollTo({
@@ -69,9 +61,6 @@ function onPrevOrNextBtnClick() {
   if (apiService.galleryStatus === 'ByUpcoming') {
     onUpcomingBtnClick();
   }
-  if (apiService.galleryStatus === 'ById') {
-    onIdBtnClick();
-  }
   if (apiService.galleryStatus === 'BySearch') {
     onSearchBtnClick();
   }
@@ -90,17 +79,11 @@ function onUpcomingBtnClick() {
 
   onScrollToTop();
 }
-function onIdBtnClick() {
-  apiService.getEventById(id).then(data => {
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
-  });
-
-  onScrollToTop();
-}
 function onSearchBtnClick() {
+  if (apiService.searchQuery !== refs.searchInput.value) {
+    apiService.resetPage()
+  }
+  apiService.searchQuery = refs.searchInput.value
   apiService.getEventsBySearchQuery(searchQuery).then(data => {
     validation.imageUrl(data);
     const markup = cardListHbs(data);
