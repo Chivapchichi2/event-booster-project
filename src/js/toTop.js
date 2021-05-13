@@ -18,5 +18,10 @@ function scrollFunction() {
 mybutton.addEventListener('click', e => {
   e.preventDefault();
   scrollFunction();
-  window.scroll(40, 40);
+  window.scrollTo({
+  top: 100,
+  left: 100,
+  behavior: 'smooth'
 });
+});
+
