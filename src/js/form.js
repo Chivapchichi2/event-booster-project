@@ -7,25 +7,26 @@ import genresData from './data/classificationNameList';
 import { startPagination } from './pagination';
 const debounce = require('lodash.debounce');
 
-refs.form.addEventListener('change', e => {
-  if (!e.target.classList.contains('select')) {
-    return
-  }
-  apiService.resetPage();
-  let countyCode = validation.transformCountriesNameIntoCode(refs.countriesList.value, countriesData);
-  let genreId = validation.transformGenreIntoId(refs.genresList.value, genresData);
-  apiService.getEventsByFilter(genreId, countyCode)
-    .then(data => {
-      if (!data) {
-        validation.noData();
-        return
-      }
+refs.form.addEventListener('click', e => {
+  e.preventDefault();
+  if (validation.checkTargetNodeName(e)) {
+    validation.changeBtnText(e);
+    apiService.resetPage();
+    apiService.countyCode = validation.transformCountriesNameIntoCode(refs.countryBtn.textContent, countriesData);
+    apiService.genresId = validation.transformGenreIntoId(refs.categoryBtn.textContent, genresData);
+    apiService.getEventsByFilter(apiService.genresId, apiService.countyCode)
+      .then(data => {
+        if (!data) {
+          validation.noData();
+          return
+        }
 
-      validation.location(data);
-      validation.imageUrl(data);
-      refs.gallery.innerHTML = cardListHbs(data);
-      startPagination();
-    }).catch(console.log);
+        validation.location(data);
+        validation.imageUrl(data);
+        refs.gallery.innerHTML = cardListHbs(data);
+        startPagination();
+      }).catch(console.log);
+  }
 });
 
 const onSearchInput = e => {

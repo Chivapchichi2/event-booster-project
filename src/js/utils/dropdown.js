@@ -5,11 +5,9 @@ window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         close()
     }
-     
-    
 })
 
-window.addEventListener('click', (e) => {
+refs.form.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.name === 'country') {
         refs.countryMenu.classList.toggle('show');

@@ -75,24 +75,19 @@ function onSearchBtnClick() {
   apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
     validation.location(data);
     validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
+    refs.gallery.innerHTML = cardListHbs(data);
   }).catch(console.log);
 
   onScrollToTop();
 }
 
 function onFilterBtnClick() {
-  refs.genresList.textContent = genre;
-
-  apiService.getEventsByFilter((genre = ''), (countryName = '')).then(data => {
+  apiService.getEventsByFilter(apiService.genresId, apiService.countyCode)
+    .then(data => {
     validation.location(data);
     validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
-  });
+    refs.gallery.innerHTML = cardListHbs(data);
+  }).catch(console.log);
 
   onScrollToTop();
 }

@@ -99,5 +99,14 @@ export default {
   },
   checkChangePerPage(obj, page) {
     return obj.perPage === page;
+  },
+  checkTargetNodeName(e) { return e.target.nodeName === 'A' },
+  checkTargetParent(e) { return refs.countriesList === e.target.parentNode },
+  changeBtnText(e) {
+    if (this.checkTargetParent(e)) {
+      refs.countryBtn.textContent = e.target.textContent;
+      return
   }
+    refs.categoryBtn.textContent = e.target.textContent;
+  },
 };
