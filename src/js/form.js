@@ -4,45 +4,57 @@ import cardListHbs from '../templates/card-list.hbs';
 import validation from './utils/validation';
 import countriesData from './data/countriesDataList';
 import genresData from './data/classificationNameList';
+import { startPagination } from './pagination';
 const debounce = require('lodash.debounce');
 
+refs.form.addEventListener('click', e => {
+  e.preventDefault();
+  if (validation.checkTargetNodeName(e)) {
+    validation.changeBtnText(e);
+    apiService.resetPage();
+    apiService.countyCode = validation.transformCountriesNameIntoCode(refs.countryBtn.textContent, countriesData);
+    apiService.genresId = validation.transformGenreIntoId(refs.categoryBtn.textContent, genresData);
+    apiService.getEventsByFilter(apiService.genresId, apiService.countyCode)
+      .then(data => {
+        if (!data) {
+          validation.noData();
+          return
+        }
 
-refs.form.addEventListener('change', e => {
-  if (!e.target.classList.contains('select')) {
-    return
+        validation.location(data);
+        validation.imageUrl(data);
+        refs.gallery.innerHTML = cardListHbs(data);
+        startPagination();
+      }).catch(console.log);
   }
-  let countyCode = validation.transformCountriesNameIntoCode(refs.countriesList.value, countriesData);
-  let genreId = validation.transformGenreIntoId(refs.genresList.value, genresData);
-  apiService.getEventsByFilter(genreId, countyCode)
-    .then(data => {
-      validation.data(data)
-      validation.location(data)
-      validation.imageUrl(data)
-      refs.gallery.innerHTML = cardListHbs(data)
-    })
-})
-
-
-
-
+});
 
 const onSearchInput = e => {
   if (!e.target.classList.contains('js-search-input')) {
     return
   }
-  apiService.getEventsBySearchQuery(e.target.value).then(data => {
-    validation.data(data)
-    validation.location(data)
-    validation.imageUrl(data)
-    refs.gallery.innerHTML = cardListHbs(data)
-    e.target.value = ''
-  })
+
+  apiService.resetPage();
+  apiService.searchQuery = e.target.value;
+  apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
+    if (!data) {
+      validation.noData();
+      e.target.value = '';
+      apiService.searchQuery = '';
+      return
+    }
+    validation.location(data);
+    validation.imageUrl(data);
+    refs.gallery.innerHTML = cardListHbs(data);
+    startPagination();
+  }).catch(console.log);
 }
 
-refs.form.addEventListener('input', debounce(onSearchInput, 1000))
+refs.form.addEventListener('input', debounce(onSearchInput, 1000));
+refs.searchInput.addEventListener('click', e => e.target.value = '');
 
 const stopFormReload = e => {
   e.preventDefault()
 }
 
-refs.form.addEventListener('submit', stopFormReload)
+refs.form.addEventListener('submit', stopFormReload);

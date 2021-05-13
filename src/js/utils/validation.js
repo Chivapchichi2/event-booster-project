@@ -1,3 +1,5 @@
+import refs from "./refs";
+
 export default {
   imageUrl(data) {
     data.map(item => {
@@ -6,18 +8,12 @@ export default {
     return data;
   },
   location(data) {
-    data.map(item => {
+    data = data.map(item => {
       if (!item._embedded.venues[0].name) {
         item._embedded.venues[0].name = 'No-Info'
       }
-      
-    })
-  },
-  data(data) {
-    if (!data) {
-        refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
-        return
-      }
+    });
+    return data;
   },
   transformCountriesNameIntoCode(name, data) {
     let code = "";
@@ -63,6 +59,10 @@ export default {
     data.priceRanges[1] = data.priceRanges.find(item => item.type === 'vip')    
     return data
   },
+  noData() {
+    refs.pagination.innerHTML = '';
+    refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
+  },
   modalWho(r) {
     if (r._embedded.attractions) { 
            if (r.name.length > r._embedded.attractions[0].name.length) {
@@ -96,5 +96,17 @@ export default {
             ${r._embedded.attractions[0].name}
             in Google</a>` 
         } 
-   }
+  },
+  checkChangePerPage(obj, page) {
+    return obj.perPage === page;
+  },
+  checkTargetNodeName(e) { return e.target.nodeName === 'A' },
+  checkTargetParent(e) { return refs.countriesList === e.target.parentNode },
+  changeBtnText(e) {
+    if (this.checkTargetParent(e)) {
+      refs.countryBtn.textContent = e.target.textContent;
+      return
+  }
+    refs.categoryBtn.textContent = e.target.textContent;
+  },
 };
