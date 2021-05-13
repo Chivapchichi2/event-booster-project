@@ -1,26 +1,11 @@
 * {
   margin: 0;
 }
-/*ul*/
-.card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-  // padding-bottom: 60px;
-  margin-right: -14px;
-  margin-bottom: -39px;
-
-  @media screen and (min-width: 768px) {
-    margin-right: -27px;
-    margin-bottom: -58px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-right: -70px;
-    margin-bottom: -63px;
-  }
-}
-
+// %transition {
+//   transition-duration: 250ms;
+//   transition-property: all;
+//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+// }
 .message {
   font-size: 18px;
   color: $accent;
@@ -34,33 +19,59 @@
     font-size: 50px;
   }
 }
+
+/*ul*/
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
 /*li*/
 .card-item {
-  cursor: pointer;
   position: relative;
   text-align: center;
-  border-radius: 50px 0px;
-  object-fit: contain;
-  transition: transform var(--animation-duration) var(--timing-function);
-
-  width: 128px;
-
-  margin-right: 14px;
   margin-bottom: 39px;
-
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  margin-right: 14px;
+  transition-duration: 250ms;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     transform: scale(1.05);
   }
+}
+@media screen and (max-width: 767px) {
+  .card-item {
+    width: calc((100% - 14px) / 2);
+    margin-right: 14px;
+    margin-bottom: 39px;
+  }
+  .card-item:nth-child(2n) {
+    margin-right: 0;
+  }
+}
 
-  @media screen and (min-width: 768px) {
-    width: 180px;
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .card-item {
+    width: calc((100% - 27px * 2) / 3);
     margin-right: 27px;
     margin-bottom: 58px;
   }
+  .card-item:nth-child(3n) {
+    margin-right: 0;
+  }
+}
 
-  @media screen and (min-width: 1280px) {
+@media screen and (min-width: 1280px) {
+  .card-item {
+    width: calc((100% - 70px * 3) / 4);
     margin-right: 70px;
     margin-bottom: 63px;
+  }
+  .card-item:nth-child(4n) {
+    margin-right: 0;
   }
 }
 
@@ -120,6 +131,7 @@
   line-height: 17px;
   color: #dc56c5;
   padding: 0px 8px;
+  margin-top: 5px;
   @media screen and (min-width: 768px) {
     font-size: 15px;
     line-height: 20px;
@@ -133,12 +145,14 @@
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
+  margin-top: 5px;
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 20px;
   }
 }
 .card-place {
+  margin-top: 5px;
   font-family: Montserrat;
   font-style: 400;
   font-weight: 600;
