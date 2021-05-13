@@ -61,6 +61,7 @@ function onPrevOrNextBtnClick() {
 
 function onUpcomingBtnClick() {
   apiService.getWorldUpcomingEvents().then(data => {
+    validation.location(data);
     validation.imageUrl(data);
     const markup = cardListHbs(data);
 
@@ -72,6 +73,7 @@ function onUpcomingBtnClick() {
 
 function onSearchBtnClick() {
   apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
+    validation.location(data);
     validation.imageUrl(data);
     const markup = cardListHbs(data);
 
@@ -85,6 +87,7 @@ function onFilterBtnClick() {
   refs.genresList.textContent = genre;
 
   apiService.getEventsByFilter((genre = ''), (countryName = '')).then(data => {
+    validation.location(data);
     validation.imageUrl(data);
     const markup = cardListHbs(data);
 
@@ -123,4 +126,4 @@ function startPagination() {
   const pagination = new Pagination(refs.pagination, option);
   refs.pagination.addEventListener('click', onPagination);
 }
-export { startPagination }
+export { startPagination , option, onRenderPage}

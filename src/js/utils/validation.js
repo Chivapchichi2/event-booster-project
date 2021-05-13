@@ -96,5 +96,8 @@ export default {
             ${r._embedded.attractions[0].name}
             in Google</a>` 
         } 
-   }
+  },
+  checkChangePerPage(obj, page) {
+    return obj.perPage === page;
+  }
 };
