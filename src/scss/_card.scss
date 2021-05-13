@@ -47,19 +47,23 @@
 
   margin-right: 14px;
   margin-bottom: 39px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
   @media screen and (min-width: 768px) {
     width: 180px;
     margin-right: 27px;
     margin-bottom: 58px;
   }
+
   @media screen and (min-width: 1280px) {
     margin-right: 70px;
     margin-bottom: 63px;
   }
-  &:hover {
-    transform: scale(1.05);
-  }
 }
+
 .card-item::before {
   position: absolute;
   display: block;

@@ -1,9 +1,13 @@
 .hero-title {
+  font-family: 'Monoton';
   margin: 0;
   text-align: center;
   font-size: 18px;
   line-height: 1.22;
   color: $accent;
+
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+    0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
 
   @media screen and (min-width: 768px) {
     // margin-top: 40px;
