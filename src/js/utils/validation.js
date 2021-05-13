@@ -100,6 +100,11 @@ export default {
   checkChangePerPage(obj, page) {
     return obj.perPage === page;
   },
+  galleryRender(data, clb) {
+    this.location(data);
+    this.imageUrl(data);
+    refs.gallery.innerHTML = clb(data);
+  },
   checkTargetNodeName(e) { return e.target.nodeName === 'A' },
   checkTargetParent(e) { return refs.countriesList === e.target.parentNode },
   changeBtnText(e) {

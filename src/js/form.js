@@ -21,9 +21,7 @@ refs.form.addEventListener('click', e => {
           return
         }
 
-        validation.location(data);
-        validation.imageUrl(data);
-        refs.gallery.innerHTML = cardListHbs(data);
+        validation.galleryRender(data, cardListHbs);
         startPagination();
       }).catch(console.log);
   }
@@ -43,15 +41,16 @@ const onSearchInput = e => {
       apiService.searchQuery = '';
       return
     }
-    validation.location(data);
-    validation.imageUrl(data);
-    refs.gallery.innerHTML = cardListHbs(data);
+    validation.galleryRender(data, cardListHbs);
     startPagination();
   }).catch(console.log);
 }
 
 refs.form.addEventListener('input', debounce(onSearchInput, 1000));
-refs.searchInput.addEventListener('click', e => e.target.value = '');
+refs.searchInput.addEventListener('click', e => {
+  e.target.value = '';
+  apiService.searchQuery = '';
+});
 
 const stopFormReload = e => {
   e.preventDefault()

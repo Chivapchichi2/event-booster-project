@@ -8,13 +8,13 @@ refs.logo.addEventListener('click', onLogoClick);
 
 function onLogoClick() {
   apiService.resetPage();
+  apiService.genresId = '';
+  apiService.countryCode = '';
+  apiService.searchQuery = '';
+  refs.countryBtn.textContent = "Choose country";
+  refs.categoryBtn.textContent = "Event category";
   apiService.getWorldUpcomingEvents().then(data => {
-    validation.location(data);
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-    refs.gallery.innerHTML = markup;
+    validation.galleryRender(data, cardListHbs);
     startPagination();
-    refs.countryBtn.textContent = "Choose country";
-    refs.categoryBtn.textContent = "Event category";
   }).catch(console.log);
 }

@@ -61,11 +61,7 @@ function onPrevOrNextBtnClick() {
 
 function onUpcomingBtnClick() {
   apiService.getWorldUpcomingEvents().then(data => {
-    validation.location(data);
-    validation.imageUrl(data);
-    const markup = cardListHbs(data);
-
-    refs.gallery.innerHTML = markup;
+    validation.galleryRender(data, cardListHbs);
   }).catch(console.log);
 
   onScrollToTop();
@@ -73,9 +69,7 @@ function onUpcomingBtnClick() {
 
 function onSearchBtnClick() {
   apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
-    validation.location(data);
-    validation.imageUrl(data);
-    refs.gallery.innerHTML = cardListHbs(data);
+    validation.galleryRender(data, cardListHbs);
   }).catch(console.log);
 
   onScrollToTop();
@@ -84,9 +78,7 @@ function onSearchBtnClick() {
 function onFilterBtnClick() {
   apiService.getEventsByFilter(apiService.genresId, apiService.countyCode)
     .then(data => {
-    validation.location(data);
-    validation.imageUrl(data);
-    refs.gallery.innerHTML = cardListHbs(data);
+    validation.galleryRender(data, cardListHbs);
   }).catch(console.log);
 
   onScrollToTop();
