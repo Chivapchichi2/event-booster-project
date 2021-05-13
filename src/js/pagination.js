@@ -38,7 +38,7 @@ function onPagination(e) {
 
     // '>>'
   } else if (onBtnClick.textContent === 'last') {
-    apiService.page = 49;
+    apiService.page = document.querySelector('.tui-last-child').textContent;
     onPrevOrNextBtnClick();
     return;
   }
@@ -102,14 +102,14 @@ function onRenderPage(newPage) {
 }
 
 const option = {
-  totalElements: 60,
+  totalItems: 980,
   visiblePages: 3,
   itemsPerPage: 20,
   centerAlign: true,
 }
 
 function startPagination() {
-  option.totalItems = apiService.totalElements;
+  option.totalItems = apiService.totalElements < 980 ? apiService.totalElements : 980;
   const pagination = new Pagination(refs.pagination, option);
   refs.pagination.addEventListener('click', onPagination);
 }
