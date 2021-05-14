@@ -3,6 +3,7 @@ import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
 import moreInfo from '../templates/more-info-list.hbs'
 import validation from './utils/validation';
+import toggleListenerOnForm from './utils/dropdown';
 
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
@@ -27,7 +28,7 @@ function onTicketClick(e) {
         validation.eventInfo(r)
         validation.eventPriceRanges(r)
         validation.modalWho(r)
-
+        
         refs.ticketInfoContainer.innerHTML = ticketInfo(r);
 
         validation.authorLinksFilter(r)
@@ -39,6 +40,7 @@ function onTicketClick(e) {
     }).catch(console.log);
     refs.ticketModal.classList.remove('is-hidden');
     document.body.style.overflow = 'hidden';
+    window.removeEventListener('click', toggleListenerOnForm);
 }
 
 function onMoreBtnClick(e) {
@@ -54,6 +56,7 @@ function closeModal() {
         return
     }
     document.body.style.overflow = 'visible';
+    window.addEventListener('click', toggleListenerOnForm);
     return refs.ticketModal.classList.add('is-hidden')
 }
 
@@ -64,8 +67,8 @@ function onBdpClick(e) {
     closeModal()
 }
 
-function onEscCloseModal(evt) {
-    if (evt.code === 'Escape') {
+function onEscCloseModal(e) {
+    if (e.code === 'Escape') {
         return closeModal()
     }
 }
