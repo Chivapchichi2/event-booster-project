@@ -1,30 +1,12 @@
-import refs from './refs';
-
+import validation from './validation';
+const toggleListenerOnForm = validation.toggleListenerOnForm.bind(validation);
 
 window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        close()
+        validation.closeFormMenu();
     }
-})
+});
 
-refs.form.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (e.target.name === 'country') {
-        refs.countryMenu.classList.toggle('show');
-        refs.categoryMenu.classList.remove('show');
-        return;
-    }
+window.addEventListener('click', toggleListenerOnForm);
 
-    if (e.target.name === 'category') {
-        refs.categoryMenu.classList.toggle('show');
-        refs.countryMenu.classList.remove('show');
-        return;
-    }
-
-    close();
-})
-
-function close() {
-    refs.countryMenu.classList.remove('show');
-    refs.categoryMenu.classList.remove('show');
-}
+export default toggleListenerOnForm;
