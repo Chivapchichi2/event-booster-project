@@ -1,11 +1,7 @@
 * {
   margin: 0;
 }
-// %transition {
-//   transition-duration: 250ms;
-//   transition-property: all;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-// }
+
 .message {
   font-size: 18px;
   color: $accent;
@@ -39,9 +35,37 @@
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
 }
+.card-item:hover {
+  & .card-name {
+    color: black;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+      0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
+  }
+  & .card-place {
+    font-size: 11px;
+    line-height: 1.25;
+    @media screen and (min-width: 768px) {
+      font-size: 13px;
+      line-height: 1.214;
+    }
+  }
+  & .card-date {
+    font-size: 13px;
+    line-height: 1.214;
+    @media screen and (min-width: 768px) {
+      font-size: 15px;
+      line-height: 1.25;
+    }
+  }
+  &.card-item::before {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+      0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .card-item {
     width: calc((100% - 14px) / 2);
@@ -128,13 +152,13 @@
   font-style: 400;
   font-weight: 700;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 1.214;
   color: #dc56c5;
   padding: 0px 8px;
   margin-top: 5px;
   @media screen and (min-width: 768px) {
     font-size: 15px;
-    line-height: 20px;
+    line-height: 1.214;
     padding: 0px 3px;
   }
 }
@@ -143,12 +167,12 @@
   font-style: 400;
   font-weight: 400;
   font-size: 14px;
-  line-height: 17px;
+  line-height: 1.214;
   font-weight: 400;
   margin-top: 5px;
   @media screen and (min-width: 768px) {
     font-size: 16px;
-    line-height: 20px;
+    line-height: 1.25;
   }
 }
 .card-place {
@@ -157,13 +181,14 @@
   font-style: 400;
   font-weight: 600;
   font-size: 12px;
-  line-height: 15px;
+  line-height: 1.25;
   @media screen and (min-width: 768px) {
     font-size: 14px;
-    line-height: 17px;
+    line-height: 1.214;
   }
 }
 
 svg {
+  fill: $accent;
   margin-right: 3px;
 }
