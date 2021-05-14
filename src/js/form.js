@@ -12,8 +12,8 @@ refs.form.addEventListener('click', e => {
   if (validation.checkTargetNodeName(e)) {
     validation.changeBtnText(e);
     apiService.resetPage();
-    apiService.countryCode = validation.transformCountriesNameIntoCode(refs.countryBtn.textContent, countriesData);
-    apiService.genresId = validation.transformGenreIntoId(refs.categoryBtn.textContent, genresData);
+    apiService.countryCode = validation.transformCountriesNameIntoCode(refs.countryBtn.textContent.trim(), countriesData);
+    apiService.genresId = validation.transformGenreIntoId(refs.categoryBtn.textContent.trim(), genresData);
     apiService.getEventsByFilter(apiService.genresId, apiService.countryCode)
       .then(data => {
         if (!data) {
