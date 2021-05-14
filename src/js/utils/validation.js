@@ -1,4 +1,5 @@
 import refs from "./refs";
+import moreInfo from '../../templates/more-info-list.hbs';
 
 export default {
   imageUrl(data) {
@@ -75,27 +76,27 @@ export default {
                 if (item.externalLinks) {
                     return item
                 }
-            }).filter(item => item !== undefined)            
-            console.log(r._embedded.attractions)
+            }).filter(item => item !== undefined)
         }
   },
   moreInfoLink(r, refs) {
     if (!r._embedded.attractions || r._embedded.attractions.length === 0) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
+      refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
             class = "more-err-link"
             target="_blank">
             try to find more about
             ${r.name}
             in Google</a>`
-        }        
-        if (!r._embedded.attractions[0].externalLinks) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
+    } else if (!r._embedded.attractions[0].externalLinks) {
+      refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
             class = "more-err-link"
             target="_blank">
             try to find more about
             ${r._embedded.attractions[0].name}
-            in Google</a>` 
-        } 
+            in Google</a>`
+    } else {
+      refs.modalMoreInfo.innerHTML = moreInfo(r)
+    }
   },
   checkChangePerPage(obj, page) {
     return obj.perPage === page;

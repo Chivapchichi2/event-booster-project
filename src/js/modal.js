@@ -32,9 +32,6 @@ function onTicketClick(e) {
 
         validation.authorLinksFilter(r)
         validation.moreInfoLink(r, refs)
-        
-            refs.modalMoreInfo.innerHTML = moreInfo(r)
-               
         if (!r.priceRanges || !r.priceRanges.includes({ type: "vip" })) {
             document.querySelector('.tckt-buy-button.vip').style.pointerEvents = 'none'
         }

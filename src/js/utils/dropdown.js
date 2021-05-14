@@ -7,7 +7,7 @@ window.addEventListener('keydown', (e) => {
     }
 })
 
-window.addEventListener('click', (e) => {
+refs.form.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.name === 'country') {
         refs.countryMenu.classList.toggle('show');
