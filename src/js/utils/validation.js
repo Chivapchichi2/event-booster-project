@@ -138,7 +138,6 @@ export default {
   heroTitleAnimation() {
     setInterval(() => {
       document.querySelector('h1').classList.toggle('animate__flash');
-      console.log(document.querySelector('h1'));
      },3000)
    }
 };
