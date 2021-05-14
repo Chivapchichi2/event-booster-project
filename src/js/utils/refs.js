@@ -15,4 +15,6 @@ export default {
     categoryMenu: document.querySelector('#category'),
     countryBtn: document.querySelector('.js-countryBtn'),
     categoryBtn: document.querySelector('.js-categoryBtn'),
+    geoModal: document.querySelector('.js-geolocation-modal'),
+    geoModalBackdrop: document.querySelector('.js-geolocation-backdrop'),
 }

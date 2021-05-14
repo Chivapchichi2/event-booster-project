@@ -75,8 +75,7 @@ export default {
                 if (item.externalLinks) {
                     return item
                 }
-            }).filter(item => item !== undefined)            
-            console.log(r._embedded.attractions)
+            }).filter(item => item !== undefined)   
         }
   },
   moreInfoLink(r, refs) {
