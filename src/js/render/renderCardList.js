@@ -11,7 +11,6 @@ if (window.innerWidth > 767 && window.innerWidth < 1280) {
 
 apiService.getWorldUpcomingEvents().then(data => {
   validation.galleryRender(data, cardListHbs);
-  console.log(data);
   startPagination();
 }).catch(console.log);
 
@@ -34,3 +33,4 @@ window.addEventListener('resize', debounce(e => {
       return;
   }
 }, 300));
+validation.heroTitleAnimation();

@@ -107,11 +107,14 @@ export default {
   checkTargetNodeName(e) { return e.target.nodeName === 'A' },
   checkTargetParent(e) { return refs.countriesList === e.target.parentNode },
   changeBtnText(e) {
+    const label = e.target.textContent + `<svg class="icon-down" width="15" height="10">
+              <use href="./images/sprite.svg#icon-down-btn"></use>
+            </svg>`;
     if (this.checkTargetParent(e)) {
-      refs.countryBtn.textContent = e.target.textContent;
+      refs.countryBtn.innerHTML = label;
       return
   }
-    refs.categoryBtn.textContent = e.target.textContent;
+    refs.categoryBtn.innerHTML = label;
   },
   toggleListenerOnForm (e) {
     e.preventDefault();
@@ -131,5 +134,11 @@ export default {
    closeFormMenu() {
     refs.countryMenu.classList.remove('show');
     refs.categoryMenu.classList.remove('show');
-}
+  },
+  heroTitleAnimation() {
+    setInterval(() => {
+      document.querySelector('h1').classList.toggle('animate__flash');
+      console.log(document.querySelector('h1'));
+     },3000)
+   }
 };

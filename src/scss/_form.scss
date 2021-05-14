@@ -65,12 +65,13 @@
   backdrop-filter: blur(20px);
   outline: none;
   text-align: left;
-  z-index: 5000;
+  z-index: 800;
 
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   &::placeholder {
     color: $light-grey;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   &:hover,
@@ -80,6 +81,10 @@
     transform: scale(1.03);
     background-color: $button-hover-bg;
     box-shadow: 1px 1px 10px 2px $modal-btn;
+    & + .icon-loop {
+      transform: scale(1.2) translateX(30%);
+      fill: $white;
+    }
   }
 
   &:hover::-webkit-input-placeholder,
@@ -98,6 +103,8 @@
   top: 15px;
   left: 240px;
   pointer-events: none;
+  z-index: 801;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-down {
