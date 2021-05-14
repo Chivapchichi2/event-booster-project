@@ -4,16 +4,16 @@
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+
   background-image: linear-gradient(
-      180deg,
-      rgba(13, 13, 13, 0) 0%,
-      rgba(14, 14, 14, 0.8) 100%
+      to right,
+      rgba(11, 11, 11, 0.5),
+      rgba(11, 11, 11, 0.5)
     ),
-    linear-gradient(to right, rgba(11, 11, 11, 0.5), rgba(11, 11, 11, 0.5)),
     url(../images/mobile/bg-mobile.jpg);
-  background-size: 100% 102px, cover, cover;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom, center, center;
+  background-position: center;
 
   @media screen and (min-device-pixel-ratio: 2),
     screen and (-webkit-min-device-pixel-ratio: 2),
@@ -75,4 +75,18 @@
         url(../images/desctop/bg-desctop@2x.jpg);
     }
   }
+}
+
+.gradient-strip {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  min-width: 100%;
+  height: 102px;
+  overflow: hidden;
+  background-image: linear-gradient(
+    180deg,
+    rgba(13, 13, 13, 0.19) 0%,
+    rgba(14, 14, 14, 0.8) 100%
+  );
 }
