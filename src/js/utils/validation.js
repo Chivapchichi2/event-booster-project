@@ -113,4 +113,23 @@ export default {
   }
     refs.categoryBtn.textContent = e.target.textContent;
   },
+  toggleListenerOnForm (e) {
+    e.preventDefault();
+    if (e.target.name === 'country') {
+        refs.countryMenu.classList.toggle('show');
+        refs.categoryMenu.classList.remove('show');
+        return;
+    }
+
+    if (e.target.name === 'category') {
+        refs.categoryMenu.classList.toggle('show');
+        refs.countryMenu.classList.remove('show');
+        return;
+    }
+    this.closeFormMenu();
+  },
+   closeFormMenu() {
+    refs.countryMenu.classList.remove('show');
+    refs.categoryMenu.classList.remove('show');
+}
 };
