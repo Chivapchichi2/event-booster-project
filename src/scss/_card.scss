@@ -31,38 +31,21 @@
   margin-bottom: 30px;
   box-sizing: border-box;
   margin-right: 14px;
-  transition-duration: 250ms;
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover {
-    transform: scale(1.01);
-  }
 }
-.card-item:hover {
-  & .card-name {
-    color: black;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
-      0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
-  }
-  & .card-place {
-    font-size: 11px;
-    line-height: 1.25;
-    @media screen and (min-width: 768px) {
-      font-size: 13px;
-      line-height: 1.214;
+.card-item-box {
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.05);
+    &::before {
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+        0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
     }
-  }
-  & .card-date {
-    font-size: 13px;
-    line-height: 1.214;
-    @media screen and (min-width: 768px) {
-      font-size: 15px;
-      line-height: 1.25;
+    & .card-name {
+      color: black;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+        0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
     }
-  }
-  &.card-item::before {
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
-      0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
   }
 }
 
@@ -99,7 +82,7 @@
   }
 }
 
-.card-item::before {
+.card-item-box::before {
   position: absolute;
   display: block;
   content: '';
@@ -110,6 +93,9 @@
   height: 101px;
   top: -9px;
   right: -10px;
+
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   @media screen and (min-width: 768px) {
     width: 153px;
     height: 143px;
@@ -156,6 +142,7 @@
   color: #dc56c5;
   padding: 0px 8px;
   margin-top: 5px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: 768px) {
     font-size: 15px;
     line-height: 1.214;

@@ -1,5 +1,6 @@
 {{#each this}}
 <li class="card-item animate__animated animate__zoomIn">
+  <div class="card-item-box">
   <div class="card-img-div" data-id="{{id}}">
     <img class="card-img" loading="lazy" src={{images.url}} alt="#">
   </div>
@@ -13,6 +14,7 @@
       </svg>{{_embedded.venues.0.name}}
     </p>
 
+  </div>
   </div>
 </li>
 {{/each}}
