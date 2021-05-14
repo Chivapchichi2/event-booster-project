@@ -114,17 +114,18 @@
 
     <section class="overlay container">
       <div class="hero">
-        <h1 class="hero-title">
+        <h1 class="hero-title animate__animated animate__flash">
           FIND &nbsp; BEST &nbsp; EVENTS <br />AROUND &nbsp; THE &nbsp; WORLD
         </h1>
       </div>
 
-      <form class="form" id="search">
+      <form class="form" id="search" aria-label="search-form">
         <div class="form-container on-hover">
           <input
             class="form-input js-search-input"
             type="text"
             placeholder="Start searching"
+            aria-label="search-by-query"
           />
 
           <svg class="icon-loop" width="12" height="12">
@@ -133,7 +134,7 @@
         </div>
 
         <div class="form-container">
-          <button type="button" class="form-input js-countryBtn" name="country">
+          <button type="button" class="form-input js-countryBtn" name="country" aria-label="choose-country-button">
             Choose country
             <svg class="icon-down" width="15" height="10">
               <use href="./images/sprite.svg#icon-down-btn"></use>
@@ -153,6 +154,7 @@
               type="button"
               class="form-input js-categoryBtn"
               name="category"
+              aria-label="choose-genre-button"
             >
               Event category
               <svg class="icon-down" width="15" height="10">
@@ -218,6 +220,11 @@
             <ul class="more-info-list is-hidden"></ul>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="geolocation-backdrop js-geolocation-backdrop is-hidden">
+      <div class="geolocation-modal js-geolocation-modal animate__animated animate__fadeIn">
+
       </div>
     </div>
   </body>

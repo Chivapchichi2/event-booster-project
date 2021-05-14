@@ -1,13 +1,17 @@
 {{#each this}}
 <li class="card-item animate__animated animate__zoomIn">
   <div class="card-item-box">
-  <div class="card-img-div" data-id="{{id}}">
+  <div class="card-img-div" data-id="{{id}} aria-label="open-event-info-button">
     <img class="card-img" loading="lazy" src={{images.url}} alt="#">
   </div>
   <div>
     <h2 class="card-name">{{name}}</h2>
     <p class="card-date">{{dates.start.localDate}}</p>
-    <p class="card-place">
+    <p class="card-place js-geolocation-btn" data-name={{_embedded.venues.0.name}}
+     data-latitude={{_embedded.venues.0.location.latitude}}
+     data-longitude={{_embedded.venues.0.location.longitude}}
+     aria-label="open-geolocation-modal-button">
+     
       <svg width="6px" height="9px">
         <use width="6px" height="9px" href="./images/sprite.svg#icon-map">
         </use>

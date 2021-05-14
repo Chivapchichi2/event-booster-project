@@ -25,6 +25,7 @@
 
 /*li*/
 .card-item {
+  // cursor: pointer;
   position: relative;
   text-align: center;
   margin-bottom: 39px;
@@ -105,6 +106,7 @@
 }
 
 .card-img-div {
+  cursor: pointer;
   display: inline-block;
   background-color: grey;
 
@@ -163,6 +165,7 @@
   }
 }
 .card-place {
+  cursor: pointer;
   margin-top: 5px;
   font-family: Montserrat;
   font-style: 400;
