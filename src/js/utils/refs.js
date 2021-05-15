@@ -15,4 +15,9 @@ export default {
     categoryMenu: document.querySelector('#category'),
     countryBtn: document.querySelector('.js-countryBtn'),
     categoryBtn: document.querySelector('.js-categoryBtn'),
+    evtInfo: document.getElementById('info'),
+    evtInfoMore: document.getElementById('more'),
+    evtInfoLess: document.getElementById('less'),
+    modalPrev: document.getElementById('p'),
+    modalNext: document.getElementById('n')
 }

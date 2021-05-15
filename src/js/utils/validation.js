@@ -46,15 +46,15 @@ export default {
     return data
   },
   eventPriceRanges(data) {
-    data.sMassage = ''
-    data.vMassage = ''
+    data.sMessage = ''
+    data.vMessage = ''
     if (!data.priceRanges) {
-      data.sMassage = 'prices will be announced later'
-      data.vMassage = 'prices will be announced later'
+      data.sMessage = 'prices will be announced later'
+      data.vMessage = 'prices will be announced later'
       return data
     }
     if (!data.priceRanges.includes({ type: 'vip' })) {
-      data.vMassage = 'seats are not provided'
+      data.vMessage = 'seats are not provided'
     }
     data.priceRanges[0] = data.priceRanges.find(item => item.type === 'standard incluses fees' || item.type === 'standard')
     data.priceRanges[1] = data.priceRanges.find(item => item.type === 'vip')    

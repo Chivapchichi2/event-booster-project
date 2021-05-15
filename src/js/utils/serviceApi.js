@@ -8,7 +8,7 @@ export default {
   page: 1,
   perPage: 20,
   totalElements: null,
-  galleryStatus: 'ByUpcoming',
+  galleryStatus: 'ByUpcoming',  
   getWorldUpcomingEvents() {
     this.galleryStatus = 'ByUpcoming';
 
@@ -17,7 +17,7 @@ export default {
       .then(r => r.json())
       .then(r => {
         this.totalElements = r.page.totalElements;
-        const data = r._embedded.events;
+        const data = r._embedded.events;        
         return data;
       });
   },
