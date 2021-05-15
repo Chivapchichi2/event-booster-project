@@ -16,17 +16,13 @@ refs.modalNext.addEventListener('click', onTicketClick)
 let ticketId = 0;
 let isCard = null;
 
-
 function onTicketClick(e) {
     let idArr = []
     document.querySelectorAll('.card-img-div')
         .forEach(item => {
-            idArr.push(item.dataset.id)
-            
-        })    
-    
-    refs.ticketInfoContainer.innerHTML = ''
-    
+            idArr.push(item.dataset.id)            
+        })        
+
     isCard = e.target.closest('.card-img-div');    
     if (!isCard) {
         if (e.target.id === 'p') {
@@ -42,34 +38,21 @@ function onTicketClick(e) {
     } else {
         ticketId = isCard.getAttribute('data-id')
     } 
-     
+    
+    refs.ticketInfoContainer.innerHTML = ''
+        
     apiService.getEventById(ticketId).then((r) => {
+
         validation.modalPosterUrl(r)
         validation.eventInfo(r)
         validation.eventPriceRanges(r)
         validation.modalWho(r)
 
         refs.ticketInfoContainer.innerHTML = ticketInfo(r);
-        const elems = {
-            info: document.getElementById('info'),
-            more: document.getElementById('more'),
-            less: document.getElementById('less'),
-        }
-        if (elems.info.textContent.length > 125) {
-            elems.more.classList.remove('is-hidden')
-        }
-        elems.more.addEventListener('click', () => {
-            elems.info.classList.remove('info')            
-            elems.more.classList.add('is-hidden')
-            elems.less.classList.remove('is-hidden')
-        })
-        elems.less.addEventListener('click', () => {
-            elems.info.classList.add('info')
-            elems.less.classList.add('is-hidden')
-            elems.more.classList.remove('is-hidden')
-        })
-
+        
+        validation.modalInfoCheking()
         validation.authorLinksFilter(r)
+        
         validation.moreInfoLink(r, refs)
         
         if (!r.priceRanges || !r.priceRanges.includes({type: "vip",})) {

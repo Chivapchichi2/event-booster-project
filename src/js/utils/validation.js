@@ -133,5 +133,25 @@ export default {
    closeFormMenu() {
     refs.countryMenu.classList.remove('show');
     refs.categoryMenu.classList.remove('show');
-}
+  }, 
+  modalInfoCheking() {
+     const elems = {
+            info: document.getElementById('info'),
+            more: document.getElementById('more'),
+            less: document.getElementById('less'),
+        }
+        if (elems.info.textContent.length > 125) {
+            elems.more.classList.remove('is-hidden')
+        }
+        elems.more.addEventListener('click', () => {
+            elems.info.classList.remove('info')            
+            elems.more.classList.add('is-hidden')
+            elems.less.classList.remove('is-hidden')
+        })
+        elems.less.addEventListener('click', () => {
+            elems.info.classList.add('info')
+            elems.less.classList.add('is-hidden')
+            elems.more.classList.remove('is-hidden')
+        })
+   }
 };
