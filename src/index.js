@@ -10,3 +10,4 @@ import './js/toTop';
 import './js/form';
 import './js/pagination';
 import './js/utils/dropdown';
+import './js/subscribePopUp';
