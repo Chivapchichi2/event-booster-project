@@ -51,6 +51,7 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.4",
     "core-js": "^3.6.5",
     "handlebars": "^4.7.6",
     "normalize.css": "^8.0.1",
