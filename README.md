@@ -1,6 +1,6 @@
 ![github contribution grid snake animation](https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake.svg)
 
-<h1 align="center"> 🐱‍👓 TEAM PROJECT 🐱‍💻</h1>
+<h1 align="center"> 🐱‍👓 EVENT BOOSTER PROJECT 🐱‍💻</h1>
 
 <h3 align="center"> 🛠 &nbsp;Tech Stack 🐱‍💻 </h3>
 
