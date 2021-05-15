@@ -19,11 +19,10 @@
 </span>
 
 <h3 align="center"> ℹ️ &nbsp; Team Members 🐾 🐱‍🚀 <h3>
-<div text-align ="center">
+
 <a align="center" href="https://github.com/Chivapchichi2">![GitHub](https://img.shields.io/badge/-Chivapchichi2-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/Lemout17">![GitHub](https://img.shields.io/badge/-Lemout17-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/VVariychuk">![GitHub](https://img.shields.io/badge/-VVariychuk-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/KalVasFlame">![GitHub](https://img.shields.io/badge/-KalVasFlame-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/iromjalis">![GitHub](https://img.shields.io/badge/-iromjalis-05122A?style=flat&logo=github)</a>
 <a align="center" href="https://github.com/RuslanGolovach">![GitHub](https://img.shields.io/badge/-RuslanGolovach-05122A?style=flat&logo=github)</a>
-  </div>
