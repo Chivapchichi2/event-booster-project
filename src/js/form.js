@@ -14,16 +14,18 @@ refs.form.addEventListener('click', e => {
     apiService.resetPage();
     apiService.countryCode = validation.transformCountriesNameIntoCode(refs.countryBtn.textContent.trim(), countriesData);
     apiService.genresId = validation.transformGenreIntoId(refs.categoryBtn.textContent.trim(), genresData);
-    apiService.getEventsByFilter(apiService.genresId, apiService.countryCode)
-      .then(data => {
-        if (!data) {
+    apiService.getEventsData()
+      .then(r => {
+        if (!r?._embedded?.events) {
           validation.noData();
           return
         }
-
+        apiService.totalElements = r.page.totalElements;
+        const data = r._embedded.events;
         validation.galleryRender(data, cardListHbs);
         startPagination();
-      }).catch(console.log);
+      })
+      .catch(console.log)
   }
 });
 
@@ -34,15 +36,18 @@ const onSearchInput = e => {
 
   apiService.resetPage();
   apiService.searchQuery = e.target.value;
-  apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
-    if (!data) {
-      validation.noData();
-      e.target.value = '';
-      apiService.searchQuery = '';
-      return
-    }
-    validation.galleryRender(data, cardListHbs);
-    startPagination();
+  apiService.getEventsData()
+    .then(r => {
+        if (!r?._embedded?.events) {
+          validation.noData();
+          e.target.value = '';
+          apiService.searchQuery = '';
+          return
+        }
+        apiService.totalElements = r.page.totalElements;
+        const data = r._embedded.events;
+        validation.galleryRender(data, cardListHbs);
+        startPagination();
   }).catch(console.log);
 }
 

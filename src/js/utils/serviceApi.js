@@ -8,60 +8,23 @@ export default {
   page: 1,
   perPage: 20,
   totalElements: null,
-  galleryStatus: 'ByUpcoming',
-  getWorldUpcomingEvents() {
-    this.galleryStatus = 'ByUpcoming';
-
-    const url = `${BASE_URL}events.json?page=${this.page}&size=${this.perPage}&sort=id,asc&apikey=${KEY}`;
-    return fetch(url)
-      .then(r => {
-try {
-  return r.json()
-} catch (error) {
-  console.error(error);
-}})
-      .then(r => {
-        this.totalElements = r.page.totalElements;
-        const data = r._embedded.events;
-        return data;
-      });
+  async getEventsData() {
+    const url = `${BASE_URL}events.json?keyword=${this.searchQuery}&classificationId=${this.genresId}&countryCode=${this.countryCode}&page=${this.page}&size=${this.perPage}&sort=id,asc&apikey=${KEY}`;
+    try {
+      const data = await fetch(url);
+      return data.json();
+    } catch (error) {
+      console.log(error);
+    }
   },
-  getEventById(id) {
-    this.galleryStatus = 'ById';
+  async getEventById(id) {
     const url = `${BASE_URL}events/${id}.json?sort=id,asc&apikey=${KEY}`;
-    return fetch(url).then(r => r.json());
-  },
-  getEventsBySearchQuery(searchQuery) {
-    this.galleryStatus = 'BySearch';
-    const url = `${BASE_URL}events.json?keyword=${searchQuery}&page=${this.page}&size=${this.perPage}&sort=id,asc&apikey=${KEY}`;
-    return fetch(url)
-      .then(r => {
-try {
-  return r.json()
-} catch (error) {
-  console.error(error);
-}})
-      .then(r => {
-        this.totalElements = r.page.totalElements;
-        const data = r._embedded?.events;
-        return data;
-      });
-  },
-  getEventsByFilter(genreId, countryCode) {
-    this.galleryStatus = 'ByFilter';
-    const url = `${BASE_URL}events.json?classificationId=${genreId}&page=${this.page}&size=${this.perPage}&countryCode=${countryCode}&sort=id,asc&apikey=${KEY}`;
-    return fetch(url)
-      .then(r => {
-try {
-  return r.json()
-} catch (error) {
-  console.error(error);
-}})
-      .then(r => {       
-        this.totalElements = r.page.totalElements;
-        const data = r._embedded?.events;
-        return data;
-      })
+     try {
+      const data = await fetch(url);
+      return data.json();
+    } catch (error) {
+      console.log(error);
+    }
   },
   incrementPage() {
     this.page += 1;
@@ -74,11 +37,5 @@ try {
   },
   resetPage() {
     this.page = 1;
-  },
-  changeSizeSetting(val) {
-    this.perPage = val;
-  },
-  resetSizeSettings() {
-    this.perPage = 20;
   },
 };
