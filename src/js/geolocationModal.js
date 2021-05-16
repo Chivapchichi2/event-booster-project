@@ -1,25 +1,41 @@
 import refs from "./utils/refs";
-import geolocationHbs from '../templates/geolocation.hbs';
-
-
+import { Loader } from "@googlemaps/js-api-loader"
+let map;
+let marker;
 const onLocationOnCardClick = e => {
   if (!e.target.classList.contains('js-geolocation-btn')) {
     return
   }
-  const location = {
-    name: e.target.dataset.name,
-    location: e.target.dataset.latitude.concat(',')+e.target.dataset.longitude,
+const loader = new Loader({
+  apiKey: "AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0",
+});
+loader.load().then(() => {
+  const latLng = {
+    lat: +e.target.dataset.latitude,
+    lng: +e.target.dataset.longitude
   }
-  console.log(location.location);
-  console.log(location.name);
-  refs.geoModal.innerHTML = geolocationHbs(location);
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: latLng,
+    zoom: 15,
+  });
+  marker = new google.maps.Marker({
+    position: latLng,
+    title:"Let's Rock!!!"
+  });
+  marker.setMap(map);
+});
   refs.geoModalBackdrop.classList.remove('is-hidden')
 }
+
+
 const onGeoModalClick = e => {
-  if (e.target.nodeName === 'IFRAME') {
+ 
+  if (e.target.classList.contains('js-geolocation-backdrop')) {
+   
+    refs.geoModalBackdrop.classList.add('is-hidden')
+  } else {
     return
   }
-  refs.geoModalBackdrop.classList.add('is-hidden')
 }
 const onCloseGeoModalByEscKeydown = e => {
 if (e.code === 'Escape') {
@@ -27,6 +43,7 @@ if (e.code === 'Escape') {
   }
 }
 
+
 window.addEventListener('keydown', onCloseGeoModalByEscKeydown);
 refs.geoModalBackdrop.addEventListener('click', onGeoModalClick);
-refs.gallery.addEventListener('click', onLocationOnCardClick);
+refs.gallery.addEventListener('click', onLocationOnCardClick  )
