@@ -1,8 +1,8 @@
 import refs from './utils/refs';
 import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
-// import moreInfo from '../templates/more-info-list.hbs'
 import validation from './utils/validation';
+import toggleListenerOnForm from './utils/dropdown';
 
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
@@ -17,7 +17,8 @@ let ticketId = 0;
 let isCard = null;
 
 function onTicketClick(e) {
-    let idArr = []
+document.removeEventListener('click', toggleListenerOnForm);
+    let idArr = [];
     document.querySelectorAll('.card-img-div')
         .forEach(item => {
             idArr.push(item.dataset.id)            
@@ -73,6 +74,7 @@ function onMoreBtnClick(e) {
 }
 
 function closeModal() {
+    document.addEventListener('click', toggleListenerOnForm);
     refs.ticketInfoContainer.innerHTML = ''
     refs.modalMoreInfo.classList.add('is-hidden')
     refs.modalMoreInfo.innerHTML = ''
@@ -88,11 +90,12 @@ function onBdpClick(e) {
     if (e.target !== refs.ticketModal) {
         return
     }
-    closeModal()
+    closeModal();
 }
 
 function onEscCloseModal(evt) {
     if (evt.code === 'Escape') {
-       closeModal()
+        closeModal();
+        validation.closeFormMenu();
     }
 }
