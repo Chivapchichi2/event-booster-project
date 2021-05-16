@@ -1,4 +1,5 @@
 import refs from "./refs";
+import moreInfo from '../../templates/more-info-list.hbs';
 
 export default {
   imageUrl(data) {
@@ -45,15 +46,15 @@ export default {
     return data
   },
   eventPriceRanges(data) {
-    data.sMassage = ''
-    data.vMassage = ''
+    data.sMessage = ''
+    data.vMessage = ''
     if (!data.priceRanges) {
-      data.sMassage = 'prices will be announced later'
-      data.vMassage = 'prices will be announced later'
+      data.sMessage = 'prices will be announced later'
+      data.vMessage = 'prices will be announced later'
       return data
     }
     if (!data.priceRanges.includes({ type: 'vip' })) {
-      data.vMassage = 'seats are not provided'
+      data.vMessage = 'seats are not provided'
     }
     data.priceRanges[0] = data.priceRanges.find(item => item.type === 'standard incluses fees' || item.type === 'standard')
     data.priceRanges[1] = data.priceRanges.find(item => item.type === 'vip')    
@@ -80,21 +81,22 @@ export default {
   },
   moreInfoLink(r, refs) {
     if (!r._embedded.attractions || r._embedded.attractions.length === 0) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
+      refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
             class = "more-err-link"
             target="_blank">
             try to find more about
             ${r.name}
             in Google</a>`
-        }        
-        if (!r._embedded.attractions[0].externalLinks) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
+    } else if (!r._embedded.attractions[0].externalLinks) {
+      refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
             class = "more-err-link"
             target="_blank">
             try to find more about
             ${r._embedded.attractions[0].name}
-            in Google</a>` 
-        } 
+            in Google</a>`
+    } else {
+      refs.modalMoreInfo.innerHTML = moreInfo(r)
+    }
   },
   checkChangePerPage(obj, page) {
     return obj.perPage === page;
@@ -134,10 +136,30 @@ export default {
    closeFormMenu() {
     refs.countryMenu.classList.remove('show');
     refs.categoryMenu.classList.remove('show');
+  }, 
+  modalInfoCheking() {
+     const elems = {
+            info: document.getElementById('info'),
+            more: document.getElementById('more'),
+            less: document.getElementById('less'),
+        }
+        if (elems.info.textContent.length > 125) {
+            elems.more.classList.remove('is-hidden')
+        }
+        elems.more.addEventListener('click', () => {
+            elems.info.classList.remove('info')            
+            elems.more.classList.add('is-hidden')
+            elems.less.classList.remove('is-hidden')
+        })
+        elems.less.addEventListener('click', () => {
+            elems.info.classList.add('info')
+            elems.less.classList.add('is-hidden')
+            elems.more.classList.remove('is-hidden')
+        })
   },
   heroTitleAnimation() {
     setInterval(() => {
       document.querySelector('h1').classList.toggle('animate__flash');
      },3000)
-   }
+   },
 };

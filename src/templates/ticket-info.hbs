@@ -6,7 +6,11 @@
 </div>
 <div class="ticket-info">
     <h2 class="ticket-info-title">info</h2>
-    <p class="ticket-info-txt">{{info}}</p>
+    <div class="ticket-info-txt">
+        <p class="info" id="info">{{info}}</p>
+        <span class="is-hidden" id="more">&dArr;</span>
+        <span class="is-hidden" id="less">&uArr;</span>
+        </div>
     <h2 class="ticket-info-title">when</h2>
     <p class="ticket-info-txt">
         {{dates.start.localDate}}</p>
@@ -25,14 +29,14 @@
     <p class="ticket-info-txt">
         <svg class="contacts-icon" width="24" height="16">
             <use href="../images/sprite.svg#icon-ticket1"></use>
-        </svg> Standart {{sMassage}}
-        {{priceRanges.0.min}}-{{priceRanges.0.max}} {{priceRanges.0.currency}}
+        </svg> Standart {{sMessage}}
+        {{priceRanges.0.min}} - {{priceRanges.0.max}} {{priceRanges.0.currency}}
     </p>
     <a class="tckt-buy-button std" href="{{url}}" target="_blank">buy tickets</a>
     <p class="ticket-info-txt">
         <svg class="contacts-icon" width="24" height="16">
             <use href="../images/sprite.svg#icon-ticket1"></use>
-        </svg> VIP {{vMassage}}
+        </svg> VIP {{vMessage}}
     </p>
     <a class="tckt-buy-button vip" href="{{url}}" target="_blank">buy tickets</a>
 </div>

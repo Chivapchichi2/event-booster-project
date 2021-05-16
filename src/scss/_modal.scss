@@ -1,3 +1,9 @@
+.is-hidden {
+  display: none;
+  pointer-events: none;
+  z-index: 99;
+}
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -221,6 +227,7 @@
   line-height: 1.25;
   margin: 3px 0 0;
   color: $black;
+  max-width: 243px;
   @media screen and (min-width: 1200px) {
     max-width: 450px;
     font-size: 18px;
@@ -229,6 +236,32 @@
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     max-width: 265px;
+  }
+}
+
+#info {
+  width: 100%;
+}
+
+.info {
+  max-height: 100px;
+  overflow-y: hidden;
+
+  @media screen and (min-width: 1200px) {
+    max-height: 65px;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    max-height: 130px;
+  }
+}
+
+#more,
+#less {
+  cursor: pointer;
+  color: $accent;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
   }
 }
 
@@ -378,4 +411,25 @@
   line-height: 1.25;
   text-decoration: none;
   margin-top: 20px;
+}
+
+.prev-next {
+  display: flex;
+}
+
+.prev-next-itm {
+  margin: 10px 5px 0;
+}
+
+.prev-next-btn {
+  cursor: pointer;
+  color: $accent;
+  background-color: $modal-bg;
+  border-color: $accent;
+  border-radius: 15px 0px;
+  padding: 5px;
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+  }
 }

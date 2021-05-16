@@ -1,9 +1,8 @@
 import refs from './utils/refs';
 import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
-import moreInfo from '../templates/more-info-list.hbs'
+// import moreInfo from '../templates/more-info-list.hbs'
 import validation from './utils/validation';
-import toggleListenerOnForm from './utils/dropdown';
 
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
@@ -11,39 +10,62 @@ refs.ticketModal.addEventListener('click', onBdpClick)
 refs.modalMoreInfoBtn.addEventListener('click', onMoreBtnClick)
 window.addEventListener('keydown', onEscCloseModal)
 
-let ticketId = null;
+refs.modalPrev.addEventListener('click', onTicketClick)
+refs.modalNext.addEventListener('click', onTicketClick)
+
+let ticketId = 0;
 let isCard = null;
 
-
-
 function onTicketClick(e) {
-    refs.ticketInfoContainer.innerHTML = ''
-    isCard = e.target.closest('.card-img-div');
+    let idArr = []
+    document.querySelectorAll('.card-img-div')
+        .forEach(item => {
+            idArr.push(item.dataset.id)            
+        })        
+
+    isCard = e.target.closest('.card-img-div');    
     if (!isCard) {
-        return
-    }
-    ticketId = isCard.getAttribute('data-id')
+        if (e.target.id === 'p') {
+            if (idArr.indexOf(ticketId) !== 0) {
+                ticketId = idArr[idArr.indexOf(ticketId) - 1]
+            } else { ticketId = idArr[idArr.length - 1] }
+        }
+        if (e.target.id === 'n') {
+            if (idArr.indexOf(ticketId) !== idArr.length - 1) {
+                ticketId = idArr[idArr.indexOf(ticketId) + 1]
+            } else { ticketId = idArr[0] }
+        }
+    } else {
+        ticketId = isCard.getAttribute('data-id')
+    } 
+    
+    refs.ticketInfoContainer.innerHTML = ''
+        
     apiService.getEventById(ticketId).then((r) => {
+
         validation.modalPosterUrl(r)
         validation.eventInfo(r)
         validation.eventPriceRanges(r)
         validation.modalWho(r)
-        
-        refs.ticketInfoContainer.innerHTML = ticketInfo(r);
 
+        refs.ticketInfoContainer.innerHTML = ticketInfo(r);
+        
+        validation.modalInfoCheking()
         validation.authorLinksFilter(r)
+        
         validation.moreInfoLink(r, refs)
         
-            refs.modalMoreInfo.innerHTML = moreInfo(r)
-               
-        if (!r.priceRanges || !r.priceRanges.includes({ type: "vip" })) {
-            document.querySelector('.tckt-buy-button.vip').style.pointerEvents = 'none'
+        if (!r.priceRanges || !r.priceRanges.includes({type: "vip",})) {
+            document.querySelector('.vip').style.pointerEvents = 'none'
         }
+        // if (!r.priceRanges || !r.priceRanges.includes({type: "standard",})) {
+        //     document.querySelector('.std').style.pointerEvents = 'none'
+        // }
+        
         return r;
     }).catch(console.log);
     refs.ticketModal.classList.remove('is-hidden');
     document.body.style.overflow = 'hidden';
-    window.removeEventListener('click', toggleListenerOnForm);
 }
 
 function onMoreBtnClick(e) {
@@ -59,8 +81,7 @@ function closeModal() {
         return
     }
     document.body.style.overflow = 'visible';
-    window.addEventListener('click', toggleListenerOnForm);
-    return refs.ticketModal.classList.add('is-hidden')
+    refs.ticketModal.classList.add('is-hidden')
 }
 
 function onBdpClick(e) {
@@ -70,8 +91,8 @@ function onBdpClick(e) {
     closeModal()
 }
 
-function onEscCloseModal(e) {
-    if (e.code === 'Escape') {
-        return closeModal()
+function onEscCloseModal(evt) {
+    if (evt.code === 'Escape') {
+       closeModal()
     }
 }

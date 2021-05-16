@@ -21,4 +21,9 @@ export default {
   closePopupBtn: document.querySelector('.close-email-btn'),
   inputEmail: document.querySelector('.input-text'),
   subscribeBtn: document.querySelector('.accept-btn'),
-};
+  evtInfo: document.getElementById('info'),
+  evtInfoMore: document.getElementById('more'),
+  evtInfoLess: document.getElementById('less'),
+  modalPrev: document.getElementById('p'),
+  modalNext: document.getElementById('n'),
+}
