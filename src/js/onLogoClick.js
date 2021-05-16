@@ -17,8 +17,16 @@ function onLogoClick() {
   refs.categoryBtn.innerHTML = `Event category   <svg class="icon-down" width="15" height="10">
                 <use href="./images/sprite.svg#icon-down-btn"></use>
               </svg>`;
-  apiService.getWorldUpcomingEvents().then(data => {
-    validation.galleryRender(data, cardListHbs);
-    startPagination();
-  }).catch(console.log);
+  apiService.getEventsData()
+  .then(r => {
+        apiService.totalElements = r.page.totalElements;
+        const data = r._embedded.events;
+        return data;
+  })
+  .then(data => {
+  validation.galleryRender(data, cardListHbs);
+  startPagination();
+}).catch(console.log);
 }
+
+onLogoClick()

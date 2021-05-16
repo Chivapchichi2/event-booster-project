@@ -12,93 +12,23 @@ function onScrollToTop() {
   });
 }
 
-//! '1,2,3' button
-function onPagination(e) {
+function onPaginationClick(e) {
   e.preventDefault();
-  const onBtnClick = e.target;
-
-  // '<<'
-  if (onBtnClick.textContent === 'first') {
-    console.log(onBtnClick);
-    apiService.resetPage();
-    onRenderPage(apiService.page);
-    return;
-
-    // '<'
-  } else if (onBtnClick.textContent === 'prev') {
-    apiService.decrementPage();
-    onPrevOrNextBtnClick();
-    return;
-
-    // '>'
-  } else if (onBtnClick.textContent === 'next') {
-    apiService.incrementPage();
-    onPrevOrNextBtnClick();
-    return;
-
-    // '>>'
-  } else if (onBtnClick.textContent === 'last') {
-    apiService.page = document.querySelector('.tui-last-child').textContent;
-    onPrevOrNextBtnClick();
-    return;
-  }
-  apiService.page = +e.target.textContent;
-  onRenderPage(apiService.page);
-}
-
-//! Button '>'
-function onPrevOrNextBtnClick() {
-  if (apiService.galleryStatus === 'ByUpcoming') {
-    onUpcomingBtnClick();
-  }
-  if (apiService.galleryStatus === 'BySearch') {
-    onSearchBtnClick();
-  }
-  if (apiService.galleryStatus === 'ByFilter') {
-    onFilterBtnClick();
+  if (!e.target.classList.contains('tui-page-btn')) {
+    return
   }
 }
 
-function onUpcomingBtnClick() {
-  apiService.getWorldUpcomingEvents().then(data => {
-    validation.galleryRender(data, cardListHbs);
-  }).catch(console.log);
-
-  onScrollToTop();
-}
-
-function onSearchBtnClick() {
-  apiService.getEventsBySearchQuery(apiService.searchQuery).then(data => {
-    validation.galleryRender(data, cardListHbs);
-  }).catch(console.log);
-
-  onScrollToTop();
-}
-
-function onFilterBtnClick() {
-  apiService.getEventsByFilter(apiService.genresId, apiService.countryCode)
-    .then(data => {
-    validation.galleryRender(data, cardListHbs);
-  }).catch(console.log);
-
-  onScrollToTop();
-}
-
-// //!render function
-function onRenderPage(newPage) {
-  apiService.page = newPage;
-
-  if (apiService.galleryStatus === 'ByUpcoming') {
-    onUpcomingBtnClick();
-  }
-  if (apiService.galleryStatus === 'BySearch') {
-    onSearchBtnClick();
-  }
-  if (apiService.galleryStatus === 'ByFilter') {
-    onFilterBtnClick();
-  }
-
-  onScrollToTop();
+function render() {
+  apiService.getEventsData()
+    .then(r => {
+      if (!r?._embedded?.events) {
+        return
+      }
+      const data = r._embedded.events;
+      validation.galleryRender(data, cardListHbs);
+    })
+      .catch(console.log)  
 }
 
 const option = {
@@ -111,6 +41,11 @@ const option = {
 function startPagination() {
   option.totalItems = apiService.totalElements < 980 ? apiService.totalElements : 980;
   const pagination = new Pagination(refs.pagination, option);
-  refs.pagination.addEventListener('click', onPagination);
+    pagination.on('beforeMove', function(e) {
+      apiService.setPage(e.page);
+      render();
+      onScrollToTop();
+});
+  refs.pagination.addEventListener('click', onPaginationClick);
 }
-export { startPagination , option, onRenderPage}
+export { startPagination , option, render}

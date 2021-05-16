@@ -65,14 +65,14 @@ export default {
     refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
   },
   modalWho(r) {
-    if (r._embedded.attractions) { 
-           if (r.name.length > r._embedded.attractions[0].name.length) {
-            r.name =  r._embedded.attractions[0].name
+    if (r?._embedded?.attractions) { 
+           if (r.name.length > r._embedded?.attractions[0]?.name.length) {
+            r.name =  r._embedded?.attractions[0]?.name
               }
         }
   },
   authorLinksFilter(r) {
-    if (r._embedded.attractions) { r._embedded.attractions = r._embedded.attractions.map(item => {
+    if (r?._embedded?.attractions) { r._embedded.attractions = r._embedded.attractions.map(item => {
                 if (item.externalLinks) {
                     return item
                 }
@@ -80,8 +80,8 @@ export default {
         }
   },
   moreInfoLink(r, refs) {
-    if (!r._embedded.attractions || r._embedded.attractions.length === 0) {
-      refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
+    if (!r?._embedded?.attractions || r?._embedded?.attractions?.length === 0) {
+            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
             class = "more-err-link"
             target="_blank">
             try to find more about
