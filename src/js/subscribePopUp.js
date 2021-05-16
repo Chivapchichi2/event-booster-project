@@ -1,30 +1,63 @@
 import refs from './utils/refs';
 
-//*срабатывает каждую мин (пропадает)
-const intervalFunction = () => {
-  refs.popUpRef.classList.remove('is-hidden');
-  setTimeout(() => {
-    refs.popUpRef.classList.add('is-hidden');
-  }, 60000);
-};
-//*срабатывает каждые 2мин (появляется)
-const interval = setInterval(intervalFunction, 120000);
+let intervalID;
+function setIntervalX(callback, delay, repetitions) {
+  let x = 0;
 
-refs.subscribeBtn.addEventListener('submit', () => {
-  console.log(refs.inputEmail.value);
+  intervalID = setInterval(function () {
+    callback();
+    refs.inputEmail.value = '';
+
+    setTimeout(() => {
+      closePopUp();
+    }, 60000);
+
+    if (++x === repetitions) {
+      clearInterval(intervalID);
+    }
+  }, delay);
+}
+
+setIntervalX(
+  function () {
+    refs.popUpRef.classList.remove('is-hidden');
+  },
+  120000,
+  3,
+);
+
+//*по клику на subscribe рамка меняет цвет + закрывает, если ок
+refs.subscribeBtn.addEventListener('click', () => {
   if (!refs.inputEmail.value.includes('@')) {
-    refs.inputEmail.style.borderColor = 'red';
+    changeInputBorderColor('red');
     return;
   }
-  refs.inputEmail.style.borderColor = 'black';
+  changeInputBorderColor('black');
   refs.inputEmail.style.boxShadow =
     ' 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de';
+
   setTimeout(() => {
-    refs.popUpRef.classList.add('is-hidden');
+    closePopUp();
+    changeInputBorderColor('#dc56c5');
+    clearInterval(intervalID);
   }, 250);
 });
 
+//*закрывает по "х"
 refs.closePopupBtn.addEventListener('click', () => {
-  refs.popUpRef.classList.add('is-hidden');
-  clearInterval(interval);
+  refs.inputEmail.style.borderColor = 'inherit';
+  closePopUp();
 });
+//*закрывает по "escape"
+window.addEventListener('keydown', e => {
+  if (e.code === 'Escape') {
+    closePopUp();
+  }
+});
+
+function closePopUp() {
+  refs.popUpRef.classList.add('is-hidden');
+}
+function changeInputBorderColor(color) {
+  refs.inputEmail.style.borderColor = color;
+}
