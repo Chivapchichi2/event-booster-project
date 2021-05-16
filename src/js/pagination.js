@@ -76,7 +76,7 @@ function onSearchBtnClick() {
 }
 
 function onFilterBtnClick() {
-  apiService.getEventsByFilter(apiService.genresId, apiService.countyCode)
+  apiService.getEventsByFilter(apiService.genresId, apiService.countryCode)
     .then(data => {
     validation.galleryRender(data, cardListHbs);
   }).catch(console.log);

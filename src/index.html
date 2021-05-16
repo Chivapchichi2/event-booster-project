@@ -23,7 +23,7 @@
         right: 0;
         bottom: 0;
         background-image: url(./images/desctop/bg-body-desctop.jpg);
-        z-index: 1001;
+        z-index: 9999;
       }
 
       .loader,
@@ -114,17 +114,18 @@
 
     <section class="overlay container">
       <div class="hero">
-        <h1 class="hero-title">
+        <h1 class="hero-title animate__animated">
           FIND &nbsp; BEST &nbsp; EVENTS <br />AROUND &nbsp; THE &nbsp; WORLD
         </h1>
       </div>
 
-      <form class="form" id="search">
+      <form class="form" id="search" aria-label="search-form">
         <div class="form-container on-hover">
           <input
             class="form-input js-search-input"
             type="text"
             placeholder="Start searching"
+            aria-label="search-by-query"
           />
 
           <svg class="icon-loop" width="12" height="12">
@@ -133,7 +134,12 @@
         </div>
 
         <div class="form-container">
-          <button type="button" class="form-input js-countryBtn" name="country">
+          <button
+            type="button"
+            class="form-input js-countryBtn"
+            name="country"
+            aria-label="choose-country-button"
+          >
             Choose country
             <svg class="icon-down" width="15" height="10">
               <use href="./images/sprite.svg#icon-down-btn"></use>
@@ -153,6 +159,7 @@
               type="button"
               class="form-input js-categoryBtn"
               name="category"
+              aria-label="choose-genre-button"
             >
               Event category
               <svg class="icon-down" width="15" height="10">
@@ -223,6 +230,42 @@
           </ul>
         </div>
       </div>
+    </div>
+    <div class="geolocation-backdrop js-geolocation-backdrop is-hidden">
+      <div id='map'
+        class="
+          geolocation-modal
+          js-geolocation-modal
+          animate__animated animate__fadeIn
+        "
+      ></div>
+    </div>
+
+    <!-- Надоедашка -->
+    <div class="email-popup-content is-hidden">
+      <div class="image-container">
+        <img src="./images/download.jpg" class="movie-img" width="320" />
+      </div>
+
+      <div class="email-popup-info">
+        <h2 class="email-popup-title">
+          Leave your email and we'll keep you informed about the latest events
+        </h2>
+        <form action="" class="subscribe-form">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="input-text"
+          />
+          <button type="submit" class="accept-btn">Subscribe</button>
+        </form>
+      </div>
+
+      <button type="button" class="close-email-btn" data-action="close-pop-up">
+        <svg class="close-popup-btn">
+          <use href="./images/sprite.svg#icon-close-icon"></use>
+        </svg>
+      </button>
     </div>
   </body>
 </html>

@@ -11,8 +11,12 @@ function onLogoClick() {
   apiService.genresId = '';
   apiService.countryCode = '';
   apiService.searchQuery = '';
-  refs.countryBtn.textContent = "Choose country";
-  refs.categoryBtn.textContent = "Event category";
+  refs.countryBtn.innerHTML = `Choose country   <svg class="icon-down" width="15" height="10">
+                <use href="./images/sprite.svg#icon-down-btn"></use>
+              </svg>`;
+  refs.categoryBtn.innerHTML = `Event category   <svg class="icon-down" width="15" height="10">
+                <use href="./images/sprite.svg#icon-down-btn"></use>
+              </svg>`;
   apiService.getWorldUpcomingEvents().then(data => {
     validation.galleryRender(data, cardListHbs);
     startPagination();

@@ -14,7 +14,12 @@ export default {
 
     const url = `${BASE_URL}events.json?page=${this.page}&size=${this.perPage}&sort=id,asc&apikey=${KEY}`;
     return fetch(url)
-      .then(r => r.json())
+      .then(r => {
+try {
+  return r.json()
+} catch (error) {
+  console.error(error);
+}})
       .then(r => {
         this.totalElements = r.page.totalElements;
         const data = r._embedded.events;        
@@ -30,7 +35,12 @@ export default {
     this.galleryStatus = 'BySearch';
     const url = `${BASE_URL}events.json?keyword=${searchQuery}&page=${this.page}&size=${this.perPage}&sort=id,asc&apikey=${KEY}`;
     return fetch(url)
-      .then(r => r.json())
+      .then(r => {
+try {
+  return r.json()
+} catch (error) {
+  console.error(error);
+}})
       .then(r => {
         this.totalElements = r.page.totalElements;
         const data = r._embedded?.events;
@@ -41,7 +51,12 @@ export default {
     this.galleryStatus = 'ByFilter';
     const url = `${BASE_URL}events.json?classificationId=${genreId}&page=${this.page}&size=${this.perPage}&countryCode=${countryCode}&sort=id,asc&apikey=${KEY}`;
     return fetch(url)
-      .then(r => r.json())
+      .then(r => {
+try {
+  return r.json()
+} catch (error) {
+  console.error(error);
+}})
       .then(r => {       
         this.totalElements = r.page.totalElements;
         const data = r._embedded?.events;

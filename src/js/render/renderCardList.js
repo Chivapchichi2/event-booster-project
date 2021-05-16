@@ -33,3 +33,4 @@ window.addEventListener('resize', debounce(e => {
       return;
   }
 }, 300));
+validation.heroTitleAnimation();
