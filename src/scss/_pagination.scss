@@ -154,6 +154,7 @@
 }
 .tui-pagination .tui-is-disabled:hover {
   background: inherit;
+  box-shadow: none;
   cursor: default;
   transform: scale(1.05);
 }
