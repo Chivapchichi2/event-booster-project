@@ -17,7 +17,8 @@ let ticketId = 0;
 let isCard = null;
 
 function onTicketClick(e) {
-document.removeEventListener('click', toggleListenerOnForm);
+    document.removeEventListener('click', toggleListenerOnForm);
+    document.addEventListener('keydown', onTicketClick)
     let idArr = [];
     document.querySelectorAll('.card-img-div')
         .forEach(item => {
@@ -26,12 +27,12 @@ document.removeEventListener('click', toggleListenerOnForm);
 
     isCard = e.target.closest('.card-img-div');    
     if (!isCard) {
-        if (e.target.id === 'p') {
+        if (e.target.id === 'p' || e.code === 'ArrowLeft'|| e.code === 'ArrowDown') {
             if (idArr.indexOf(ticketId) !== 0) {
                 ticketId = idArr[idArr.indexOf(ticketId) - 1]
             } else { ticketId = idArr[idArr.length - 1] }
         }
-        if (e.target.id === 'n') {
+        if (e.target.id === 'n' || e.code === 'ArrowRight'|| e.code === 'ArrowUp') {
             if (idArr.indexOf(ticketId) !== idArr.length - 1) {
                 ticketId = idArr[idArr.indexOf(ticketId) + 1]
             } else { ticketId = idArr[0] }
@@ -75,6 +76,7 @@ function onMoreBtnClick(e) {
 
 function closeModal() {
     document.addEventListener('click', toggleListenerOnForm);
+    document.removeEventListener('keydown', onTicketClick)
     refs.ticketInfoContainer.innerHTML = ''
     refs.modalMoreInfo.classList.add('is-hidden')
     refs.modalMoreInfo.innerHTML = ''
@@ -93,8 +95,8 @@ function onBdpClick(e) {
     closeModal();
 }
 
-function onEscCloseModal(evt) {
-    if (evt.code === 'Escape') {
+function onEscCloseModal(e) {
+    if (e.code === 'Escape') {
         closeModal();
         validation.closeFormMenu();
     }

@@ -37,7 +37,7 @@ export default {
     return id;
   },
   modalPosterUrl(data) {    
-    data.images[0].url = data.images.find(item => item.width === 1024 && item.height === 683).url;
+    data.images[0].url = data.images.find(item => item.width === 640 && item.height === 360).url;
     data.images[1].url = data.images.find(item => item.width === 205 && item.height === 115).url;    
     return data;
   },
