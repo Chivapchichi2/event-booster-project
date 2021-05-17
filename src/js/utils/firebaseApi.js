@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import * as firebaseUi from 'firebaseui';
+import * as firebaseui from 'firebaseui';
 import "firebase/auth";
 import 'firebaseui/dist/firebaseui.css';
 
@@ -19,8 +19,7 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-      alert('Well done');
-      console.log(authResult);
+      alert('Access successful. Welcome aboard!');
       // User successfully signed in.
       // Return type determines whether we continue the redirect automatically
       // or whether we leave that to developer to handle.
