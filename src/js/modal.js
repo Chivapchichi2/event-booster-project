@@ -10,14 +10,19 @@ refs.ticketModal.addEventListener('click', onBdpClick)
 refs.modalMoreInfoBtn.addEventListener('click', onMoreBtnClick)
 window.addEventListener('keydown', onEscCloseModal)
 
-refs.modalPrev.addEventListener('click', onTicketClick)
-refs.modalNext.addEventListener('click', onTicketClick)
+// refs.modalPrev.addEventListener('click', onTicketClick)
+// refs.modalNext.addEventListener('click', onTicketClick)
 
 let ticketId = 0;
 let isCard = null;
 
 function onTicketClick(e) {
+    if (e.target.classList.contains('js-geolocation-btn')) {
+        return
+    }
     document.removeEventListener('click', toggleListenerOnForm);
+    refs.modalPrev.addEventListener('click', onTicketClick)
+    refs.modalNext.addEventListener('click', onTicketClick)
     document.addEventListener('keydown', onTicketClick)
     let idArr = [];
     document.querySelectorAll('.card-img-div')
@@ -27,12 +32,17 @@ function onTicketClick(e) {
 
     isCard = e.target.closest('.card-img-div');    
     if (!isCard) {
-        if (e.target.id === 'p' || e.code === 'ArrowLeft'|| e.code === 'ArrowDown') {
+        console.log(e.target);
+        console.log(e.code);
+        console.log(idArr);
+        console.log(ticketId);
+
+        if (e.code === 'ArrowLeft' || e.code === 'ArrowDown'|| e.target.id === 'p') {            
             if (idArr.indexOf(ticketId) !== 0) {
                 ticketId = idArr[idArr.indexOf(ticketId) - 1]
             } else { ticketId = idArr[idArr.length - 1] }
         }
-        if (e.target.id === 'n' || e.code === 'ArrowRight'|| e.code === 'ArrowUp') {
+        if (e.code === 'ArrowRight' || e.code === 'ArrowUp'|| e.target.id === 'n') {             
             if (idArr.indexOf(ticketId) !== idArr.length - 1) {
                 ticketId = idArr[idArr.indexOf(ticketId) + 1]
             } else { ticketId = idArr[0] }
@@ -77,6 +87,8 @@ function onMoreBtnClick(e) {
 function closeModal() {
     document.addEventListener('click', toggleListenerOnForm);
     document.removeEventListener('keydown', onTicketClick)
+    refs.modalPrev.removeEventListener('click', onTicketClick)
+    refs.modalNext.removeEventListener('click', onTicketClick)
     refs.ticketInfoContainer.innerHTML = ''
     refs.modalMoreInfo.classList.add('is-hidden')
     refs.modalMoreInfo.innerHTML = ''

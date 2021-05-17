@@ -42,7 +42,7 @@ export default {
     return data;
   },
   eventInfo(data) {
-    data.info ? data.info = data.info : data.info = 'To more information please call to administrate'
+    data.info ? data.info = data.info : data.info = 'To get information about thtis event, contact the administrator using the links in contacts'
     return data
   },
   eventPriceRanges(data) {

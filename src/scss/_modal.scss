@@ -158,14 +158,15 @@
 }
 
 .ticket-poster-wrapper {
-  width: 50%;
   @media screen and (min-width: 1200px) {
-    height: 641px;
+    height: 360px;
+    width: 60%;
     object-fit: contain;
     object-position: center;
     overflow: hidden;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 50%;
     // width: 233px;
     height: 416px;
     object-fit: contain;
@@ -320,12 +321,14 @@
       fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   @media screen and (min-width: 1200px) {
-    margin-top: 17px;
-    margin-left: 305px;
-    border: 1px solid $modal-btn;
+    position: absolute;
+    top: 805px;
+    left: 200px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    margin-left: 120px;
+    position: absolute;
+    top: 640px;
+    left: 130px;
     border: 1px solid $accent;
   }
 }
@@ -411,23 +414,64 @@
   margin-top: 20px;
 }
 
-.prev-next {
-  display: flex;
-}
+// .prev-next {
+//   display: flex;
+// }
 
 .prev-next-itm {
-  margin: 10px 5px 0;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    position: absolute;
+  }
+  @media screen and (min-width: 1200px) {
+    top: 50%;
+    &:first-child {
+      left: 120px;
+    }
+    &:last-child {
+      right: 120px;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    top: 50%;
+    &:first-child {
+      left: 5px;
+    }
+    &:last-child {
+      right: 5px;
+    }
+  }
 }
 
 .prev-next-btn {
   cursor: pointer;
   color: $accent;
-  background-color: $modal-bg;
+  background-color: rgba(255, 255, 255, 0);
   border-color: $accent;
-  border-radius: 15px 0px;
-  padding: 5px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  padding: 15px;
+  fill: $input-bg;
   &:hover,
   &:focus {
     transform: scale(1.2);
+  }
+}
+
+.slide-button-svg {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  @media screen and (max-width: 320px) {
+    display: none;
+  }
+  &:hover {
+    fill: $white;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+      0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
   }
 }
