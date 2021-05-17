@@ -26,4 +26,5 @@ export default {
   evtInfoLess: document.getElementById('less'),
   modalPrev: document.getElementById('p'),
   modalNext: document.getElementById('n'),
+  myButton: document.getElementById('myBtn'),
 }

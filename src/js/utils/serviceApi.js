@@ -26,15 +26,6 @@ export default {
       console.log(error);
     }
   },
-  incrementPage() {
-    this.page += 1;
-  },
-  decrementPage() {
-    if (this.page === 1) {
-      return
-    }
-    this.page -= 1;
-  },
   resetPage() {
     this.page = 1;
   },

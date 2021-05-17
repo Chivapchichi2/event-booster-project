@@ -1,27 +1,31 @@
-const mybutton = document.getElementById('myBtn');
+import refs from './utils/refs';
+const debounce = require('lodash.debounce');
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function () {
-  scrollFunction();
-};
+window.onscroll = debounce(scrollFunction, 250);
+
+refs.myButton.addEventListener('click', onScrollToTop);
 
 function scrollFunction() {
   if (
     document.body.scrollTop > 100 ||
     document.documentElement.scrollTop > 100
   ) {
-    mybutton.style.display = 'block';
+    refs.myButton.style.display = 'block';
+    refs.myButton.classList.add('animate__bounceInDown');
+    refs.myButton.classList.remove('animate__bounceOutUp');
   } else {
-    mybutton.style.display = 'none';
+    refs.myButton.style.display = 'none';
+    refs.myButton.classList.remove('animate__bounceInDown');
   }
 }
-mybutton.addEventListener('click', e => {
-  e.preventDefault();
-  scrollFunction();
-  window.scrollTo({
-  top: 100,
-  left: 100,
-  behavior: 'smooth'
-});
-});
 
+function onScrollToTop() {
+  refs.myButton.classList.add('animate__bounceOutUp');
+  window.scrollTo({
+    top: 100,
+    left: 100,
+    behavior: 'smooth',
+  });
+}
+
+export default onScrollToTop;
