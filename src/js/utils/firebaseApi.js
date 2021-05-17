@@ -57,4 +57,5 @@ refs.iconIn.addEventListener('click', logOut);
 function logOut() {
   refs.iconOut.style.display = 'none';
   refs.iconIn.style.display = 'block';
+  firebase.auth().signOut();
 }
