@@ -27,4 +27,7 @@ export default {
   modalPrev: document.getElementById('p'),
   modalNext: document.getElementById('n'),
   myButton: document.getElementById('myBtn'),
-}
+  iconIn: document.querySelector('.icon-in'),
+  iconOut: document.querySelector('.icon-out'),
+  firebaseContainer: document.querySelector('.registration'),
+};
