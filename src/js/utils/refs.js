@@ -34,4 +34,6 @@ export default {
   openModal: document.querySelector('.openModalLink'),
   closeModal: document.querySelector('.prefix-close'),
   elModal: document.querySelector('#Modal'),
+  theme: document.querySelector('.theme'),
+  categoryBtn: document.querySelector('[name="category"]'),
 };
