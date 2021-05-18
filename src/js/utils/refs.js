@@ -11,8 +11,6 @@ export default {
   modalMoreInfo: document.querySelector('.more-info-list'),
   modalMoreInfoBtn: document.querySelector('.more-information'),
   pagination: document.querySelector('.tui-pagination'),
-  countryMenu: document.querySelector('#country'),
-  categoryMenu: document.querySelector('#category'),
   countryBtn: document.querySelector('.js-countryBtn'),
   categoryBtn: document.querySelector('.js-categoryBtn'),
   geoModal: document.querySelector('.js-geolocation-modal'),
