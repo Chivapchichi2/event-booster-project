@@ -1,6 +1,16 @@
 import refs from './refs';
 
 export default {
+  buttonClose:`<button
+                  type="button"
+                  class="prefix-close registration-closeBtn"
+                  title="Close"
+                  data-action="close-pop-up"
+                >
+                  <svg class="team-close-popup-btn">
+                    <use href="./images/sprite.svg#icon-close-icon"></use>
+                  </svg>
+                </button>`,
   signedUser(url, name) {
    refs.registrationBtn.innerHTML = `Sign out
           <svg class="svg-menu" data-sign='out' aria-label="log-button">
@@ -21,8 +31,18 @@ export default {
   },
   onEscCloseRegModal(e) {
     if (e.code === 'Escape') {
-      refs.firebaseContainer.innerHTML = '';
-      this.removeRegListeners();
-  }
-},
+      this.closeRegModal()
+    }
+  },
+  onBackdropOrCloseBtnCloseRegModal(e) {
+    if (e.target) {
+      this.closeRegModal()
+    }
+  },
+  closeRegModal() {
+    refs.registrationBackdrop.classList.add('is-hidden');
+    this.removeRegListeners()},
+  addCloseBtn() {
+    refs.firebaseContainer.insertAdjacentHTML('beforeend', this.buttonClose);
+  },
 }

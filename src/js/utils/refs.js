@@ -32,4 +32,5 @@ export default {
   elModal: document.querySelector('#Modal'),
   theme: document.querySelector('.theme'),
   categoryBtn: document.querySelector('[name="category"]'),
+  registrationBackdrop: document.getElementById('registration-backdrop'),
 };

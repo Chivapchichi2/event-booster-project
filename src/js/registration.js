@@ -13,8 +13,9 @@ refs.registrationBtn.addEventListener('click', () => {
     firebaseFunctions.removeRegListeners();
     return
   }
-
+  // refs.firebaseContainer.classList.remove('is-hidden');
+  refs.registrationBackdrop.classList.remove('is-hidden');
   registration.start('#firebaseui-auth-container');
+  firebaseFunctions.addCloseBtn();
   firebaseFunctions.addRegListeners();
-  console.log('ok1');
 });
