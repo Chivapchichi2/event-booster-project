@@ -1,6 +1,7 @@
 {{#each _embedded.attractions}}
 <li class="more-info-itms">{{name}}
     <ul class="author-links-list">
+        {{#if this.externalLinks.wiki}}
         <li class="more-info-itm">
             <a href="{{externalLinks.wiki.0.url}}" class="more-info-link" target="_blank">
                 <svg class="more-info-icon">
@@ -8,6 +9,8 @@
                 </svg>
             </a>
         </li>
+        {{/if}}
+        {{#if this.externalLinks.homepage}}
         <li class="more-info-itm">
             <a href="{{externalLinks.homepage.0.url}}" class="more-info-link" target="_blank">
                 <svg class="more-info-icon">
@@ -15,6 +18,8 @@
                 </svg>
             </a>
         </li>
+        {{/if}}
+        {{#if this.externalLinks.facebook}}
         <li class="more-info-itm">
             <a href="{{externalLinks.facebook.0.url}}" class="more-info-link" target="_blank">
                 <svg class="more-info-icon">
@@ -22,6 +27,8 @@
                 </svg>
             </a>
         </li>
+        {{/if}}
+        {{#if this.externalLinks.twitter}}
         <li class="more-info-itm">
             <a href="{{externalLinks.twitter.0.url}}" class="more-info-link" target="_blank">
                 <svg class="more-info-icon">
@@ -29,6 +36,43 @@
                 </svg>
             </a>
         </li>
+        {{/if}}
+        {{#if this.externalLinks.google}}
+        <li class="more-info-itm">
+            <a href="{{externalLinks.google.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-google"></use>
+                </svg>
+            </a>
+        </li>
+        {{/if}}
+        {{#if this.externalLinks.youtube}}
+        <li class="more-info-itm">
+            <a href="{{externalLinks.youtube.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-youtube"></use>
+                </svg>
+            </a>
+        </li>
+        {{/if}}
+        {{#if this.externalLinks.itunes}}
+        <li class="more-info-itm">
+            <a href="{{externalLinks.itunes.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-itunes"></use>
+                </svg>
+            </a>
+        </li>
+        {{/if}}
+        {{#if this.externalLinks.lastfm}}
+        <li class="more-info-itm">
+            <a href="{{externalLinks.lastfm.0.url}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-lastfm"></use>
+                </svg>
+            </a>
+        </li>
+        {{/if}}
     </ul>
 </li>
 {{/each}}

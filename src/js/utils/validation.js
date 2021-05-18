@@ -42,7 +42,7 @@ export default {
     return data;
   },
   eventInfo(data) {
-    data.info ? data.info = data.info : data.info = 'To more information please call to administrate'
+    data.info ? data.info = data.info : data.info = 'To get information about this event, contact the administrator using the links in contacts'
     return data
   },
   eventPriceRanges(data) {
@@ -79,24 +79,33 @@ export default {
             }).filter(item => item !== undefined)   
         }
   },
-  moreInfoLink(r, refs) {
+  moreInfoLink(r, refs) {   
     if (!r?._embedded?.attractions || r?._embedded?.attractions?.length === 0) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
-            class = "more-err-link"
-            target="_blank">
-            try to find more about
-            ${r.name}
-            in Google</a>`
+      r._embedded.attractions = [{
+        externalLinks: {
+          google: [{
+            url: `https://www.google.com/search?q=${r.name}`
+          }]
+        }
+      }]
+      refs.modalMoreInfo.innerHTML = moreInfo(r)
     } else if (!r._embedded.attractions[0].externalLinks) {
-      refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
-            class = "more-err-link"
-            target="_blank">
-            try to find more about
-            ${r._embedded.attractions[0].name}
-            in Google</a>`
+      r._embedded.attractions = [{
+        externalLinks: {
+          google: [{
+            url: `https://www.google.com/search?q=${r.name}`
+          }]
+        }
+      }]
+      refs.modalMoreInfo.innerHTML = moreInfo(r)
+    } else if (!r._embedded.attractions[0].externalLinks.google) {
+       r._embedded.attractions[0].externalLinks.google = [{
+      url: `https://www.google.com/search?q=${r.name}`
+      }]
+      refs.modalMoreInfo.innerHTML = moreInfo(r)
     } else {
       refs.modalMoreInfo.innerHTML = moreInfo(r)
-    }
+    }    
   },
   checkChangePerPage(obj, page) {
     return obj.perPage === page;
@@ -143,7 +152,7 @@ export default {
             more: document.getElementById('more'),
             less: document.getElementById('less'),
         }
-        if (elems.info.textContent.length > 125) {
+    if (elems.info.textContent.length > 90) {          
             elems.more.classList.remove('is-hidden')
         }
         elems.more.addEventListener('click', () => {
