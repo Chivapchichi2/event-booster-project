@@ -10,9 +10,6 @@ refs.ticketModal.addEventListener('click', onBdpClick)
 refs.modalMoreInfoBtn.addEventListener('click', onMoreBtnClick)
 window.addEventListener('keydown', onEscCloseModal)
 
-// refs.modalPrev.addEventListener('click', onTicketClick)
-// refs.modalNext.addEventListener('click', onTicketClick)
-
 let ticketId = 0;
 let isCard = null;
 
@@ -32,12 +29,7 @@ function onTicketClick(e) {
         })        
 
     isCard = e.target.closest('.card-img-div');    
-    if (!isCard) {
-        // console.log(e.target);
-        // console.log(e.code);
-        // console.log(idArr);
-        // console.log(ticketId);
-
+    if (!isCard) { 
         if (e.code === 'ArrowLeft' || e.code === 'ArrowDown'|| e.target.id === 'p') {            
             if (idArr.indexOf(ticketId) !== 0) {                
                 ticketId = idArr[idArr.indexOf(ticketId) - 1]                
@@ -68,10 +60,7 @@ function onTicketClick(e) {
         
         if (!r.priceRanges || !r.priceRanges.includes({type: "vip",})) {
             document.querySelector('.vip').style.pointerEvents = 'none'
-        }
-        // if (!r.priceRanges || !r.priceRanges.includes({type: "standard",})) {
-        //     document.querySelector('.std').style.pointerEvents = 'none'
-        // }
+        } 
         
         return r;
     }).catch(console.log);
