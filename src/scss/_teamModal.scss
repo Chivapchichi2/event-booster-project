@@ -103,8 +103,8 @@ body .prefix-Dialog.active {
 }
 /* !End team Modal */
 
-/*ul*/
-.card-list {
+// /*ul*/
+.team-card-list {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -115,7 +115,7 @@ body .prefix-Dialog.active {
 }
 
 /*li*/
-.card-item {
+.team-card-item {
   cursor: pointer;
   position: relative;
   text-align: center;
@@ -133,7 +133,7 @@ body .prefix-Dialog.active {
       box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
         0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
     }
-    & .card-name {
+    & .team-card-name {
       color: black;
       text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
         0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
@@ -142,34 +142,34 @@ body .prefix-Dialog.active {
 }
 
 @media screen and (max-width: 767px) {
-  .card-item {
+  .team-card-item {
     width: calc((100% - 14px) / 2);
     margin-right: 14px;
     margin-bottom: 39px;
   }
-  .card-item:nth-child(2n) {
+  .team-card-item:nth-child(2n) {
     margin-right: 0;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
-  .card-item {
+  .team-card-item {
     width: calc((100% - 27px * 2) / 3);
     margin-right: 27px;
     margin-bottom: 58px;
   }
-  .card-item:nth-child(3n) {
+  .team-card-item:nth-child(3n) {
     margin-right: 0;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .card-item {
+  .team-card-item {
     width: calc((100% - 70px * 3) / 4);
     margin-right: 70px;
     margin-bottom: 63px;
   }
-  .card-item:nth-child(4n) {
+  .team-card-item:nth-child(4n) {
     margin-right: 0;
   }
 }
@@ -229,7 +229,7 @@ body .prefix-Dialog.active {
     height: 170px;
   }
 }
-.status {
+.team-status {
   margin-top: 8px;
   color: $white;
 }

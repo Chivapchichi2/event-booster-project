@@ -105,34 +105,31 @@
     </div>
 
     <header class="container header">
-      <a href="#" class="logo">
+      <a href="#" class="logo" aria-label="logo">
         <svg class="icon-logo" width="110" height="90">
           <use href="./images/sprite.svg#icon-logo-mobile"></use>
         </svg>
       </a>
 
       <div class="bgLogInBtn">
-        <a href="#" class="logo">
+        <!-- <a href="#" class="logo">
           <svg class="icon-logo" width="110" height="90">
             <use href="./images/mobile/bg-logo.svg"></use>
           </svg>
-        </a>
-      </div>
-      <button
-        type="button"
-        class="menu-button"
-        aria-expanded="false"
-        aria-controls="menu"
-      >
-        <svg
-          class="burger-menu"
-          data-menu-button
-          aria-label="Переключатель мобильного меню"
+        </a> -->
+        <button
+          type="button"
+          class="menu-button js-menu-button"
+          aria-expanded="false"
+          aria-controls="menu"
         >
-          <use class="icon-in" href="./images/sprite.svg#icon-log-in"></use>
-          <use class="icon-out" href="./images/sprite.svg#icon-exit"></use>
-        </svg>
-      </button>
+          Sign in
+          <svg class="svg-menu" data-menu-button aria-label="log-button">
+            <use class="icon-in" href="./images/sprite.svg#icon-log-in"></use>
+            <use class="icon-out" href="./images/sprite.svg#icon-exit"></use>
+          </svg>
+        </button>
+      </div>
     </header>
 
     <section class="overlay container">
@@ -233,8 +230,8 @@
             <div id="Modal" class="prefix-Dialog">
               <div class="prefix-div">
                 <div class="prefix-tabs">
-                  <ul class="card-list">
-                    <li class="card-item">
+                  <ul class="team-card-list">
+                    <li class="team-card-item">
                       <a
                         href="http://github.com/Chivapchichi2"
                         target="_blank"
@@ -249,11 +246,11 @@
                           />
                         </div>
 
-                        <h2 class="card-name">Pavel Ivchenko</h2>
-                        <p class="status">Team Lead</p></a
+                        <h2 class="team-card-name card-name">Pavel Ivchenko</h2>
+                        <p class="team-status">Team Lead</p></a
                       >
                     </li>
-                    <li class="card-item">
+                    <li class="team-card-item">
                       <a
                         href="https://github.com/KalVasFlame"
                         target="_blank"
@@ -267,11 +264,13 @@
                             alt="#"
                           />
                         </div>
-                        <h2 class="card-name">Vitaliy Spilnyk</h2>
-                        <p class="status">Team Member</p></a
+                        <h2 class="team-card-name card-name">
+                          Vitaliy Spilnyk
+                        </h2>
+                        <p class="team-status">Team Member</p></a
                       >
                     </li>
-                    <li class="card-item">
+                    <li class="team-card-item">
                       <a
                         href="https://github.com/VVariychuk"
                         target="_blank"
@@ -285,11 +284,13 @@
                             alt="#"
                           />
                         </div>
-                        <h2 class="card-name">Владимир Варийчук</h2>
-                        <p class="status">Team member</p></a
+                        <h2 class="team-card-name card-name">
+                          Владимир Варийчук
+                        </h2>
+                        <p class="team-status">Team member</p></a
                       >
                     </li>
-                    <li class="card-item">
+                    <li class="team-card-item">
                       <a
                         href="https://github.com/RuslanGolovach"
                         target="_blank"
@@ -303,11 +304,13 @@
                             alt="#"
                           />
                         </div>
-                        <h2 class="card-name">Ruslan Golovach</h2>
-                        <p class="status">Team member</p></a
+                        <h2 class="team-card-name card-name">
+                          Ruslan Golovach
+                        </h2>
+                        <p class="team-status">Team member</p></a
                       >
                     </li>
-                    <li class="card-item">
+                    <li class="team-card-item">
                       <a
                         href="https://github.com/Lemout17"
                         target="_blank"
@@ -321,11 +324,13 @@
                             alt="#"
                           />
                         </div>
-                        <h2 class="card-name">Vladyslav Safin</h2>
-                        <p class="status">Team member</p></a
+                        <h2 class="team-card-name card-name">
+                          Vladyslav Safin
+                        </h2>
+                        <p class="team-status">Team member</p></a
                       >
                     </li>
-                    <li class="card-item">
+                    <li class="team-card-item">
                       <a
                         href="http://github.com/iromjalis"
                         target="_blank"
@@ -339,8 +344,8 @@
                             alt="#"
                           />
                         </div>
-                        <h2 class="card-name">Irina Romjalis</h2>
-                        <p class="status">Scram Master</p></a
+                        <h2 class="team-card-name card-name">Irina Romjalis</h2>
+                        <p class="team-status">Scram Master</p></a
                       >
                     </li>
                   </ul>
