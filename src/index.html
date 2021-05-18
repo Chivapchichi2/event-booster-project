@@ -212,29 +212,28 @@
     </section>
 
     <div class="backdrop is-hidden">
-      <div class="modal animate__animated animate__fadeIn">
-        <button class="modal-close">
-          <svg class="close-modal-btn">
-            <use href="./images/sprite.svg#icon-close-icon"></use>
-          </svg>
-        </button>
-        <div class="ticket-info-wrapper">
-          <div class="ticket-info-container"></div>
-          <div class="more-info-container">
-            <button class="more-information">more from this author</button>
-            <ul class="more-info-list is-hidden"></ul>
-          </div>          
+      <div class="modal-wrapper">
+        <div class="modal animate__animated animate__fadeIn">
+          <button class="modal-close">
+            <svg class="close-modal-btn">
+              <use href="./images/sprite.svg#icon-close-icon"></use>
+            </svg>
+          </button>
+          <div class="ticket-info-wrapper">
+            <div class="ticket-info-container"></div>
+            <div class="more-info-container">
+              <button class="more-information">more from this author</button>
+              <ul class="more-info-list is-hidden"></ul>
+            </div>
+          </div>
         </div>
-      </div>
-      <ul class="prev-next">
-            <li class="prev-next-itm">
-              <button class="prev-next-btn" id="p">prev</button>
-            </li>
-            <li class="prev-next-itm">
-              <button class="prev-next-btn" id="n">next</button>
-            </li>
-          </ul>
+        <div class="p-n-b">
+          <button class="prev-next-btn" id="p">«</button>
+          <button class="prev-next-btn" id="n">»</button>
+        </div>
+      </div>     
     </div>
+    
     <div class="geolocation-backdrop js-geolocation-backdrop is-hidden">
       <div id="map"
         class="

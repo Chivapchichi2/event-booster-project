@@ -37,12 +37,12 @@ export default {
     return id;
   },
   modalPosterUrl(data) {    
-    data.images[0].url = data.images.find(item => item.width === 640 && item.height === 360).url;
+    data.images[0].url = data.images.find(item => item.width === 1024 && item.height === 683).url;
     data.images[1].url = data.images.find(item => item.width === 205 && item.height === 115).url;    
     return data;
   },
   eventInfo(data) {
-    data.info ? data.info = data.info : data.info = 'To get information about thtis event, contact the administrator using the links in contacts'
+    data.info ? data.info = data.info : data.info = 'To get information about this event, contact the administrator using the links in contacts'
     return data
   },
   eventPriceRanges(data) {
@@ -81,19 +81,35 @@ export default {
   },
   moreInfoLink(r, refs) {
     if (!r?._embedded?.attractions || r?._embedded?.attractions?.length === 0) {
-            refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
-            class = "more-err-link"
-            target="_blank">
-            try to find more about
-            ${r.name}
-            in Google</a>`
+      r._embedded.attractions = [{
+        externalLinks: {
+          google: [{
+            url: `https://www.google.com/search?q=${r.name}`
+          }]
+        }
+      }]
+      refs.modalMoreInfo.innerHTML = moreInfo(r)
+            // refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r.name}"
+            // class = "more-err-link"
+            // target="_blank">
+            // try to find more about
+            // ${r.name}
+            // in Google</a>`
     } else if (!r._embedded.attractions[0].externalLinks) {
-      refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
-            class = "more-err-link"
-            target="_blank">
-            try to find more about
-            ${r._embedded.attractions[0].name}
-            in Google</a>`
+      r._embedded.attractions = [{
+        externalLinks: {
+          google: [{
+            url: `https://www.google.com/search?q=${r.name}`
+          }]
+        }
+      }]
+      refs.modalMoreInfo.innerHTML = moreInfo(r)
+      // refs.modalMoreInfo.innerHTML = `<a href="https://www.google.com/search?q=${r._embedded.attractions[0].name}"
+      //       class = "more-err-link"
+      //       target="_blank">
+      //       try to find more about
+      //       ${r._embedded.attractions[0].name}
+      //       in Google</a>`
     } else {
       refs.modalMoreInfo.innerHTML = moreInfo(r)
     }

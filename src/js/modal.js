@@ -16,7 +16,7 @@ window.addEventListener('keydown', onEscCloseModal)
 let ticketId = 0;
 let isCard = null;
 
-function onTicketClick(e) {
+function onTicketClick(e) {   
     if (e.target.classList.contains('js-geolocation-btn')) {
         return
     }
@@ -24,6 +24,7 @@ function onTicketClick(e) {
     refs.modalPrev.addEventListener('click', onTicketClick)
     refs.modalNext.addEventListener('click', onTicketClick)
     document.addEventListener('keydown', onTicketClick)
+    refs.ticketInfoContainer.innerHTML = ''
     let idArr = [];
     document.querySelectorAll('.card-img-div')
         .forEach(item => {
@@ -32,27 +33,25 @@ function onTicketClick(e) {
 
     isCard = e.target.closest('.card-img-div');    
     if (!isCard) {
-        console.log(e.target);
-        console.log(e.code);
-        console.log(idArr);
-        console.log(ticketId);
+        // console.log(e.target);
+        // console.log(e.code);
+        // console.log(idArr);
+        // console.log(ticketId);
 
         if (e.code === 'ArrowLeft' || e.code === 'ArrowDown'|| e.target.id === 'p') {            
-            if (idArr.indexOf(ticketId) !== 0) {
-                ticketId = idArr[idArr.indexOf(ticketId) - 1]
-            } else { ticketId = idArr[idArr.length - 1] }
+            if (idArr.indexOf(ticketId) !== 0) {                
+                ticketId = idArr[idArr.indexOf(ticketId) - 1]                
+            } else { ticketId = idArr[idArr.length - 1]}
         }
         if (e.code === 'ArrowRight' || e.code === 'ArrowUp'|| e.target.id === 'n') {             
-            if (idArr.indexOf(ticketId) !== idArr.length - 1) {
-                ticketId = idArr[idArr.indexOf(ticketId) + 1]
-            } else { ticketId = idArr[0] }
+            if (idArr.indexOf(ticketId) !== idArr.length - 1) {                
+                ticketId = idArr[idArr.indexOf(ticketId) + 1]                
+            } else { ticketId = idArr[0]}
         }
     } else {
         ticketId = isCard.getAttribute('data-id')
-    } 
+    }
     
-    refs.ticketInfoContainer.innerHTML = ''
-        
     apiService.getEventById(ticketId).then((r) => {
 
         validation.modalPosterUrl(r)
@@ -101,10 +100,10 @@ function closeModal() {
 }
 
 function onBdpClick(e) {
-    if (e.target !== refs.ticketModal) {
-        return
+    if (e.target.classList.contains('modal-wrapper') || e.target.classList.contains('backdrop')) {
+        closeModal();
     }
-    closeModal();
+    
 }
 
 function onEscCloseModal(e) {
