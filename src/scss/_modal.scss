@@ -14,8 +14,6 @@
   background-color: $backdrop;
   padding: 24px;
   z-index: 99;
-  opacity: 1;
-  // overflow-y: scroll;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &.is-hidden {
     display: none;
@@ -69,7 +67,7 @@
     // margin-bottom: 55px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    height: 95%;
+    height: 99%;
     width: 90%;
     border-radius: 150px 0px;
     // margin-top: 140px;
@@ -94,19 +92,19 @@
   fill: $modal-btn;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    box-shadow: 1px 1px 3px rgba(181, 132, 214, 0.12),
-      1px 1px 1px rgba(183, 79, 209, 0.14), 1px 2px 1px rgba(167, 128, 185, 0.2);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
   &:hover .close-modal-btn,
   &:focus .close-modal-btn {
-    transform: scale(0.7);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    animation: animate180 250ms ease;
   }
+  @keyframes animate180 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
+  }
+
   @media screen and (min-width: 1200px) {
     top: 30px;
     right: 30px;
@@ -173,7 +171,8 @@
 
 .ticket-poster-wrapper {
   @media screen and (min-width: 1200px) {
-    height: 505px;
+    border-radius: 20% 0 0 0;
+    height: 31em;
     width: 60%;
     object-fit: contain;
     object-position: center;
@@ -264,6 +263,9 @@
   //   @media screen and (min-width: 1200px) {
   //     max-height: 65px;
   //   }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    max-height: 80px;
+  }
 }
 
 #more,
@@ -334,7 +336,7 @@
   }
   @media screen and (min-width: 1200px) {
     position: absolute;
-    top: 730px;
+    top: 710px;
     left: 200px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
@@ -386,6 +388,7 @@
 .author-links-list {
   margin-top: 15px;
   display: flex;
+  text-align: center;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -396,8 +399,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: $modal-btn;
-  fill: $modal-bg;
+  background-color: $modal-bg;
+  border: 2px solid $accent;
+  // border-style: ridge;
+  // fill: $modal-bg;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -408,6 +413,7 @@
 }
 
 .more-info-icon {
+  fill: $modal-btn;
   width: 20px;
   height: 20px;
   @media screen and (min-width: 768px) {
@@ -475,21 +481,5 @@
     &#n {
       right: -2%;
     }
-  }
-}
-
-.slide-button-svg {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  transition: transform 250ms cubic-bezier(0.165, 0.84, 0.44, 1);
-  @media screen and (max-width: 320px) {
-    display: none;
-  }
-  &:hover {
-    fill: $white;
-    transform: scale(1.05);
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
-      0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
   }
 }
