@@ -31,4 +31,6 @@ export default {
   iconOut: document.querySelector('.icon-out'),
   firebaseContainer: document.querySelector('.registration'),
   registrationBtn: document.querySelector('.js-menu-button'),
+  theme: document.querySelector('.theme'),
+  categoryBtn: document.querySelector('[name="category"]'),
 };
