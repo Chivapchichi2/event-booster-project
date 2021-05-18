@@ -12,3 +12,5 @@ import './js/pagination';
 import './js/utils/dropdown';
 import './js/subscribePopUp';
 import './js/utils/firebaseApi';
+import './js/teamModal';
+import './js/registration';

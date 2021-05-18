@@ -1,6 +1,39 @@
 .registration {
-  // display: none;
   position: absolute;
-  top: 0;
-  right: 0;
+  padding-top: 40px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  //   width: 50vw;
+  //   min-height: 25hw;
+  background-color: $dropdown-menu-bg;
+  border-radius: 40% 5px;
+  z-index: 99;
+  //   @media screen and (min-width: 320px) {
+  //     width: 100vw;
+  //   }
+  //   @media screen and (min-width: 768px) {
+  //     width: 300px;
+  //     min-height: 300px;
+  //     margin-top: 50px;
+  //     left: 50%;
+  //     top: 75%;
+  //     transform: translate(-50%, -50%);
+  //   }
+  & .firebaseui-container {
+    background: transparent;
+  }
+  & .firebaseui-idp-button {
+    border-radius: 30px 3px;
+    // background-color: transparent;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    opacity: 80%;
+    &:hover,
+    &:focus {
+      transform: scale(1.03);
+      box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+        0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
+    }
+  }
 }
