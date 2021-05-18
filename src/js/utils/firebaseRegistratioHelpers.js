@@ -1,7 +1,10 @@
 import refs from './refs';
 
 export default {
-  signedUser(url, name) { console.log(url, name); },
+  signedUser(url, name) {
+    refs.iconOut.style.display = 'none';
+      console.log(url, name);
+  },
   noSignedUser() {console.log('no user');},
 }
 // refs.iconOut.style.display = 'none';
