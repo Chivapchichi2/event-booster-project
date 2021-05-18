@@ -1,7 +1,7 @@
 .is-hidden {
   display: none;
   pointer-events: none;
-  z-index: 99;
+  z-index: 30;
 }
 
 .backdrop {
@@ -14,16 +14,27 @@
   background-color: $backdrop;
   padding: 24px;
   z-index: 99;
-  opacity: 1;
-  overflow-y: scroll;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &.is-hidden {
     display: none;
     pointer-events: none;
-    z-index: 99;
+    z-index: 30;
     & .modal {
       transform: translate(-50%, -50%) scale(1.1);
     }
+  }
+}
+
+.modal-wrapper {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0);
+  height: 100%;
+  padding: 0;
+  @media screen and (min-width: 1280px) {
+    padding-left: 173px;
+    padding-right: 173px;
+    width: 1280px;
+    margin: auto;
   }
 }
 
@@ -35,12 +46,13 @@
   min-width: 272px;
   width: 90%;
   overflow-y: scroll;
+  overflow-x: visible;
   background-color: $modal-bg;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 150px 0px;
-  margin-top: 115px;
-  margin-bottom: 35px;
+  // margin-top: 115px;
+  // margin-bottom: 35px;
   z-index: 99;
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -48,18 +60,18 @@
     width: 0;
   }
   @media screen and (min-width: 1200px) {
-    height: 1023px;
-    width: 930px;
-    border-radius: 300px 0px;
-    margin-top: 200px;
-    margin-bottom: 55px;
+    height: 95%;
+    max-width: 1024px;
+    border-radius: 31% 0;
+    // margin-top: 120px;
+    // margin-bottom: 55px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    height: 831px;
-    width: 595px;
-    border-radius: 300px 0px;
-    margin-top: 160px;
-    margin-bottom: 45px;
+    height: 99%;
+    width: 90%;
+    border-radius: 150px 0px;
+    // margin-top: 140px;
+    // margin-bottom: 45px;
   }
 }
 
@@ -68,32 +80,31 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  color: $modal-btn;
   background-color: $modal-bg;
   width: 30px;
   height: 30px;
   top: 25px;
   right: 25px;
-  border: 0;
+  border: 2px solid $accent;
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
   fill: $modal-btn;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    box-shadow: 1px 1px 3px rgba(181, 132, 214, 0.12),
-      1px 1px 1px rgba(183, 79, 209, 0.14), 1px 2px 1px rgba(167, 128, 185, 0.2);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
   &:hover .close-modal-btn,
   &:focus .close-modal-btn {
-    transform: scale(0.7);
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    animation: animate180 250ms ease;
   }
+  @keyframes animate180 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
+  }
+
   @media screen and (min-width: 1200px) {
     top: 30px;
     right: 30px;
@@ -115,11 +126,11 @@
   padding: 195px 15px 100px;
   text-align: center;
   @media screen and (min-width: 1200px) {
-    padding: 235px 30px 62px;
+    padding: 160px 30px 62px;
     text-align: left;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    padding: 141px 17px 55px 50px;
+    padding: 141px 17px 55px 17px;
     text-align: left;
   }
 }
@@ -143,7 +154,7 @@
   align-items: center;
 
   @media screen and (min-width: 1200px) {
-    top: 62px;
+    top: 25px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     top: 28px;
@@ -160,15 +171,16 @@
 
 .ticket-poster-wrapper {
   @media screen and (min-width: 1200px) {
-    width: 360px;
-    height: 641px;
+    border-radius: 20% 0 0 0;
+    height: 31em;
+    width: 60%;
     object-fit: contain;
     object-position: center;
     overflow: hidden;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    width: 233px;
-    height: 416px;
+    width: 55%;
+    height: 27em;
     object-fit: contain;
     object-position: center;
     overflow: hidden;
@@ -181,7 +193,7 @@
     display: block;
     max-width: max-content;
     height: 100%;
-    transform: translateX(-32%);
+    transform: translateX(-15%);
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: block;
@@ -193,9 +205,11 @@
 
 .ticket-info {
   @media screen and (min-width: 1200px) {
+    max-width: 450px;
     margin-left: 60px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
+    max-width: 265px;
     margin-left: 30px;
   }
 }
@@ -244,14 +258,13 @@
 }
 
 .info {
-  max-height: 100px;
+  max-height: 65px;
   overflow-y: hidden;
-
-  @media screen and (min-width: 1200px) {
-    max-height: 65px;
-  }
+  //   @media screen and (min-width: 1200px) {
+  //     max-height: 65px;
+  //   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    max-height: 130px;
+    max-height: 80px;
   }
 }
 
@@ -322,12 +335,14 @@
       fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   @media screen and (min-width: 1200px) {
-    margin-top: 17px;
-    margin-left: 305px;
-    border: 1px solid $modal-btn;
+    position: absolute;
+    top: 710px;
+    left: 200px;
   }
   @media screen and (min-width: 768px) and (max-width: 1199px) {
-    margin-left: 120px;
+    position: absolute;
+    top: 640px;
+    left: 15%;
     border: 1px solid $accent;
   }
 }
@@ -373,6 +388,7 @@
 .author-links-list {
   margin-top: 15px;
   display: flex;
+  text-align: center;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -383,8 +399,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: $modal-btn;
-  fill: $modal-bg;
+  background-color: $modal-bg;
+  border: 2px solid $accent;
+  // border-style: ridge;
+  // fill: $modal-bg;
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -395,6 +413,7 @@
 }
 
 .more-info-icon {
+  fill: $modal-btn;
   width: 20px;
   height: 20px;
   @media screen and (min-width: 768px) {
@@ -413,23 +432,54 @@
   margin-top: 20px;
 }
 
-.prev-next {
-  display: flex;
-}
-
-.prev-next-itm {
-  margin: 10px 5px 0;
+.p-n-b {
+  position: relative;
+  top: 50%;
 }
 
 .prev-next-btn {
+  font-size: 40px;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  display: none;
   cursor: pointer;
   color: $accent;
-  background-color: $modal-bg;
-  border-color: $accent;
-  border-radius: 15px 0px;
-  padding: 5px;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  padding: 15px;
   &:hover,
   &:focus {
-    transform: scale(1.2);
+    // fill: $white;
+    transform: scale(1.05);
+    // box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+    //   0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
+  }
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    position: absolute;
+    z-index: 119;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 45px;
+    height: 45px;
+    &#p {
+      top: 50%;
+      left: -12%;
+    }
+    &#n {
+      top: 50%;
+      right: -12%;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    &#p {
+      left: -2%;
+    }
+    &#n {
+      right: -2%;
+    }
   }
 }
