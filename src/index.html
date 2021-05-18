@@ -105,34 +105,31 @@
     </div>
 
     <header class="container header">
-      <a href="#" class="logo">
+      <a href="#" class="logo" aria-label="logo">
         <svg class="icon-logo" width="110" height="90">
           <use href="./images/sprite.svg#icon-logo-mobile"></use>
         </svg>
       </a>
 
       <div class="bgLogInBtn">
-        <a href="#" class="logo">
+        <!-- <a href="#" class="logo">
           <svg class="icon-logo" width="110" height="90">
             <use href="./images/mobile/bg-logo.svg"></use>
           </svg>
-        </a>
-      </div>
-      <button
-        type="button"
-        class="menu-button"
-        aria-expanded="false"
-        aria-controls="menu"
-      >
-        <svg
-          class="burger-menu"
-          data-menu-button
-          aria-label="Переключатель мобильного меню"
+        </a> -->
+        <button
+          type="button"
+          class="menu-button"
+          aria-expanded="false"
+          aria-controls="menu"
         >
-          <use class="icon-in" href="./images/sprite.svg#icon-log-in"></use>
-          <use class="icon-out" href="./images/sprite.svg#icon-exit"></use>
-        </svg>
-      </button>
+          Sign in
+          <svg class="svg-menu" data-menu-button aria-label="log-button">
+            <use class="icon-in" href="./images/sprite.svg#icon-log-in"></use>
+            <use class="icon-out" href="./images/sprite.svg#icon-exit"></use>
+          </svg>
+        </button>
+      </div>
     </header>
 
     <section class="overlay container">
