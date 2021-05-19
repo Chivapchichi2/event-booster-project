@@ -33,4 +33,6 @@ export default {
   theme: document.querySelector('.theme'),
   categoryBtn: document.querySelector('[name="category"]'),
   registrationBackdrop: document.getElementById('registration-backdrop'),
+  userData: document.getElementById('user'),
+  userName: document.querySelector('.user-name'),
 };

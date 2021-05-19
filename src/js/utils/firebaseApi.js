@@ -20,9 +20,7 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function (authResult) {
-    console.log(authResult);
-      firebaseFunctions.signedUser(authResult.photoURL, authResult.displayName);
-     
+      firebaseFunctions.closeRegModal();
       return false;
     },
     uiShown: function () {},
@@ -43,7 +41,7 @@ const uiConfig = {
 export default {
   initApp() {
         firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
+          if (user) {           
             firebaseFunctions.signedUser(user.photoURL, user.displayName);
           } else {
             firebaseFunctions.noSignedUser();
