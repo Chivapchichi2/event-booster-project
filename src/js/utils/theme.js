@@ -1,10 +1,10 @@
 import refs from '../utils/refs';
 
-console.log(refs.categoryBtn);
 refs.form.addEventListener('click', (e) => {
     setTimeout(() => {
         refs.theme.classList.remove('animate__fadeIn');
     },1500)
+
     if (e.target.textContent === 'Sports') {
         ResetTheme();
         refs.theme.classList.add('sport-theme');

@@ -1,0 +1,8 @@
+.map-container {
+  margin: 0 auto 30px;
+  display: none;
+
+  @media screen and (min-width: 1280px) {
+    display: block;
+  }
+}

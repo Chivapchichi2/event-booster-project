@@ -112,23 +112,23 @@
       </a>
 
       <div class="bgLogInBtn">
-        <!-- <a href="#" class="logo">
-          <svg class="icon-logo" width="110" height="90">
-            <use href="./images/mobile/bg-logo.svg"></use>
-          </svg>
-        </a> -->
         <button
           type="button"
-          class="menu-button js-menu-button"
+          class="menu-button js-menu-button user-pageBtn"
           aria-expanded="false"
           aria-controls="menu"
-        >
-          Sign in
-          <svg class="svg-menu" data-menu-button aria-label="log-button">
-            <use class="icon-in" href="./images/sprite.svg#icon-log-in"></use>
-            <use class="icon-out" href="./images/sprite.svg#icon-exit"></use>
-          </svg>
-        </button>
+        ></button>
+        <div id="user" class="user-data">
+          <img
+            class="user-image"
+            src="http://3.bp.blogspot.com/-CrGkU8X7yZY/U5d2BTp-hYI/AAAAAAAAIl8/ccmJHioTFT0/s40/anonymous-emoticon.png"
+            alt="Anonymous"
+          />
+          <!-- <p class="user-name">Anonymous</p> -->
+          <button class="user-pageBtn my-eventsBtn" type="button" aria-label="user-events">
+            My events
+          </button>
+        </div>
       </div>
     </header>
 
@@ -218,7 +218,11 @@
           </svg>
         </a>
       </main>
-
+<div class="main-container map-container js-map-container" w-type="map" w-tmapikey="pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz" w-googleapikey="AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0"
+  w-keyword="" w-theme="simple" w-colorscheme="light" w-width="800" w-height="286" w-size="100" w-border="1"
+  w-borderradius="4" w-radius="4000" w-period="year" w-layout="horizontal" w-attractionid="" w-promoterid=""
+  w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="custom" w-geoposition="on" w-source=""
+  w-latlong="50.8399054,27.6453201"></div>
       <footer class="footer">
         <div class="footer-container">
           <span class="footer-text">
@@ -227,8 +231,8 @@
               >Developed with &#10084;&#65039; by</span
             >
             <div class="openModalLink">GoIT Students</div>
-            <div id="Modal" class="prefix-Dialog">
-              <div class="prefix-div">
+            <div id="Modal" class="prefix-Dialog container">
+              <div class="prefix-div container">
                 <div class="prefix-tabs">
                   <ul class="team-card-list">
                     <li class="team-card-item">
@@ -241,7 +245,7 @@
                           <img
                             class="card-team-img"
                             loading="lazy"
-                            src="./images/PI.PNG"
+                            src="./images/team/PI.PNG"
                             alt="#"
                           />
                         </div>
@@ -260,7 +264,7 @@
                           <img
                             class="card-team-img"
                             loading="lazy"
-                            src="./images/VS.PNG"
+                            src="./images/team/VS.PNG"
                             alt="#"
                           />
                         </div>
@@ -280,12 +284,12 @@
                           <img
                             class="card-team-img"
                             loading="lazy"
-                            src="./images/VV.PNG"
+                            src="./images/team/VV.PNG"
                             alt="#"
                           />
                         </div>
                         <h2 class="team-card-name card-name">
-                          Владимир Варийчук
+                          Vladimir Variychuk
                         </h2>
                         <p class="team-status">Team member</p></a
                       >
@@ -300,7 +304,7 @@
                           <img
                             class="card-team-img"
                             loading="lazy"
-                            src="./images/RG.PNG"
+                            src="./images/team/RG.PNG"
                             alt="#"
                           />
                         </div>
@@ -320,7 +324,7 @@
                           <img
                             class="card-team-img"
                             loading="lazy"
-                            src="./images/VladS.PNG"
+                            src="./images/team/VladS.PNG"
                             alt="#"
                           />
                         </div>
@@ -340,7 +344,7 @@
                           <img
                             class="card-team-img"
                             loading="lazy"
-                            src="./images/IR.PNG"
+                            src="./images/team/IR.PNG"
                             alt="#"
                           />
                         </div>
@@ -350,7 +354,17 @@
                     </li>
                   </ul>
                 </div>
-                <a class="prefix-close" title="Закрыть" href="#close"></a>
+                <button
+                  type="button"
+                  class="prefix-close"
+                  title="Закрыть"
+                  data-action="close-pop-up"
+                >
+                  <svg class="team-close-popup-btn">
+                    <use href="./images/sprite.svg#icon-close-icon"></use>
+                  </svg>
+                </button>
+                <!-- <a class="prefix-close" title="Закрыть" href="#close"></a> -->
               </div>
             </div>
           </span>
@@ -359,29 +373,28 @@
     </section>
 
     <div class="backdrop is-hidden">
-      <div class="modal animate__animated animate__fadeIn">
-        <button class="modal-close">
-          <svg class="close-modal-btn">
-            <use href="./images/sprite.svg#icon-close-icon"></use>
-          </svg>
-        </button>
-        <div class="ticket-info-wrapper">
-          <div class="ticket-info-container"></div>
-          <div class="more-info-container">
-            <button class="more-information">more from this author</button>
-            <ul class="more-info-list is-hidden"></ul>
+      <div class="modal-wrapper">
+        <div class="modal animate__animated animate__fadeIn">
+          <button class="modal-close">
+            <svg class="close-modal-btn">
+              <use href="./images/sprite.svg#icon-close-icon"></use>
+            </svg>
+          </button>
+          <div class="ticket-info-wrapper">
+            <div class="ticket-info-container"></div>
+            <div class="more-info-container">
+              <button class="more-information">more from this author</button>
+              <ul class="more-info-list is-hidden"></ul>
+            </div>
           </div>
-          <ul class="prev-next">
-            <li class="prev-next-itm">
-              <button class="prev-next-btn" id="p">prev</button>
-            </li>
-            <li class="prev-next-itm">
-              <button class="prev-next-btn" id="n">next</button>
-            </li>
-          </ul>
+        </div>
+        <div class="p-n-b">
+          <button class="prev-next-btn" id="p">«</button>
+          <button class="prev-next-btn" id="n">»</button>
         </div>
       </div>
     </div>
+
     <div class="geolocation-backdrop js-geolocation-backdrop is-hidden">
       <div
         id="map"
@@ -419,6 +432,14 @@
         </svg>
       </button>
     </div>
-    <div id="firebaseui-auth-container" class="registration"></div>
+    <div id="registration-backdrop" class="backdrop is-hidden">
+      <div id="firebaseui-auth-container" class="registration"></div>
+    </div>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0&libraries=visualization,places"
+      async defer></script>
+    <script
+      src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/map/1.0.0/lib/main-widget.js"></script>
   </body>
 </html>

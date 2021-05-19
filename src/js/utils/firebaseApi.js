@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 import 'firebase/auth';
-import firebaseFunctions from './firebaseRegistratioHelpers';
+import firebaseFunctions from './firebaseRegistrationHelpers';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0',
@@ -20,8 +20,7 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth());
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function (authResult) {
-      alert('Access successful. Welcome aboard!');
-     
+      firebaseFunctions.closeRegModal();
       return false;
     },
     uiShown: function () {},
@@ -42,7 +41,7 @@ const uiConfig = {
 export default {
   initApp() {
         firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
+          if (user) {           
             firebaseFunctions.signedUser(user.photoURL, user.displayName);
           } else {
             firebaseFunctions.noSignedUser();

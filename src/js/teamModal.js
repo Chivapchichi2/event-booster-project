@@ -1,35 +1,28 @@
 import toggleListenerOnForm from './utils/dropdown.js';
+import refs from '../js/utils/refs';
 
-document.querySelector('.openModalLink').addEventListener('click', openModal);
-
-let isInit = false;
-function openModal(e) {
-  document.removeEventListener('click', toggleListenerOnForm);
-
-  let elModal = document.querySelector('#Modal');
-  if (isInit === false) {
-    isInit = true;
-    document
-      .querySelector('.prefix-close')
-      .addEventListener('click', function (event) {
-        event.preventDefault();
-        elModal.classList.add('active');
-      });
-  }
-  elModal.classList.add('active');
-  elModal.style.overflow = 'scroll';
-  document.body.style.overflow = 'hidden';
-}
+refs.openModal.addEventListener('click', openModal);
+refs.closeModal.addEventListener('click', closeModal);
 
 window.addEventListener('keydown', e => {
   if (e.code === 'Escape') {
-    closeTeamModalUp();
+    closeModal();
+  }
+});
+window.addEventListener('click', e => {
+  if (e.target === refs.elModal) {
+    closeModal();
   }
 });
 
-function closeTeamModalUp() {
+function openModal() {
+  refs.elModal.classList.add('active');
+  refs.elModal.style.overflow = 'scroll';
+  document.body.style.overflow = 'hidden';
+  document.removeEventListener('click', toggleListenerOnForm);
+}
+function closeModal() {
+  refs.elModal.classList.remove('active');
   document.addEventListener('click', toggleListenerOnForm);
-
-  document.querySelector('#Modal').classList.remove('active');
   document.body.style.overflow = 'inherit';
 }
