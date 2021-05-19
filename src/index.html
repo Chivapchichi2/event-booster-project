@@ -124,8 +124,13 @@
             src="http://3.bp.blogspot.com/-CrGkU8X7yZY/U5d2BTp-hYI/AAAAAAAAIl8/ccmJHioTFT0/s40/anonymous-emoticon.png"
             alt="Anonymous"
           />
-          <!-- <p class="user-name">Anonymous</p> -->
-          <button class="user-pageBtn my-eventsBtn" type="button" aria-label="user-events">
+          <button
+            id="user-events"
+            class="user-pageBtn"
+            type="button"
+            data-sign="out"
+            aria-label="user-events"
+          >
             My events
           </button>
         </div>
@@ -218,11 +223,32 @@
           </svg>
         </a>
       </main>
-<div class="main-container map-container js-map-container" w-type="map" w-tmapikey="pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz" w-googleapikey="AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0"
-  w-keyword="" w-theme="simple" w-colorscheme="light" w-width="800" w-height="286" w-size="100" w-border="1"
-  w-borderradius="4" w-radius="4000" w-period="year" w-layout="horizontal" w-attractionid="" w-promoterid=""
-  w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="custom" w-geoposition="on" w-source=""
-  w-latlong="50.8399054,27.6453201"></div>
+      <div
+        class="main-container map-container js-map-container"
+        w-type="map"
+        w-tmapikey="pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz"
+        w-googleapikey="AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0"
+        w-keyword=""
+        w-theme="simple"
+        w-colorscheme="light"
+        w-width="800"
+        w-height="286"
+        w-size="100"
+        w-border="1"
+        w-borderradius="4"
+        w-radius="4000"
+        w-period="year"
+        w-layout="horizontal"
+        w-attractionid=""
+        w-promoterid=""
+        w-venueid=""
+        w-affiliateid=""
+        w-segmentid=""
+        w-proportion="custom"
+        w-geoposition="on"
+        w-source=""
+        w-latlong="50.8399054,27.6453201"
+      ></div>
       <footer class="footer">
         <div class="footer-container">
           <span class="footer-text">
@@ -438,8 +464,9 @@
 
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0&libraries=visualization,places"
-      async defer></script>
-    <script
-      src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/map/1.0.0/lib/main-widget.js"></script>
+      async
+      defer
+    ></script>
+    <script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/map/1.0.0/lib/main-widget.js"></script>
   </body>
 </html>

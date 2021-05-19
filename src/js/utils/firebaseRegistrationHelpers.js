@@ -12,29 +12,25 @@ export default {
                   </svg>
                 </button>`,
    signedUser(url, name) {
-    // refs.userData.firstElementChild.src = url ? url : 'http://3.bp.blogspot.com/-CrGkU8X7yZY/U5d2BTp-hYI/AAAAAAAAIl8/ccmJHioTFT0/s40/anonymous-emoticon.png';
-    // refs.userData.firstElementChild.alt = name ? name : 'Anonymous';
-    // refs.userName.textContent = name ? name : 'Anonymous';
-     
      refs.userData.innerHTML = `<img
             class="user-image"
             src=${url}
-            alt=${name}
+            alt='${name}'
           />
-          <button class="user-pageBtn" type="button" aria-label="user-events">
+          <button id='user-events' class='user-pageBtn' data-sign='in' type="button" aria-label="user-events">
             My events
           </button>`
     refs.registrationBtn.innerHTML = `Sign out
-          <svg class="svg-menu" data-sign='out' aria-label="log-button">
+          <svg class="svg-menu" data-sign="out" aria-label="log-button">
             <use class="icon-out" href="./images/sprite.svg#icon-exit"></use>
           </svg>`;
   },
   noSignedUser() {
     refs.userData.firstElementChild.src =  'http://3.bp.blogspot.com/-CrGkU8X7yZY/U5d2BTp-hYI/AAAAAAAAIl8/ccmJHioTFT0/s40/anonymous-emoticon.png';
     refs.userData.firstElementChild.alt = 'Anonymous';
-    // refs.userName.textContent = 'Anonymous';
+    // document.getElementById('user-events').dataset.sign = 'out';
     refs.registrationBtn.innerHTML = `Sign in
-          <svg class="svg-menu" data-sign='in' aria-label="log-button">
+          <svg class="svg-menu" data-sign="in" aria-label="log-button">
             <use class="icon-in" href="./images/sprite.svg#icon-log-in"></use>
           </svg>`
   },
