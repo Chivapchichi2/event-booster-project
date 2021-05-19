@@ -128,6 +128,12 @@ export default {
     refs.categoryBtn.innerHTML = label;
   },
   toggleListenerOnForm(e) {
+    if (e.target.classList.contains('buybtn') || e.target.classList.contains('name')) {
+      return
+    }
+    if (e.target.classList.contains('img')) {
+      return
+    }
     e.preventDefault();
     if (e.target.name === 'country') {
         refs.countriesList.classList.toggle('show');
