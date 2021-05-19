@@ -1,9 +1,7 @@
 import refs from '../utils/refs';
 
-console.log(refs.categoryBtn);
 refs.form.addEventListener('click', (e) => {
-    console.log(e.target.textContent);
-    if (e.target.textContent === 'Sport') {
+    if (e.target.textContent === 'Sports') {
         ResetTheme();
         refs.theme.classList.add('sport-theme');
     }

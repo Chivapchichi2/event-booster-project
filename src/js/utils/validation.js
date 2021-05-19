@@ -130,21 +130,21 @@ export default {
   toggleListenerOnForm (e) {
     e.preventDefault();
     if (e.target.name === 'country') {
-        refs.countryMenu.classList.toggle('show');
-        refs.categoryMenu.classList.remove('show');
+        refs.countriesList.classList.toggle('show');
+        refs.genresList.classList.remove('show');
         return;
     }
 
     if (e.target.name === 'category') {
-        refs.categoryMenu.classList.toggle('show');
-        refs.countryMenu.classList.remove('show');
+        refs.genresList.classList.toggle('show');
+        refs.countriesList.classList.remove('show');
         return;
     }
     this.closeFormMenu();
   },
    closeFormMenu() {
-    refs.countryMenu.classList.remove('show');
-    refs.categoryMenu.classList.remove('show');
+    refs.countriesList.classList.remove('show');
+    refs.genresList.classList.remove('show');
   }, 
   modalInfoCheking() {
      const elems = {
