@@ -127,7 +127,7 @@ export default {
   }
     refs.categoryBtn.innerHTML = label;
   },
-  toggleListenerOnForm (e) {
+  toggleListenerOnForm(e) {
     e.preventDefault();
     if (e.target.name === 'country') {
         refs.countriesList.classList.toggle('show');
