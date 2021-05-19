@@ -1,22 +1,24 @@
 import firebase from 'firebase/app';
 import * as firebaseui from 'firebaseui';
 import 'firebase/auth';
+import "firebase/database";
 import firebaseFunctions from './firebaseRegistrationHelpers';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0',
-  authDomain: 'event-booster.firebaseapp.com',
-  projectId: 'event-booster',
-  storageBucket: 'event-booster.appspot.com',
-  messagingSenderId: '818449618494',
-  appId: '1:818449618494:web:7a47487ed0dc533232236f',
-  measurementId: 'G-KPB67V1QRD',
+  apiKey: "AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0",
+  authDomain: "event-booster.firebaseapp.com",
+  databaseURL: "https://event-booster-default-rtdb.firebaseio.com",
+  projectId: "event-booster",
+  storageBucket: "event-booster.appspot.com",
+  messagingSenderId: "818449618494",
+  appId: "1:818449618494:web:7a47487ed0dc533232236f",
+  measurementId: "G-KPB67V1QRD"
 };
 
 firebase.initializeApp(firebaseConfig);
-
-
 const ui = new firebaseui.auth.AuthUI(firebase.auth());
+const database = firebase.database();
+
 const uiConfig = {
   callbacks: {
     signInSuccessWithAuthResult: function (authResult) {
@@ -56,4 +58,30 @@ export default {
   start(container) {
     ui.start(container, uiConfig)
   },
+
+  // writeUserData(library, filmInfoObj) {
+  //   const userId = firebase.auth().currentUser.uid;
+  //   const filmKey = filmInfoObj.id ?? filmInfoObj.title;
+  //   const update = {};
+  //   update[filmKey] = filmInfoObj;
+  //   database.ref('users/' + userId + library).update(update);
+  // },
+
+  // readUserData(library) {
+  //   const userId = firebase.auth().currentUser.uid;
+  //   return database.ref('users/' + userId + library).get().then((snapshot) => {
+  //     if (snapshot.exists()) {
+  //      return snapshot.val()
+  //     } else {
+  //      console.log("No data available");
+  //     }
+  //   }).catch((error) => {
+  //     console.error(error);
+  //   })
+  // },
+
+  // deleteUserData(library, dataId) {
+  //   const userId = firebase.auth().currentUser.uid;
+  //   database.ref('users/' + userId + library + '/' + dataId).remove();
+  // },
 }
