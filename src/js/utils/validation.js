@@ -160,7 +160,7 @@ export default {
             more: document.getElementById('more'),
             less: document.getElementById('less'),
         }
-    if (elems.info.textContent.length > 90) {          
+    if (elems.info.textContent.length > 125) {          
             elems.more.classList.remove('is-hidden')
         }
         elems.more.addEventListener('click', () => {

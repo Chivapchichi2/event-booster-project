@@ -59,10 +59,18 @@ function onTicketClick(e) {
         validation.moreInfoLink(r, refs)
         
         if (!r.priceRanges || !r.priceRanges[1]) {
-        document.querySelector('.vip').style.pointerEvents = 'none'
+            const vip = document.querySelector('.vip')
+            vip.style.pointerEvents = 'none'
+            vip.style.backgroundColor = 'gray'
+            vip.style.minWidth = '145px'
+            vip.textContent = '🙀'
         }        
-        if (!r.priceRanges) {
-        document.querySelector('.std').style.pointerEvents = 'none'
+        if (!r.priceRanges) {            
+            const standard = document.querySelector('.std')
+            standard.style.pointerEvents = 'none'
+            standard.style.backgroundColor = 'gray'
+            standard.style.minWidth = '145px'
+            standard.textContent = '😿'
         }
         
         return r;
