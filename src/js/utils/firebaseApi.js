@@ -59,29 +59,28 @@ export default {
     ui.start(container, uiConfig)
   },
 
-  // writeUserData(library, filmInfoObj) {
-  //   const userId = firebase.auth().currentUser.uid;
-  //   const filmKey = filmInfoObj.id ?? filmInfoObj.title;
-  //   const update = {};
-  //   update[filmKey] = filmInfoObj;
-  //   database.ref('users/' + userId + library).update(update);
-  // },
+  writeUserEvent(eventId, eventData) {
+    const userId = firebase.auth().currentUser.uid;
+    const update = {};
+    update[eventId] = eventData;
+    database.ref('users/' + userId).update(update);
+  },
 
-  // readUserData(library) {
-  //   const userId = firebase.auth().currentUser.uid;
-  //   return database.ref('users/' + userId + library).get().then((snapshot) => {
-  //     if (snapshot.exists()) {
-  //      return snapshot.val()
-  //     } else {
-  //      console.log("No data available");
-  //     }
-  //   }).catch((error) => {
-  //     console.error(error);
-  //   })
-  // },
+  readUserEvents() {
+    const userId = firebase.auth().currentUser.uid;
+    return database.ref('users/' + userId).get().then((snapshot) => {
+      if (snapshot.exists()) {
+       return snapshot.val()
+      } else {
+       console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    })
+  },
 
-  // deleteUserData(library, dataId) {
-  //   const userId = firebase.auth().currentUser.uid;
-  //   database.ref('users/' + userId + library + '/' + dataId).remove();
-  // },
+  deleteUserEvent(eventId) {
+    const userId = firebase.auth().currentUser.uid;
+    database.ref('users/' + userId + '/' + dataId).remove();
+  },
 }

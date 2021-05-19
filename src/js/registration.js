@@ -21,13 +21,3 @@ refs.registrationBtn.addEventListener('click', () => {
   firebaseFunctions.addRegListeners();
 });
 
-// refs.userData.addEventListener('click', (e) => {
-//   if (e.target === document.getElementById('user-events')) {
-//     if (document.getElementById('user-events').dataset.sign === 'out') {
-//       return refs.registrationBtn.click();
-//     }
-//     // renderMyEventsPage ()
-//     refs.gallery.innerHTML = '';
-//     refs.form.classList.add('is-hidden');
-// }
-// } );

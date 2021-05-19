@@ -17,13 +17,14 @@ function onLogoClick() {
   refs.categoryBtn.innerHTML = `Event category   <svg class="icon-down" width="15" height="10">
                 <use href="./images/sprite.svg#icon-down-btn"></use>
               </svg>`;
+  refs.form.classList.remove('is-hidden');
   apiService.getEventsData()
   .then(r => {
         apiService.totalElements = r.page.totalElements;
         const data = r._embedded.events;
         return data;
   })
-  .then(data => {
+  .then(data => {console.log(data);
   validation.galleryRender(data, cardListHbs);
   startPagination();
 }).catch(console.log);

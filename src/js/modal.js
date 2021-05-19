@@ -3,6 +3,7 @@ import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
 import validation from './utils/validation';
 import toggleListenerOnForm from './utils/dropdown';
+import {saveEvent} from './myEvents';
 
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
@@ -13,7 +14,11 @@ window.addEventListener('keydown', onEscCloseModal)
 let ticketId = 0;
 let isCard = null;
 
-function onTicketClick(e) {   
+function onTicketClick(e) {
+    if (e.target.classList.contains('add-btn')) {
+        saveEvent(e);
+        return
+    }
     if (e.target.classList.contains('js-geolocation-btn')) {
         return
     }
