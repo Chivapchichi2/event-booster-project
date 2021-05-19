@@ -60,7 +60,7 @@ function onTicketClick(e) {
         
         if (!r.priceRanges || !r.priceRanges.includes({type: "vip",})) {
             document.querySelector('.vip').style.pointerEvents = 'none'
-        } 
+        }
         
         return r;
     }).catch(console.log);

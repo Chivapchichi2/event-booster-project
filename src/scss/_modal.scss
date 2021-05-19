@@ -442,6 +442,7 @@
   font-weight: 600;
   align-items: center;
   justify-content: center;
+  text-align: center;
   display: none;
   cursor: pointer;
   color: $accent;
@@ -449,7 +450,7 @@
   border-radius: 50%;
   border: none;
   outline: none;
-  padding: 15px;
+  padding: 5px;
   &:hover,
   &:focus {
     // fill: $white;
@@ -463,8 +464,8 @@
     z-index: 119;
   }
   @media screen and (min-width: 1200px) {
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     &#p {
       top: 50%;
       left: -12%;
