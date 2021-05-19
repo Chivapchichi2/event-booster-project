@@ -73,6 +73,15 @@
             </a>
         </li>
         {{/if}}
+        {{#if this.externalLinks.musicbrainz}}
+        <li class="more-info-itm">
+            <a href="https://musicbrainz.org/artist/{{externalLinks.musicbrainz.0.id}}" class="more-info-link" target="_blank">
+                <svg class="more-info-icon">
+                    <use href="./images/sprite.svg#icon-musicbrainz"></use>
+                </svg>
+            </a>
+        </li>
+        {{/if}}
     </ul>
 </li>
 {{/each}}

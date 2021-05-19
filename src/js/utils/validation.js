@@ -85,8 +85,9 @@ export default {
         externalLinks: {
           google: [{
             url: `https://www.google.com/search?q=${r.name}`
-          }]
-        }
+          }]          
+        },
+        name: r.name,
       }]
       refs.modalMoreInfo.innerHTML = moreInfo(r)
     } else if (!r._embedded.attractions[0].externalLinks) {
@@ -94,8 +95,9 @@ export default {
         externalLinks: {
           google: [{
             url: `https://www.google.com/search?q=${r.name}`
-          }]
-        }
+          }]          
+        },
+        name: r._embedded.attractions[0].name,
       }]
       refs.modalMoreInfo.innerHTML = moreInfo(r)
     } else if (!r._embedded.attractions[0].externalLinks.google) {

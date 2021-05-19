@@ -58,8 +58,11 @@ function onTicketClick(e) {
         
         validation.moreInfoLink(r, refs)
         
-        if (!r.priceRanges || !r.priceRanges.includes({type: "vip",})) {
-            document.querySelector('.vip').style.pointerEvents = 'none'
+        if (!r.priceRanges || !r.priceRanges[1]) {
+        document.querySelector('.vip').style.pointerEvents = 'none'
+        }        
+        if (!r.priceRanges) {
+        document.querySelector('.std').style.pointerEvents = 'none'
         }
         
         return r;
@@ -95,7 +98,7 @@ function onBdpClick(e) {
     
 }
 
-function onEscCloseModal(e) {
+function onEscCloseModal(e) {    
     if (e.code === 'Escape') {
         closeModal();
         validation.closeFormMenu();

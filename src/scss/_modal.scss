@@ -303,10 +303,6 @@
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
       fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  // &:visited {
-  //   background: $modal-btn;
-  //   color: $white;
-  // }
   @media screen and (min-width: 1200px) {
     margin: 20px 0 26px;
   }
@@ -331,8 +327,16 @@
   &:hover,
   &:focus {
     background: $accent;
+    transform: scale(1.2);
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    animation: animationOut 0.7s steps(22) forwards;
+  }
+  &:active,
+  &:visited {
+    background-color: $white;
+    color: $modal-btn;
+    border: 1px solid $modal-btn;
   }
   @media screen and (min-width: 1200px) {
     position: absolute;
@@ -396,13 +400,12 @@
 
 .more-info-link {
   display: inline-flex;
+  text-align: center;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background-color: $modal-bg;
   border: 2px solid $accent;
-  // border-style: ridge;
-  // fill: $modal-bg;
   width: 30px;
   height: 30px;
   cursor: pointer;
