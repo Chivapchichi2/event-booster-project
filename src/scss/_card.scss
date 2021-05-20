@@ -25,7 +25,6 @@
 
 /*li*/
 .card-item {
-  // cursor: pointer;
   position: relative;
   text-align: center;
   margin-bottom: 39px;
@@ -189,8 +188,6 @@ svg {
     opacity: 1;
     transform: scale(1);
     pointer-events: initial;
-    // cursor: grab;
-
     // -----custom cursor - planet -----
     cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAPCAMAAAAxmgQeAAAACVBMVEX///8AAAD///9+749PAAAAAXRSTlMAQObYZgAAAD5JREFUGNN1j9EKADAIAnP//9GjFq6w7iU4DNRsB06cb44TJ+UzYUcniqnqoA6ag/62JhjKIU0rxx1lKveuXJ5UAQs/G/2vAAAAAElFTkSuQmCC),
       auto;
@@ -225,7 +222,6 @@ svg {
     font-size: 40px;
     color: $white;
     backdrop-filter: blur(50px);
-    // box-shadow: 3px 3px 12px 1px #000000;
 
     box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
       0 0 15px #ff00de, 0 0 30px #ff00de, 0 0 20px #ff00de, 0 0 5px #ff00de;
