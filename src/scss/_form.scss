@@ -12,6 +12,107 @@
     margin-top: 50px;
   }
 }
+.inDown {
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -moz-animation-name: inDown;
+  -webkit-animation-name: inDown;
+  animation-name: inDown;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -moz-animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+@-moz-keyframes inDown {
+  from {
+    transform: translateY(-150px) scale(0.25);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes inDown {
+  from {
+    transform: translateY(-150px) scale(0.25);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes inDown {
+  from {
+    transform: translateY(-150px) scale(0.25);
+    opacity: 0.5;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.outUp {
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -moz-animation-name: outUp;
+  -webkit-animation-name: outUp;
+  animation-name: outUp;
+  -moz-animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+  -moz-animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+@-moz-keyframes outUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-150px) scale(0.25);
+    opacity: 0.5;
+  }
+}
+
+@-webkit-keyframes outUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-150px) scale(0.25);
+    opacity: 0.5;
+  }
+}
+
+@keyframes outUp {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-150px) scale(0.25);
+    opacity: 0.5;
+  }
+}
 
 .form-container {
   position: relative;

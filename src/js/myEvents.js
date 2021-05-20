@@ -12,7 +12,7 @@ refs.userData.addEventListener('click', (e) => {
       return refs.registrationBtn.click();
     }
     refs.mapContainer.style.display = 'none';
-    // refs.form.classList.replace('animate__bounceInDown', 'animate__bounceOutUp');
+    refs.form.classList.replace('inDown', 'outUp');
     e.target.textContent = 'Get home';
     setTimeout(() => {
       refs.form.classList.add('is-hidden');

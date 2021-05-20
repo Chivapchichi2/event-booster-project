@@ -23,12 +23,12 @@ function onLogoClick() {
   resetTheme();
   refs.theme.classList.add('overlay');
   refs.mapContainer.style.display = 'block';
-  // refs.form.classList.replace('animate__bounceOutUp', 'animate__bounceInDown');
+  refs.form.classList.remove('is-hidden');
+  refs.form.classList.replace('outUp', 'inDown');
   setTimeout(() => {
     document.getElementById('user-events').textContent = 'My events';
-      refs.form.classList.remove('is-hidden');
-      refs.heroTitle.innerHTML = "FIND &nbsp; BEST &nbsp; EVENTS <br />AROUND &nbsp; THE &nbsp; WORLD";
-     }, 1000);
+    refs.heroTitle.innerHTML = "FIND &nbsp; BEST &nbsp; EVENTS <br />AROUND &nbsp; THE &nbsp; WORLD";
+  }, 1000);
   apiService.getEventsData()
     .then(r => {
         apiService.totalElements = r?.page?.totalElements;
