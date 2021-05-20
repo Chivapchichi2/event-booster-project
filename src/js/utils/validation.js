@@ -85,8 +85,9 @@ export default {
         externalLinks: {
           google: [{
             url: `https://www.google.com/search?q=${r.name}`
-          }]
-        }
+          }]          
+        },
+        name: r.name,
       }]
       refs.modalMoreInfo.innerHTML = moreInfo(r)
     } else if (!r._embedded.attractions[0].externalLinks) {
@@ -94,8 +95,9 @@ export default {
         externalLinks: {
           google: [{
             url: `https://www.google.com/search?q=${r.name}`
-          }]
-        }
+          }]          
+        },
+        name: r._embedded.attractions[0].name,
       }]
       refs.modalMoreInfo.innerHTML = moreInfo(r)
     } else if (!r._embedded.attractions[0].externalLinks.google) {
@@ -158,7 +160,7 @@ export default {
             more: document.getElementById('more'),
             less: document.getElementById('less'),
         }
-    if (elems.info.textContent.length > 90) {          
+    if (elems.info.textContent.length > 125) {          
             elems.more.classList.remove('is-hidden')
         }
         elems.more.addEventListener('click', () => {
