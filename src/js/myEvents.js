@@ -79,6 +79,9 @@ function changeIconBtnAddAndMyEventData(e) {
   e.target.classList.replace('my-event', 'some-event');
 
   deleteEvent(id);
+  if (document.getElementById('user-events').textContent === 'Get home') {
+    e.target.closest('.card-item').style.display = 'none';
+  }
 }
 
 export { changeIconBtnAddAndMyEventData, getAndCheckUserEvents }
