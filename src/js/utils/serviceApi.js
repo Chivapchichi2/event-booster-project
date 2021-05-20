@@ -1,4 +1,4 @@
-const KEY = 'c1xQ4GUaMnAePoI6UzGXPAXCsKa26y8D';
+const KEY = 'fasPDgI3OOgzxAQkISGmqFAQgM8mmOdU';
 const BASE_URL = 'https://app.ticketmaster.com/discovery/v2/';
 
 export default {

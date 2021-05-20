@@ -45,11 +45,9 @@ export default {
   initApp() {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {           
-            firebaseFunctions.signedUser(user.photoURL, user.displayName);
-            // onLogoClick();
+            firebaseFunctions.signedUser(user.photoURL, user.displayName);            
           } else {
             firebaseFunctions.noSignedUser();
-            // onLogoClick();
           }
         }, function(error) {
           console.log(error)

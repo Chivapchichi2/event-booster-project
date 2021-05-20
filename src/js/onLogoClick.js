@@ -26,8 +26,8 @@ function onLogoClick() {
      }, 1000);
   apiService.getEventsData()
     .then(r => {
-        apiService.totalElements = r.page.totalElements;
-        const data = r._embedded.events;
+        apiService.totalElements = r?.page?.totalElements;
+        const data = r?._embedded?.events;
         return data;
     })
     .then(getAndCheckUserEvents)
