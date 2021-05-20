@@ -4,6 +4,7 @@ import refs from './utils/refs';
 import validation from './utils/validation';
 import Pagination from 'tui-pagination';
 import onScrollToTop from './toTop';
+import { getAndCheckUserEvents } from './myEvents';
 
 function render() {
   apiService.getEventsData()
@@ -11,10 +12,15 @@ function render() {
       if (!r?._embedded?.events) {
         return
       }
-      const data = r._embedded.events;
+      else {
+        return r._embedded.events;
+      }
+    })
+    .then(getAndCheckUserEvents)
+    .then(data => {
       validation.galleryRender(data, cardListHbs);
     })
-      .catch(console.log)  
+    .catch(console.log);
 }
 
 const option = {

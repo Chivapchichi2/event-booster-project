@@ -35,4 +35,5 @@ export default {
   registrationBackdrop: document.getElementById('registration-backdrop'),
   userData: document.getElementById('user'),
   userName: document.querySelector('.user-name'),
+  heroTitle: document.querySelector('.hero-title'),
 };

@@ -15,3 +15,4 @@ import './js/utils/firebaseApi';
 import './js/teamModal';
 import './js/registration';
 import './js/utils/theme';
+import './js/myEvents';
