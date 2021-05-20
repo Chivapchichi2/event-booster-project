@@ -1,9 +1,4 @@
 .overlay {
-  padding-top: 78px;
-  padding-bottom: 112px;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
   background-image: linear-gradient(
       180deg,
       rgba(13, 13, 13, 0.2) 0%,
@@ -30,10 +25,6 @@
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 100%;
-    min-height: 295px;
-    padding-top: 40px;
-    padding-bottom: 183px;
     background-image: linear-gradient(
         180deg,
         rgba(13, 13, 13, 0.2) 0%,
@@ -58,8 +49,6 @@
   }
 
   @media screen and (min-width: 1280px) {
-    min-height: 444px;
-    padding-bottom: 192px;
     background-image: linear-gradient(
         180deg,
         rgba(13, 13, 13, 0.2) 0%,
@@ -86,4 +75,23 @@
 
 .animate__animated.animate__fadeIn {
   --animate-duration: 1s;
+}
+
+.theme {
+  padding-top: 78px;
+  padding-bottom: 112px;
+  max-width: 100%;
+  min-height: 364px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+    padding-bottom: 183px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    min-height: 446px;
+    padding-bottom: 192px;
+  }
 }

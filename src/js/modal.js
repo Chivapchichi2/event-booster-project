@@ -19,9 +19,10 @@ function onTicketClick(e) {
         changeIconBtnAddAndMyEventData(e);
         return
     }
-    if (e.target.classList.contains('js-geolocation-btn')) {
+    if (e.target.classList.contains('js-geolocation-btn') || e.target.classList.contains('card-list') || e.target.classList.contains('message')) {
         return
     }
+    
     document.removeEventListener('click', toggleListenerOnForm);
     refs.modalPrev.addEventListener('click', onTicketClick)
     refs.modalNext.addEventListener('click', onTicketClick)

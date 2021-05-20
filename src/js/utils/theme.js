@@ -46,3 +46,5 @@ function ResetTheme() {
     refs.theme.classList.remove('misc-theme');
     
 }
+
+export default ResetTheme;
