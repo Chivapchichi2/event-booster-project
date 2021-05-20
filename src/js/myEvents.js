@@ -7,10 +7,12 @@ refs.userData.addEventListener('click', (e) => {
     if (e.target.textContent === 'Get home') {
       return refs.logo.click();
     }
-    if (refs.registrationBtn.dataset.sign === 'in') {
+  
+    if (refs.registrationBtn.firstElementChild.dataset.sign === 'in') {
       return refs.registrationBtn.click();
     }
-    refs.form.classList.replace('animate__bounceInDown', 'animate__bounceOutUp');
+
+    // refs.form.classList.replace('animate__bounceInDown', 'animate__bounceOutUp');
     setTimeout(() => {
       refs.form.classList.add('is-hidden');
       refs.heroTitle.innerHTML = 'My &nbsp; Events';
