@@ -11,12 +11,13 @@ refs.userData.addEventListener('click', (e) => {
     if (refs.registrationBtn.firstElementChild.dataset.sign === 'in') {
       return refs.registrationBtn.click();
     }
-
+    refs.mapContainer.style.display = 'none';
     // refs.form.classList.replace('animate__bounceInDown', 'animate__bounceOutUp');
+    e.target.textContent = 'Get home';
     setTimeout(() => {
       refs.form.classList.add('is-hidden');
       refs.heroTitle.innerHTML = 'My &nbsp; Events';
-      e.target.textContent = 'Get home';
+      
      }, 1000);
     
     renderMyEventsPage()

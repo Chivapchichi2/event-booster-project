@@ -15,6 +15,7 @@ export default {
   categoryBtn: document.querySelector('.js-categoryBtn'),
   geoModal: document.querySelector('.js-geolocation-modal'),
   geoModalBackdrop: document.querySelector('.js-geolocation-backdrop'),
+  mapContainer: document.querySelector('.js-map-container'),
   popUpRef: document.querySelector('.email-popup-content'),
   closePopupBtn: document.querySelector('.close-email-btn'),
   inputEmail: document.querySelector('.input-text'),

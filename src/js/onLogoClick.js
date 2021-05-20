@@ -4,6 +4,7 @@ import refs from './utils/refs';
 import validation from './utils/validation';
 import { startPagination } from './pagination';
 import { getAndCheckUserEvents } from './myEvents';
+import resetTheme from './utils/theme';
 
 refs.logo.addEventListener('click', onLogoClick);
 
@@ -18,6 +19,10 @@ function onLogoClick() {
   refs.categoryBtn.innerHTML = `Event category   <svg class="icon-down" width="15" height="10">
                 <use href="./images/sprite.svg#icon-down-btn"></use>
               </svg>`;
+  
+  resetTheme();
+  refs.theme.classList.add('overlay');
+  refs.mapContainer.style.display = 'block';
   // refs.form.classList.replace('animate__bounceOutUp', 'animate__bounceInDown');
   setTimeout(() => {
     document.getElementById('user-events').textContent = 'My events';

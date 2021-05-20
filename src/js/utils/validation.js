@@ -62,7 +62,15 @@ export default {
   },
   noData() {
     refs.pagination.innerHTML = '';
+
+    if (document.getElementById('user-events').textContent === 'Get home') {
+
+       refs.gallery.innerHTML = `<li><p class="message">${document.querySelector('.user-image').alt}, add events first</p></li>`;
+      return;
+    }
+
     refs.gallery.innerHTML = '<li><p class="message">Sorry, no events in this country &#9785</p></li>';
+
   },
   modalWho(r) {
     if (r?._embedded?.attractions) { 
