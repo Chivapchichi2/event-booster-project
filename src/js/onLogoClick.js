@@ -38,6 +38,4 @@ function onLogoClick() {
     .catch(console.log);
 }
 
-onLogoClick();
-
 export { onLogoClick }

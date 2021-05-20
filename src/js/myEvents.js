@@ -1,5 +1,6 @@
 import databaseApi from './utils/firebaseApi';
 import refs from './utils/refs';
+import validation from './utils/validation';
 
 refs.userData.addEventListener('click', (e) => {
   if (e.target === document.getElementById('user-events')) {
@@ -21,16 +22,24 @@ refs.userData.addEventListener('click', (e) => {
 }
 });
 
-function saveEvent(e) {
-  const id =  e.target.closest('.card-img-div').dataset.id;
+function saveEvent(e, id) {
   const event = e.target.closest('.card-item').innerHTML;
   const eventData = `<li class="card-item animate__animated animate__zoomInDown">${event}</li>`;
   databaseApi.writeUserEvent(id, eventData);
 }
 
+function deleteEvent(id) {
+  databaseApi.deleteUserEvent(id);
+}
+
 function renderMyEventsPage() {
-   databaseApi.readUserEvents().then(data => {
-      refs.gallery.innerHTML = Object.values(data).join('')
+  databaseApi.readUserEvents().then(data => {
+    if (!data) {
+      validation.noData();
+      return
+    }
+    refs.gallery.innerHTML = Object.values(data).join('');
+    refs.pagination.innerHTML = '';
     }).catch(console.log);
 }
 async function getAndCheckUserEvents(data) {
@@ -55,4 +64,19 @@ async function getAndCheckUserEvents(data) {
   return data;
 }
 
-export { saveEvent, getAndCheckUserEvents }
+function changeIconBtnAddAndMyEventData(e) {
+  const id = e.target.closest('.card-img-div').dataset.id;
+  if (e.target.classList.contains('some-event')) {
+    e.target.innerHTML = '&#9733;';
+    e.target.classList.replace('some-event', 'my-event');
+
+    saveEvent(e, id);
+    return
+  }
+  e.target.innerHTML = '&#9734;';
+  e.target.classList.replace('my-event', 'some-event');
+
+  deleteEvent(id);
+}
+
+export { changeIconBtnAddAndMyEventData, getAndCheckUserEvents }

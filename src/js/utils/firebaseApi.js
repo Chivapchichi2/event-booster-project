@@ -26,7 +26,7 @@ const uiConfig = {
       firebaseFunctions.closeRegModal();
       return onLogoClick()
     },
-    uiShown: function () {},
+    uiShown: function () { },
   },
   signInFlow: 'popup',
   signInSuccessUrl: '#',
@@ -45,10 +45,13 @@ export default {
   initApp() {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {           
-            firebaseFunctions.signedUser(user.photoURL, user.displayName);            
+            firebaseFunctions.signedUser(user.photoURL, user.displayName);
+            onLogoClick()
           } else {
             firebaseFunctions.noSignedUser();
+            onLogoClick()
           }
+        
         }, function(error) {
           console.log(error)
         })
@@ -75,6 +78,7 @@ export default {
       if (snapshot.exists()) {
        return snapshot.val()
       } else {
+        
        console.log("No data available");
       }
     }).catch((error) => {
@@ -85,6 +89,6 @@ export default {
   deleteUserEvent(eventId) {
     const userId = firebase.auth()?.currentUser?.uid;
     if (!userId) { return }
-    database.ref('users/' + userId + '/' + dataId).remove();
+    database.ref('users/' + userId + '/' + eventId).remove();
   },
 }
