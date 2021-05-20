@@ -3,7 +3,7 @@ import apiService from './utils/serviceApi';
 import ticketInfo from '../templates/ticket-info.hbs';
 import validation from './utils/validation';
 import toggleListenerOnForm from './utils/dropdown';
-import {saveEvent} from './myEvents';
+import {changeIconBtnAddAndMyEventData} from './myEvents';
 
 refs.gallery.addEventListener('click', onTicketClick)
 refs.btnModalClose.addEventListener('click', closeModal)
@@ -16,7 +16,7 @@ let isCard = null;
 
 function onTicketClick(e) {
     if (e.target.classList.contains('add-btn')) {
-        saveEvent(e);
+        changeIconBtnAddAndMyEventData(e);
         return
     }
     if (e.target.classList.contains('js-geolocation-btn')) {

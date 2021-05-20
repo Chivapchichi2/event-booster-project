@@ -18,7 +18,7 @@ function onLogoClick() {
   refs.categoryBtn.innerHTML = `Event category   <svg class="icon-down" width="15" height="10">
                 <use href="./images/sprite.svg#icon-down-btn"></use>
               </svg>`;
-  refs.form.classList.replace('animate__bounceOutUp', 'animate__bounceInDown');
+  // refs.form.classList.replace('animate__bounceOutUp', 'animate__bounceInDown');
   setTimeout(() => {
     document.getElementById('user-events').textContent = 'My events';
       refs.form.classList.remove('is-hidden');
@@ -37,7 +37,5 @@ function onLogoClick() {
     })
     .catch(console.log);
 }
-
-onLogoClick();
 
 export { onLogoClick }
