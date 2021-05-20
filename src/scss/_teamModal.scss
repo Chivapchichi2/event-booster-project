@@ -122,7 +122,7 @@ body .prefix-Dialog.active {
 /*li*/
 .team-card-item {
   cursor: pointer;
-  position: relative;
+  // position: relative;
   text-align: center;
   margin-bottom: 39px;
   margin-bottom: 30px;
@@ -131,6 +131,9 @@ body .prefix-Dialog.active {
 }
 
 .card-team-item-box {
+  position: relative;
+  max-width: 150px;
+  margin: auto;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
@@ -192,7 +195,17 @@ body .prefix-Dialog.active {
   }
 }
 
-.card-team-item-box::before {
+// .card-team-item-box::before {
+.relative-div {
+  position: relative;
+  min-width: 100px;
+  max-height: auto;
+  margin: auto;
+  @media screen and (min-width: 768px) {
+    min-width: 150px;
+  }
+}
+.relative-div::before {
   position: absolute;
   display: block;
   content: '';
@@ -211,13 +224,13 @@ body .prefix-Dialog.active {
     width: 70px;
     height: 70px;
     top: -12px;
-    right: 25px;
+    right: 12px;
   }
   @media screen and (min-width: 1280px) {
     width: 100px;
     height: 100px;
     top: -20px;
-    right: 30px;
+    right: -20px;
   }
 }
 
@@ -232,7 +245,7 @@ body .prefix-Dialog.active {
   background-color: grey;
 
   width: 150px;
-  height: 150px;
+  height: 170px;
   border-radius: 50px 0px;
   object-fit: cover;
   transition: transform var(--animation-duration) var(--timing-function);
@@ -240,7 +253,7 @@ body .prefix-Dialog.active {
   overflow: hidden;
   @media screen and (min-width: 768px) {
     width: 100px;
-    height: 100px;
+    height: 120px;
   }
   @media screen and (min-width: 1280px) {
     width: 150px;
@@ -250,9 +263,20 @@ body .prefix-Dialog.active {
 .team-status {
   margin-top: 8px;
   color: $white;
+  font-size: 12px;
+  @media screen and (min-width: 768px) {
+    font-size: 13px;
+  }
 }
 .team-close-popup-btn {
   margin: 0;
   width: 14px;
   height: 14px;
+}
+
+.team-card-name {
+  font-size: 13px;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 }
