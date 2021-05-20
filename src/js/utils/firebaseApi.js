@@ -3,6 +3,7 @@ import * as firebaseui from 'firebaseui';
 import 'firebase/auth';
 import "firebase/database";
 import firebaseFunctions from './firebaseRegistrationHelpers';
+import { onLogoClick } from '../onLogoClick';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBoaAG53f8AEmf3WVHR7j3I-ALQmB5xpd0",
@@ -21,9 +22,9 @@ const database = firebase.database();
 
 const uiConfig = {
   callbacks: {
-    signInSuccessWithAuthResult: function (authResult) {
+    signInSuccessWithAuthResult: function (authResult, home) {
       firebaseFunctions.closeRegModal();
-      return false;
+      return onLogoClick()
     },
     uiShown: function () {},
   },
@@ -45,8 +46,10 @@ export default {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {           
             firebaseFunctions.signedUser(user.photoURL, user.displayName);
+            onLogoClick();
           } else {
             firebaseFunctions.noSignedUser();
+            onLogoClick();
           }
         }, function(error) {
           console.log(error)
@@ -60,14 +63,16 @@ export default {
   },
 
   writeUserEvent(eventId, eventData) {
-    const userId = firebase.auth().currentUser.uid;
+    const userId = firebase.auth()?.currentUser?.uid;
+    if (!userId) { return }
     const update = {};
     update[eventId] = eventData;
     database.ref('users/' + userId).update(update);
   },
 
   readUserEvents() {
-    const userId = firebase.auth().currentUser.uid;
+    const userId = firebase.auth()?.currentUser?.uid;
+    if (!userId) { return }
     return database.ref('users/' + userId).get().then((snapshot) => {
       if (snapshot.exists()) {
        return snapshot.val()
@@ -80,7 +85,8 @@ export default {
   },
 
   deleteUserEvent(eventId) {
-    const userId = firebase.auth().currentUser.uid;
+    const userId = firebase.auth()?.currentUser?.uid;
+    if (!userId) { return }
     database.ref('users/' + userId + '/' + dataId).remove();
   },
 }
