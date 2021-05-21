@@ -198,8 +198,8 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 190px;
-  right: 140px;
+  top: 120px;
+  right: 90px;
   width: 30px;
   height: 30px;
   padding: 0px 5px;
@@ -217,9 +217,10 @@ svg {
   border-radius: 50%;
   border: 1px solid transparent;
 
-  @media screen and (max-width: 767px) {
-    top: 120px;
-    right: 90px;
+  @media screen and (min-width: 768px) {
+    top: 190px;
+    right: 140px;
+
   }
 
   &:hover {
