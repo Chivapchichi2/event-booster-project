@@ -44,6 +44,7 @@ function ResetTheme() {
     refs.theme.classList.remove('films-theme');
     refs.theme.classList.remove('theatre-theme');
     refs.theme.classList.remove('misc-theme');
+    refs.theme.classList.remove('user-profile-theme');
     
 }
 

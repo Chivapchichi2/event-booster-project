@@ -1,6 +1,8 @@
 import databaseApi from './utils/firebaseApi';
 import refs from './utils/refs';
 import validation from './utils/validation';
+import resetTheme from './utils/theme';
+
 
 refs.userData.addEventListener('click', (e) => {
   if (e.target === document.getElementById('user-events')) {
@@ -14,6 +16,8 @@ refs.userData.addEventListener('click', (e) => {
     refs.mapContainer.classList.add('is-hidden');
     refs.form.classList.replace('inDown', 'outUp');
     e.target.textContent = 'Get home';
+    resetTheme();
+    refs.theme.classList.add('user-profile-theme');
     setTimeout(() => {
       refs.form.classList.add('is-hidden');
       refs.heroTitle.innerHTML = 'My &nbsp; Events';
@@ -82,6 +86,7 @@ function changeIconBtnAddAndMyEventData(e) {
   deleteEvent(id);
   if (document.getElementById('user-events').textContent === 'Get home') {
     e.target.closest('.card-item').style.display = 'none';
+    
   }
 }
 
