@@ -11,7 +11,7 @@ refs.userData.addEventListener('click', (e) => {
     if (refs.registrationBtn.firstElementChild.dataset.sign === 'in') {
       return refs.registrationBtn.click();
     }
-    refs.mapContainer.style.display = 'none';
+    refs.mapContainer.classList.add('is-hidden');
     refs.form.classList.replace('inDown', 'outUp');
     e.target.textContent = 'Get home';
     setTimeout(() => {
