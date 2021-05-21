@@ -22,7 +22,7 @@ function onLogoClick() {
   
   resetTheme();
   refs.theme.classList.add('overlay');
-  refs.mapContainer.style.display = 'block';
+    refs.mapContainer.classList.remove('is-hidden');
   refs.form.classList.remove('is-hidden');
   refs.form.classList.replace('outUp', 'inDown');
   setTimeout(() => {

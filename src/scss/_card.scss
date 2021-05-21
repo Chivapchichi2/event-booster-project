@@ -182,8 +182,7 @@ svg {
   margin-right: 3px;
 }
 
-.card-item:hover,
-.card-item:focus {
+.card-item {
   & .add-btn {
     opacity: 1;
     transform: scale(1);

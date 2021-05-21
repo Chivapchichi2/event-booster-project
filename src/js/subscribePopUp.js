@@ -1,5 +1,5 @@
 import refs from './utils/refs';
-
+import mailingData from './data/usersMailing'
 let intervalID;
 function setIntervalX(callback, delay, repetitions) {
   let x = 0;
@@ -32,6 +32,8 @@ refs.subscribeBtn.addEventListener('click', () => {
     changeInputBorderColor('red');
     return;
   }
+  mailingData.push(refs.inputEmail.value)
+  console.log(mailingData);
   changeInputBorderColor('black');
   refs.inputEmail.style.boxShadow =
     ' 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de';

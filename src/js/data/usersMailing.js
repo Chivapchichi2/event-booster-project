@@ -1,1 +1,3 @@
-export default mailingData = [];
+
+  const mailingData = [];
+export default mailingData;
